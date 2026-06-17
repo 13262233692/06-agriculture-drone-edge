@@ -1,0 +1,73 @@
+drone:
+  id: "DRONE-JETSON-001"
+  model: "DJI-Matrice-300-RTK"
+
+camera:
+  device_index: 0
+  width: 1280
+  height: 720
+  fps: 30
+  multispectral:
+    enabled: true
+    bands:
+      - "RGB"
+      - "NIR"
+      - "RedEdge"
+    active_band: "RGB"
+
+inference:
+  tensorrt:
+    engine_path: "./models/rust_detection.trt"
+    input_shape: [1, 3, 640, 640]
+    output_shape: [1, 25200, 85]
+    precision: "fp16"
+  detection:
+    conf_threshold: 0.5
+    nms_threshold: 0.45
+    target_classes:
+      - id: 0
+        name: "wheat_rust_early"
+        severity_range: [0.0, 0.3]
+        severity_level: "mild"
+      - id: 1
+        name: "wheat_rust_moderate"
+        severity_range: [0.3, 0.7]
+        severity_level: "moderate"
+      - id: 2
+        name: "wheat_rust_severe"
+        severity_range: [0.7, 1.0]
+        severity_level: "severe"
+    max_detections_per_frame: 50
+
+gps:
+  enabled: true
+  serial_port: "/dev/ttyTHS1"
+  baud_rate: 9600
+  protocol: "NMEA"
+  mock_enabled: false
+  mock_data:
+    latitude: 39.9042
+    longitude: 116.4074
+    altitude: 50.0
+    speed: 8.5
+    heading: 90.0
+
+grpc:
+  server_address: "localhost:50051"
+  use_tls: false
+  tls_cert_path: ""
+  reconnect_interval: 5
+  max_reconnect_attempts: 20
+  stream_batch_size: 1
+  send_queue_size: 1000
+  ack_timeout: 2.0
+
+system:
+  log_level: "INFO"
+  log_file: "./logs/drone_edge.log"
+  frame_skip_interval: 0
+  max_queue_size: 100
+  worker_threads: 4
+  enable_profiling: false
+  save_detection_images: false
+  detection_output_dir: "./output/detections"

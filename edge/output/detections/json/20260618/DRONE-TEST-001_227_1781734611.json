@@ -1,0 +1,101 @@
+{
+  "drone_id": "DRONE-TEST-001",
+  "frame_id": 227,
+  "timestamp": 1781734611090361088,
+  "gps": {
+    "latitude": 39.90421111,
+    "longitude": 116.40741137,
+    "altitude": 49.73,
+    "speed": 8.11,
+    "heading": 92.28,
+    "satellites": 9,
+    "hdop": 0.91
+  },
+  "frame_size": {
+    "width": 1280,
+    "height": 720
+  },
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 32.72867202758789,
+  "detections": [
+    {
+      "bbox": {
+        "x1": 652,
+        "y1": 0,
+        "x2": 862,
+        "y2": 172
+      },
+      "confidence": 0.7106104493141174,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.21318313479423523,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 80,
+        "y1": 302,
+        "x2": 202,
+        "y2": 514
+      },
+      "confidence": 0.6742502450942993,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.2022750735282898,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 954,
+        "y1": 288,
+        "x2": 1076,
+        "y2": 356
+      },
+      "confidence": 0.5816930532455444,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.17450791597366333,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 602,
+        "y1": 0,
+        "x2": 716,
+        "y2": 82
+      },
+      "confidence": 0.5720850825309753,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.5288340330123901,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 582,
+        "y1": 16,
+        "x2": 792,
+        "y2": 238
+      },
+      "confidence": 0.462576687335968,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.4850306749343872,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 800,
+        "y1": 234,
+        "x2": 904,
+        "y2": 336
+      },
+      "confidence": 0.39153313636779785,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.11745994091033934,
+      "severity_level": "mild"
+    }
+  ],
+  "detection_count": 6
+}

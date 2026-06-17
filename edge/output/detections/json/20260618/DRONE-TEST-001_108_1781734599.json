@@ -1,0 +1,88 @@
+{
+  "drone_id": "DRONE-TEST-001",
+  "frame_id": 108,
+  "timestamp": 1781734599130028544,
+  "gps": {
+    "latitude": 39.90420468,
+    "longitude": 116.40740569,
+    "altitude": 50.03,
+    "speed": 8.97,
+    "heading": 91.08,
+    "satellites": 13,
+    "hdop": 1.08
+  },
+  "frame_size": {
+    "width": 1280,
+    "height": 720
+  },
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 32.089948654174805,
+  "detections": [
+    {
+      "bbox": {
+        "x1": 246,
+        "y1": 168,
+        "x2": 348,
+        "y2": 300
+      },
+      "confidence": 0.6093469858169556,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.18280409574508666,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 904,
+        "y1": 194,
+        "x2": 1140,
+        "y2": 290
+      },
+      "confidence": 0.5272053480148315,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.5108821392059326,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 234,
+        "y1": 0,
+        "x2": 488,
+        "y2": 114
+      },
+      "confidence": 0.5071284770965576,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.8521385431289672,
+      "severity_level": "severe"
+    },
+    {
+      "bbox": {
+        "x1": 548,
+        "y1": 214,
+        "x2": 614,
+        "y2": 452
+      },
+      "confidence": 0.5026464462280273,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.1507939338684082,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 194,
+        "y1": 222,
+        "x2": 336,
+        "y2": 424
+      },
+      "confidence": 0.48987847566604614,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.14696354269981385,
+      "severity_level": "mild"
+    }
+  ],
+  "detection_count": 5
+}

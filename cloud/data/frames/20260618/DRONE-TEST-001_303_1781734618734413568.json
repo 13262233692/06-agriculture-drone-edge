@@ -1,0 +1,23 @@
+{
+  "drone_id": "DRONE-TEST-001",
+  "frame_id": 303,
+  "timestamp": 1781734618734413568,
+  "datetime": "2026-06-17T22:16:58.734414+00:00",
+  "gps": {
+    "latitude": 39.9042148,
+    "longitude": 116.40741514,
+    "altitude": 50.05,
+    "speed": 8.48,
+    "heading": 93.04,
+    "timestamp": 1781734618639794176,
+    "satellites": 0,
+    "hdop": 0.0
+  },
+  "frame_width": 1280,
+  "frame_height": 720,
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 35.02655029296875,
+  "detections": [],
+  "detection_count": 0,
+  "received_at": 1781734618735440128
+}

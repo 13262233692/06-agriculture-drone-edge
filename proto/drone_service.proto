@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package agriculture_drone;
+
+option py_generic_services = true;
+
+message GPSCoordinate {
+    double latitude = 1;
+    double longitude = 2;
+    double altitude = 3;
+    double speed = 4;
+    double heading = 5;
+    int64 timestamp = 6;
+}
+
+message DetectionBox {
+    int32 x1 = 1;
+    int32 y1 = 2;
+    int32 x2 = 3;
+    int32 y2 = 4;
+    float confidence = 5;
+    string class_name = 6;
+    int32 class_id = 7;
+    float severity_score = 8;
+    string severity_level = 9;
+}
+
+message FrameDetection {
+    string drone_id = 1;
+    int64 frame_id = 2;
+    int64 timestamp = 3;
+    GPSCoordinate gps = 4;
+    repeated DetectionBox detections = 5;
+    int32 frame_width = 6;
+    int32 frame_height = 7;
+    string multispectral_band = 8;
+    float inference_latency_ms = 9;
+}
+
+message ServerAck {
+    int64 received_frame_id = 1;
+    int64 server_timestamp = 2;
+    bool success = 3;
+    string message = 4;
+}
+
+message DroneStatus {
+    string drone_id = 1;
+    string status = 2;
+    int64 timestamp = 3;
+    float battery_level = 4;
+    GPSCoordinate current_position = 5;
+    int32 total_frames_processed = 6;
+    int32 total_detections = 7;
+}
+
+message ServerCommand {
+    string command_id = 1;
+    string command_type = 2;
+    string parameters = 3;
+    int64 timestamp = 4;
+}
+
+service DroneDetectionService {
+    rpc StreamDetections(stream FrameDetection) returns (stream ServerAck);
+    rpc StreamStatus(DroneStatus) returns (stream ServerCommand);
+}

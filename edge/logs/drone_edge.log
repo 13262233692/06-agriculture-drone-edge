@@ -1,0 +1,305 @@
+2026-06-18 06:16:26 | INFO    | drone_edge         | ============================================================
+2026-06-18 06:16:26 | INFO    | drone_edge         |   Drone Edge Application Starting
+2026-06-18 06:16:26 | INFO    | drone_edge         |   Drone ID: DRONE-TEST-001
+2026-06-18 06:16:26 | INFO    | drone_edge         |   Timestamp: 2026-06-18T06:16:26.811558
+2026-06-18 06:16:26 | INFO    | drone_edge         | ============================================================
+2026-06-18 06:16:28 | INFO    | drone_edge         | Disease detector initialized
+2026-06-18 06:16:28 | INFO    | drone_edge         | Main processing loop started
+2026-06-18 06:16:28 | INFO    | drone_edge         | Drone Edge application started successfully
+2026-06-18 06:16:28 | INFO    | drone_edge         | Received server command: KEEPALIVE params={'interval': 30}
+2026-06-18 06:16:28 | INFO    | drone_edge         | Frame 1: 4 detections [severe=2, mild=2] | lat=39.904201 lon=116.407400 | inf=48.7ms | SENT
+2026-06-18 06:16:28 | INFO    | drone_edge         | Frame 3: 2 detections [severe=1, moderate=1] | lat=39.904200 lon=116.407399 | inf=31.6ms | SENT
+2026-06-18 06:16:28 | INFO    | drone_edge         | Frame 4: 4 detections [moderate=4] | lat=39.904201 lon=116.407399 | inf=32.9ms | SENT
+2026-06-18 06:16:28 | INFO    | drone_edge         | Frame 5: 5 detections [moderate=2, mild=1, severe=2] | lat=39.904201 lon=116.407400 | inf=33.4ms | SENT
+2026-06-18 06:16:28 | INFO    | drone_edge         | Frame 6: 7 detections [severe=2, moderate=4, mild=1] | lat=39.904200 lon=116.407401 | inf=33.2ms | SENT
+2026-06-18 06:16:28 | INFO    | drone_edge         | Frame 7: 6 detections [severe=2, moderate=4] | lat=39.904200 lon=116.407401 | inf=33.7ms | SENT
+2026-06-18 06:16:29 | INFO    | drone_edge         | Frame 8: 3 detections [moderate=2, mild=1] | lat=39.904201 lon=116.407401 | inf=31.6ms | SENT
+2026-06-18 06:16:29 | INFO    | drone_edge         | Frame 9: 1 detections [severe=1] | lat=39.904201 lon=116.407400 | inf=33.2ms | SENT
+2026-06-18 06:16:29 | INFO    | drone_edge         | Frame 11: 1 detections [moderate=1] | lat=39.904201 lon=116.407400 | inf=33.4ms | SENT
+2026-06-18 06:16:29 | INFO    | drone_edge         | Frame 12: 3 detections [mild=2, moderate=1] | lat=39.904200 lon=116.407401 | inf=33.3ms | SENT
+2026-06-18 06:16:29 | INFO    | drone_edge         | Frame 13: 6 detections [moderate=2, severe=3, mild=1] | lat=39.904200 lon=116.407401 | inf=34.2ms | SENT
+2026-06-18 06:16:29 | INFO    | drone_edge         | Frame 14: 3 detections [mild=1, moderate=1, severe=1] | lat=39.904200 lon=116.407401 | inf=35.6ms | SENT
+2026-06-18 06:16:29 | INFO    | drone_edge         | Frame 15: 2 detections [severe=2] | lat=39.904200 lon=116.407402 | inf=41.1ms | SENT
+2026-06-18 06:16:29 | INFO    | drone_edge         | Frame 16: 6 detections [severe=2, moderate=2, mild=2] | lat=39.904201 lon=116.407402 | inf=32.2ms | SENT
+2026-06-18 06:16:29 | INFO    | drone_edge         | Frame 17: 6 detections [mild=1, moderate=2, severe=3] | lat=39.904201 lon=116.407400 | inf=32.9ms | SENT
+2026-06-18 06:16:30 | INFO    | drone_edge         | Frame 18: 4 detections [severe=1, moderate=2, mild=1] | lat=39.904202 lon=116.407401 | inf=33.1ms | SENT
+2026-06-18 06:16:30 | INFO    | drone_edge         | Frame 20: 5 detections [moderate=3, mild=1, severe=1] | lat=39.904201 lon=116.407401 | inf=40.5ms | SENT
+2026-06-18 06:16:30 | INFO    | drone_edge         | Frame 21: 4 detections [severe=2, mild=1, moderate=1] | lat=39.904200 lon=116.407401 | inf=39.0ms | SENT
+2026-06-18 06:16:30 | INFO    | drone_edge         | Frame 22: 4 detections [moderate=1, severe=1, mild=2] | lat=39.904200 lon=116.407402 | inf=37.1ms | SENT
+2026-06-18 06:16:30 | INFO    | drone_edge         | Frame 23: 3 detections [moderate=1, mild=2] | lat=39.904200 lon=116.407402 | inf=33.2ms | SENT
+2026-06-18 06:16:30 | INFO    | drone_edge         | Frame 24: 3 detections [moderate=1, mild=2] | lat=39.904201 lon=116.407402 | inf=32.9ms | SENT
+2026-06-18 06:16:30 | INFO    | drone_edge         | Frame 25: 2 detections [mild=1, severe=1] | lat=39.904202 lon=116.407402 | inf=32.9ms | SENT
+2026-06-18 06:16:30 | INFO    | drone_edge         | Frame 26: 7 detections [severe=3, moderate=3, mild=1] | lat=39.904201 lon=116.407400 | inf=34.7ms | SENT
+2026-06-18 06:16:30 | INFO    | drone_edge         | Frame 27: 2 detections [mild=1, severe=1] | lat=39.904200 lon=116.407401 | inf=33.6ms | SENT
+2026-06-18 06:16:31 | INFO    | drone_edge         | Frame 29: 5 detections [moderate=3, mild=2] | lat=39.904202 lon=116.407401 | inf=34.2ms | SENT
+2026-06-18 06:16:31 | INFO    | drone_edge         | Frame 30: 1 detections [moderate=1] | lat=39.904201 lon=116.407402 | inf=34.0ms | SENT
+2026-06-18 06:16:31 | INFO    | drone_edge         | Frame 31: 2 detections [mild=1, moderate=1] | lat=39.904201 lon=116.407401 | inf=33.1ms | SENT
+2026-06-18 06:16:31 | INFO    | drone_edge         | Frame 32: 5 detections [moderate=2, severe=1, mild=2] | lat=39.904202 lon=116.407401 | inf=34.8ms | SENT
+2026-06-18 06:16:31 | INFO    | drone_edge         | Frame 33: 4 detections [severe=2, mild=2] | lat=39.904201 lon=116.407402 | inf=32.3ms | SENT
+2026-06-18 06:16:31 | INFO    | drone_edge         | Frame 34: 4 detections [mild=2, moderate=1, severe=1] | lat=39.904201 lon=116.407402 | inf=35.7ms | SENT
+2026-06-18 06:16:31 | INFO    | drone_edge         | Frame 35: 2 detections [moderate=1, severe=1] | lat=39.904203 lon=116.407402 | inf=34.9ms | SENT
+2026-06-18 06:16:31 | INFO    | drone_edge         | Frame 36: 5 detections [mild=3, moderate=1, severe=1] | lat=39.904201 lon=116.407402 | inf=34.4ms | SENT
+2026-06-18 06:16:31 | INFO    | drone_edge         | Frame 37: 4 detections [moderate=3, mild=1] | lat=39.904202 lon=116.407403 | inf=33.2ms | SENT
+2026-06-18 06:16:32 | INFO    | drone_edge         | Frame 38: 3 detections [mild=1, severe=2] | lat=39.904201 lon=116.407401 | inf=32.1ms | SENT
+2026-06-18 06:16:32 | INFO    | drone_edge         | Frame 39: 3 detections [mild=1, moderate=1, severe=1] | lat=39.904202 lon=116.407403 | inf=32.2ms | SENT
+2026-06-18 06:16:32 | INFO    | drone_edge         | Frame 41: 1 detections [severe=1] | lat=39.904201 lon=116.407402 | inf=31.5ms | SENT
+2026-06-18 06:16:32 | INFO    | drone_edge         | Frame 42: 5 detections [mild=3, severe=1, moderate=1] | lat=39.904202 lon=116.407402 | inf=31.8ms | SENT
+2026-06-18 06:16:32 | INFO    | drone_edge         | Frame 43: 2 detections [mild=2] | lat=39.904202 lon=116.407403 | inf=29.8ms | SENT
+2026-06-18 06:16:32 | INFO    | drone_edge         | Frame 44: 2 detections [mild=1, severe=1] | lat=39.904203 lon=116.407403 | inf=31.2ms | SENT
+2026-06-18 06:16:32 | INFO    | drone_edge         | Frame 45: 5 detections [severe=2, mild=3] | lat=39.904202 lon=116.407402 | inf=32.6ms | SENT
+2026-06-18 06:16:32 | INFO    | drone_edge         | Frame 46: 1 detections [moderate=1] | lat=39.904203 lon=116.407402 | inf=31.0ms | SENT
+2026-06-18 06:16:33 | INFO    | drone_edge         | Frame 47: 3 detections [severe=1, mild=2] | lat=39.904202 lon=116.407402 | inf=37.2ms | SENT
+2026-06-18 06:16:33 | INFO    | drone_edge         | Frame 48: 4 detections [severe=3, mild=1] | lat=39.904203 lon=116.407403 | inf=31.2ms | SENT
+2026-06-18 06:16:33 | INFO    | drone_edge         | Frame 49: 1 detections [moderate=1] | lat=39.904203 lon=116.407402 | inf=34.6ms | SENT
+2026-06-18 06:16:33 | INFO    | drone_edge         | Frame 50: 3 detections [mild=2, moderate=1] | lat=39.904202 lon=116.407402 | inf=31.4ms | SENT
+2026-06-18 06:16:33 | INFO    | drone_edge         | Frame 51: 2 detections [moderate=1, severe=1] | lat=39.904203 lon=116.407403 | inf=31.0ms | SENT
+2026-06-18 06:16:33 | INFO    | drone_edge         | Frame 52: 3 detections [severe=1, moderate=1, mild=1] | lat=39.904203 lon=116.407402 | inf=31.6ms | SENT
+2026-06-18 06:16:33 | INFO    | drone_edge         | Frame 53: 4 detections [mild=2, severe=1, moderate=1] | lat=39.904203 lon=116.407402 | inf=30.4ms | SENT
+2026-06-18 06:16:33 | INFO    | drone_edge         | Frame 55: 2 detections [moderate=2] | lat=39.904202 lon=116.407404 | inf=30.6ms | SENT
+2026-06-18 06:16:33 | INFO    | drone_edge         | Frame 56: 1 detections [mild=1] | lat=39.904203 lon=116.407403 | inf=40.3ms | SENT
+2026-06-18 06:16:34 | INFO    | drone_edge         | Frame 57: 5 detections [severe=4, mild=1] | lat=39.904203 lon=116.407403 | inf=32.9ms | SENT
+2026-06-18 06:16:34 | INFO    | drone_edge         | Frame 58: 2 detections [mild=1, moderate=1] | lat=39.904203 lon=116.407403 | inf=32.3ms | SENT
+2026-06-18 06:16:34 | INFO    | drone_edge         | Frame 59: 4 detections [severe=2, moderate=1, mild=1] | lat=39.904203 lon=116.407403 | inf=31.8ms | SENT
+2026-06-18 06:16:34 | INFO    | drone_edge         | Frame 62: 4 detections [moderate=2, mild=2] | lat=39.904203 lon=116.407404 | inf=30.0ms | SENT
+2026-06-18 06:16:34 | INFO    | drone_edge         | Frame 63: 1 detections [mild=1] | lat=39.904203 lon=116.407403 | inf=32.1ms | SENT
+2026-06-18 06:16:34 | INFO    | drone_edge         | Frame 65: 5 detections [mild=1, moderate=3, severe=1] | lat=39.904203 lon=116.407404 | inf=30.3ms | SENT
+2026-06-18 06:16:35 | INFO    | drone_edge         | Frame 67: 6 detections [mild=1, moderate=4, severe=1] | lat=39.904202 lon=116.407404 | inf=31.6ms | SENT
+2026-06-18 06:16:35 | INFO    | drone_edge         | Frame 68: 5 detections [moderate=1, severe=3, mild=1] | lat=39.904204 lon=116.407404 | inf=32.4ms | SENT
+2026-06-18 06:16:35 | INFO    | drone_edge         | Frame 70: 6 detections [moderate=2, mild=3, severe=1] | lat=39.904203 lon=116.407403 | inf=32.6ms | SENT
+2026-06-18 06:16:35 | INFO    | drone_edge         | Frame 71: 6 detections [mild=3, moderate=2, severe=1] | lat=39.904204 lon=116.407404 | inf=31.7ms | SENT
+2026-06-18 06:16:35 | INFO    | drone_edge         | Frame 72: 6 detections [moderate=2, mild=3, severe=1] | lat=39.904204 lon=116.407403 | inf=32.5ms | SENT
+2026-06-18 06:16:35 | INFO    | drone_edge         | Frame 73: 5 detections [severe=3, mild=2] | lat=39.904203 lon=116.407404 | inf=31.3ms | SENT
+2026-06-18 06:16:35 | INFO    | drone_edge         | Frame 74: 1 detections [mild=1] | lat=39.904203 lon=116.407403 | inf=30.8ms | SENT
+2026-06-18 06:16:35 | INFO    | drone_edge         | Frame 75: 4 detections [severe=2, moderate=1, mild=1] | lat=39.904204 lon=116.407404 | inf=31.6ms | SENT
+2026-06-18 06:16:35 | INFO    | drone_edge         | Frame 76: 3 detections [severe=1, moderate=2] | lat=39.904204 lon=116.407404 | inf=30.8ms | SENT
+2026-06-18 06:16:36 | INFO    | drone_edge         | Frame 77: 2 detections [moderate=1, severe=1] | lat=39.904205 lon=116.407404 | inf=31.4ms | SENT
+2026-06-18 06:16:36 | INFO    | drone_edge         | Frame 78: 5 detections [moderate=2, severe=2, mild=1] | lat=39.904204 lon=116.407404 | inf=30.8ms | SENT
+2026-06-18 06:16:36 | INFO    | drone_edge         | Frame 80: 6 detections [severe=1, mild=2, moderate=3] | lat=39.904204 lon=116.407404 | inf=31.1ms | SENT
+2026-06-18 06:16:36 | INFO    | drone_edge         | Frame 81: 6 detections [mild=4, severe=1, moderate=1] | lat=39.904203 lon=116.407404 | inf=32.0ms | SENT
+2026-06-18 06:16:36 | INFO    | drone_edge         | Frame 82: 4 detections [severe=2, moderate=2] | lat=39.904204 lon=116.407404 | inf=31.5ms | SENT
+2026-06-18 06:16:36 | INFO    | drone_edge         | Frame 83: 1 detections [mild=1] | lat=39.904203 lon=116.407404 | inf=31.4ms | SENT
+2026-06-18 06:16:36 | INFO    | drone_edge         | Frame 84: 3 detections [severe=3] | lat=39.904204 lon=116.407404 | inf=32.0ms | SENT
+2026-06-18 06:16:36 | INFO    | drone_edge         | Frame 85: 4 detections [mild=2, severe=1, moderate=1] | lat=39.904203 lon=116.407405 | inf=32.8ms | SENT
+2026-06-18 06:16:36 | INFO    | drone_edge         | Frame 86: 2 detections [mild=1, moderate=1] | lat=39.904204 lon=116.407403 | inf=45.9ms | SENT
+2026-06-18 06:16:37 | INFO    | drone_edge         | Frame 87: 4 detections [mild=2, moderate=2] | lat=39.904204 lon=116.407404 | inf=32.4ms | SENT
+2026-06-18 06:16:37 | INFO    | drone_edge         | Frame 88: 1 detections [moderate=1] | lat=39.904205 lon=116.407404 | inf=33.1ms | SENT
+2026-06-18 06:16:37 | INFO    | drone_edge         | Frame 89: 2 detections [severe=2] | lat=39.904204 lon=116.407405 | inf=32.4ms | SENT
+2026-06-18 06:16:37 | INFO    | drone_edge         | Frame 90: 5 detections [mild=2, severe=3] | lat=39.904204 lon=116.407405 | inf=40.1ms | SENT
+2026-06-18 06:16:37 | INFO    | drone_edge         | Frame 92: 2 detections [severe=2] | lat=39.904205 lon=116.407404 | inf=32.2ms | SENT
+2026-06-18 06:16:37 | INFO    | drone_edge         | Frame 93: 2 detections [severe=1, moderate=1] | lat=39.904204 lon=116.407404 | inf=32.1ms | SENT
+2026-06-18 06:16:37 | INFO    | drone_edge         | Frame 95: 4 detections [severe=1, moderate=1, mild=2] | lat=39.904204 lon=116.407405 | inf=32.0ms | SENT
+2026-06-18 06:16:37 | INFO    | drone_edge         | Frame 96: 6 detections [moderate=4, severe=2] | lat=39.904206 lon=116.407405 | inf=44.5ms | SENT
+2026-06-18 06:16:38 | INFO    | drone_edge         | Frame 97: 2 detections [severe=1, mild=1] | lat=39.904204 lon=116.407405 | inf=31.9ms | SENT
+2026-06-18 06:16:38 | INFO    | drone_edge         | Frame 98: 1 detections [severe=1] | lat=39.904206 lon=116.407406 | inf=31.4ms | SENT
+2026-06-18 06:16:38 | INFO    | drone_edge         | Frame 99: 6 detections [severe=1, mild=3, moderate=2] | lat=39.904204 lon=116.407404 | inf=32.0ms | SENT
+2026-06-18 06:16:38 | INFO    | drone_edge         | ============================================================
+  UPTIME: 00:00:11
+  FRAMES: processed=99 skipped=0
+  FPS:    avg=8.7 instant=8.6
+  DETECT: total=301 avg_per_frame=3.04
+  INFER:  avg_ms=33.3
+  GRPC:   sent=49 acks=50 reconnects=0 connected=True
+============================================================
+2026-06-18 06:16:38 | INFO    | drone_edge         | Frame 100: 1 detections [mild=1] | lat=39.904205 lon=116.407405 | inf=30.1ms | SENT
+2026-06-18 06:16:38 | INFO    | drone_edge         | Frame 101: 3 detections [severe=1, moderate=1, mild=1] | lat=39.904205 lon=116.407405 | inf=32.3ms | SENT
+2026-06-18 06:16:38 | INFO    | drone_edge         | Frame 102: 6 detections [severe=1, mild=2, moderate=3] | lat=39.904205 lon=116.407405 | inf=31.4ms | SENT
+2026-06-18 06:16:38 | INFO    | drone_edge         | Frame 103: 1 detections [severe=1] | lat=39.904204 lon=116.407404 | inf=31.5ms | SENT
+2026-06-18 06:16:38 | INFO    | drone_edge         | Frame 105: 3 detections [severe=3] | lat=39.904206 lon=116.407406 | inf=30.2ms | SENT
+2026-06-18 06:16:38 | INFO    | drone_edge         | Frame 106: 3 detections [severe=2, moderate=1] | lat=39.904206 lon=116.407405 | inf=31.8ms | SENT
+2026-06-18 06:16:39 | INFO    | drone_edge         | Frame 107: 7 detections [mild=2, severe=3, moderate=2] | lat=39.904206 lon=116.407406 | inf=31.3ms | SENT
+2026-06-18 06:16:39 | INFO    | drone_edge         | Frame 108: 5 detections [mild=3, moderate=1, severe=1] | lat=39.904205 lon=116.407406 | inf=32.1ms | SENT
+2026-06-18 06:16:39 | INFO    | drone_edge         | Frame 109: 5 detections [moderate=3, severe=2] | lat=39.904205 lon=116.407405 | inf=30.0ms | SENT
+2026-06-18 06:16:39 | INFO    | drone_edge         | Frame 110: 1 detections [moderate=1] | lat=39.904205 lon=116.407406 | inf=31.9ms | SENT
+2026-06-18 06:16:39 | INFO    | drone_edge         | Frame 112: 2 detections [moderate=1, mild=1] | lat=39.904205 lon=116.407406 | inf=31.5ms | SENT
+2026-06-18 06:16:39 | INFO    | drone_edge         | Frame 114: 1 detections [mild=1] | lat=39.904207 lon=116.407406 | inf=32.0ms | SENT
+2026-06-18 06:16:39 | INFO    | drone_edge         | Frame 115: 6 detections [moderate=3, severe=1, mild=2] | lat=39.904206 lon=116.407406 | inf=41.1ms | SENT
+2026-06-18 06:16:39 | INFO    | drone_edge         | Frame 116: 1 detections [moderate=1] | lat=39.904207 lon=116.407405 | inf=31.9ms | SENT
+2026-06-18 06:16:40 | INFO    | drone_edge         | Frame 117: 2 detections [mild=2] | lat=39.904206 lon=116.407406 | inf=31.9ms | SENT
+2026-06-18 06:16:40 | INFO    | drone_edge         | Frame 118: 6 detections [mild=3, moderate=3] | lat=39.904205 lon=116.407406 | inf=31.7ms | SENT
+2026-06-18 06:16:40 | INFO    | drone_edge         | Frame 119: 5 detections [mild=2, moderate=2, severe=1] | lat=39.904206 lon=116.407406 | inf=31.3ms | SENT
+2026-06-18 06:16:40 | INFO    | drone_edge         | Frame 120: 1 detections [mild=1] | lat=39.904206 lon=116.407406 | inf=32.9ms | SENT
+2026-06-18 06:16:40 | INFO    | drone_edge         | Frame 121: 6 detections [moderate=3, mild=2, severe=1] | lat=39.904207 lon=116.407406 | inf=29.2ms | SENT
+2026-06-18 06:16:40 | INFO    | drone_edge         | Frame 123: 1 detections [moderate=1] | lat=39.904206 lon=116.407405 | inf=32.5ms | SENT
+2026-06-18 06:16:40 | INFO    | drone_edge         | Frame 124: 1 detections [severe=1] | lat=39.904207 lon=116.407405 | inf=32.4ms | SENT
+2026-06-18 06:16:40 | INFO    | drone_edge         | Frame 126: 1 detections [moderate=1] | lat=39.904207 lon=116.407406 | inf=31.5ms | SENT
+2026-06-18 06:16:41 | INFO    | drone_edge         | Frame 127: 3 detections [moderate=1, mild=1, severe=1] | lat=39.904207 lon=116.407406 | inf=32.4ms | SENT
+2026-06-18 06:16:41 | INFO    | drone_edge         | Frame 128: 4 detections [mild=2, severe=2] | lat=39.904206 lon=116.407407 | inf=34.3ms | SENT
+2026-06-18 06:16:41 | INFO    | drone_edge         | Frame 129: 4 detections [mild=1, moderate=1, severe=2] | lat=39.904206 lon=116.407407 | inf=30.5ms | SENT
+2026-06-18 06:16:41 | INFO    | drone_edge         | Frame 130: 4 detections [moderate=2, mild=1, severe=1] | lat=39.904206 lon=116.407407 | inf=31.0ms | SENT
+2026-06-18 06:16:41 | INFO    | drone_edge         | Frame 131: 2 detections [moderate=1, mild=1] | lat=39.904207 lon=116.407406 | inf=35.3ms | SENT
+2026-06-18 06:16:41 | INFO    | drone_edge         | Frame 132: 7 detections [mild=2, moderate=3, severe=2] | lat=39.904206 lon=116.407407 | inf=31.2ms | SENT
+2026-06-18 06:16:41 | INFO    | drone_edge         | Frame 133: 5 detections [mild=1, severe=2, moderate=2] | lat=39.904207 lon=116.407407 | inf=31.5ms | SENT
+2026-06-18 06:16:41 | INFO    | drone_edge         | Frame 134: 5 detections [moderate=2, mild=3] | lat=39.904206 lon=116.407408 | inf=31.0ms | SENT
+2026-06-18 06:16:41 | INFO    | drone_edge         | Frame 135: 3 detections [moderate=2, severe=1] | lat=39.904208 lon=116.407406 | inf=31.7ms | SENT
+2026-06-18 06:16:41 | INFO    | drone_edge         | Frame 136: 1 detections [moderate=1] | lat=39.904206 lon=116.407407 | inf=32.0ms | SENT
+2026-06-18 06:16:42 | INFO    | drone_edge         | Frame 137: 5 detections [moderate=2, severe=2, mild=1] | lat=39.904207 lon=116.407407 | inf=31.4ms | SENT
+2026-06-18 06:16:42 | INFO    | drone_edge         | Frame 138: 3 detections [mild=1, severe=2] | lat=39.904207 lon=116.407407 | inf=31.3ms | SENT
+2026-06-18 06:16:42 | INFO    | drone_edge         | Frame 139: 2 detections [mild=1, severe=1] | lat=39.904207 lon=116.407406 | inf=30.9ms | SENT
+2026-06-18 06:16:42 | INFO    | drone_edge         | Frame 140: 4 detections [mild=1, moderate=3] | lat=39.904207 lon=116.407408 | inf=32.0ms | SENT
+2026-06-18 06:16:42 | INFO    | drone_edge         | Frame 141: 1 detections [mild=1] | lat=39.904207 lon=116.407406 | inf=31.0ms | SENT
+2026-06-18 06:16:42 | INFO    | drone_edge         | Frame 142: 3 detections [mild=2, moderate=1] | lat=39.904208 lon=116.407406 | inf=31.4ms | SENT
+2026-06-18 06:16:42 | INFO    | drone_edge         | Frame 143: 6 detections [moderate=3, mild=1, severe=2] | lat=39.904206 lon=116.407407 | inf=31.9ms | SENT
+2026-06-18 06:16:42 | INFO    | drone_edge         | Frame 144: 6 detections [mild=3, severe=2, moderate=1] | lat=39.904208 lon=116.407407 | inf=31.3ms | SENT
+2026-06-18 06:16:42 | INFO    | drone_edge         | Frame 145: 6 detections [moderate=3, mild=2, severe=1] | lat=39.904207 lon=116.407408 | inf=30.5ms | SENT
+2026-06-18 06:16:43 | INFO    | drone_edge         | Frame 148: 3 detections [mild=1, severe=1, moderate=1] | lat=39.904207 lon=116.407408 | inf=31.0ms | SENT
+2026-06-18 06:16:43 | INFO    | drone_edge         | Frame 149: 2 detections [moderate=2] | lat=39.904208 lon=116.407408 | inf=31.5ms | SENT
+2026-06-18 06:16:43 | INFO    | drone_edge         | Frame 150: 1 detections [moderate=1] | lat=39.904208 lon=116.407407 | inf=41.4ms | SENT
+2026-06-18 06:16:43 | INFO    | drone_edge         | Frame 151: 1 detections [mild=1] | lat=39.904208 lon=116.407408 | inf=30.3ms | SENT
+2026-06-18 06:16:43 | INFO    | drone_edge         | Frame 152: 4 detections [mild=2, moderate=2] | lat=39.904207 lon=116.407408 | inf=32.4ms | SENT
+2026-06-18 06:16:43 | INFO    | drone_edge         | Frame 153: 5 detections [moderate=2, severe=1, mild=2] | lat=39.904208 lon=116.407407 | inf=32.1ms | SENT
+2026-06-18 06:16:43 | INFO    | drone_edge         | Frame 154: 4 detections [mild=1, moderate=3] | lat=39.904207 lon=116.407409 | inf=31.9ms | SENT
+2026-06-18 06:16:43 | INFO    | drone_edge         | Frame 156: 1 detections [severe=1] | lat=39.904207 lon=116.407408 | inf=33.1ms | SENT
+2026-06-18 06:16:44 | INFO    | drone_edge         | Frame 157: 1 detections [moderate=1] | lat=39.904207 lon=116.407408 | inf=31.5ms | SENT
+2026-06-18 06:16:44 | INFO    | drone_edge         | Frame 158: 6 detections [severe=1, moderate=4, mild=1] | lat=39.904208 lon=116.407407 | inf=31.2ms | SENT
+2026-06-18 06:16:44 | INFO    | drone_edge         | Frame 160: 3 detections [moderate=1, mild=2] | lat=39.904209 lon=116.407409 | inf=31.3ms | SENT
+2026-06-18 06:16:44 | INFO    | drone_edge         | Frame 161: 3 detections [moderate=3] | lat=39.904208 lon=116.407408 | inf=36.0ms | SENT
+2026-06-18 06:16:44 | INFO    | drone_edge         | Frame 162: 3 detections [severe=2, moderate=1] | lat=39.904209 lon=116.407408 | inf=31.2ms | SENT
+2026-06-18 06:16:44 | INFO    | drone_edge         | Frame 163: 6 detections [severe=2, moderate=4] | lat=39.904208 lon=116.407408 | inf=31.9ms | SENT
+2026-06-18 06:16:44 | INFO    | drone_edge         | Frame 164: 7 detections [moderate=1, mild=2, severe=4] | lat=39.904208 lon=116.407409 | inf=30.9ms | SENT
+2026-06-18 06:16:44 | INFO    | drone_edge         | Frame 165: 1 detections [moderate=1] | lat=39.904209 lon=116.407407 | inf=31.3ms | SENT
+2026-06-18 06:16:44 | INFO    | drone_edge         | Frame 166: 2 detections [severe=1, mild=1] | lat=39.904207 lon=116.407408 | inf=31.6ms | SENT
+2026-06-18 06:16:45 | INFO    | drone_edge         | Frame 167: 2 detections [moderate=2] | lat=39.904209 lon=116.407409 | inf=30.2ms | SENT
+2026-06-18 06:16:45 | INFO    | drone_edge         | Frame 168: 1 detections [severe=1] | lat=39.904209 lon=116.407409 | inf=30.7ms | SENT
+2026-06-18 06:16:45 | INFO    | drone_edge         | Frame 169: 4 detections [severe=1, mild=2, moderate=1] | lat=39.904209 lon=116.407408 | inf=32.2ms | SENT
+2026-06-18 06:16:45 | INFO    | drone_edge         | Frame 173: 4 detections [moderate=3, mild=1] | lat=39.904208 lon=116.407410 | inf=32.6ms | SENT
+2026-06-18 06:16:45 | INFO    | drone_edge         | Frame 174: 4 detections [severe=4] | lat=39.904209 lon=116.407408 | inf=31.9ms | SENT
+2026-06-18 06:16:45 | INFO    | drone_edge         | Frame 175: 3 detections [mild=2, severe=1] | lat=39.904209 lon=116.407408 | inf=33.8ms | SENT
+2026-06-18 06:16:45 | INFO    | drone_edge         | Frame 176: 5 detections [severe=2, mild=1, moderate=2] | lat=39.904209 lon=116.407410 | inf=32.2ms | SENT
+2026-06-18 06:16:46 | INFO    | drone_edge         | Frame 177: 4 detections [severe=1, mild=3] | lat=39.904208 lon=116.407409 | inf=31.7ms | SENT
+2026-06-18 06:16:46 | INFO    | drone_edge         | Frame 178: 3 detections [moderate=1, severe=2] | lat=39.904209 lon=116.407409 | inf=31.3ms | SENT
+2026-06-18 06:16:46 | INFO    | drone_edge         | Frame 179: 4 detections [mild=4] | lat=39.904208 lon=116.407408 | inf=30.5ms | SENT
+2026-06-18 06:16:46 | INFO    | drone_edge         | Frame 180: 4 detections [moderate=2, mild=1, severe=1] | lat=39.904209 lon=116.407410 | inf=32.9ms | SENT
+2026-06-18 06:16:46 | INFO    | drone_edge         | Frame 181: 6 detections [moderate=3, mild=2, severe=1] | lat=39.904210 lon=116.407409 | inf=31.0ms | SENT
+2026-06-18 06:16:46 | INFO    | drone_edge         | Frame 182: 3 detections [severe=1, moderate=1, mild=1] | lat=39.904209 lon=116.407410 | inf=31.0ms | SENT
+2026-06-18 06:16:46 | INFO    | drone_edge         | Frame 183: 1 detections [mild=1] | lat=39.904210 lon=116.407410 | inf=30.7ms | SENT
+2026-06-18 06:16:46 | INFO    | drone_edge         | Frame 184: 2 detections [mild=2] | lat=39.904210 lon=116.407410 | inf=31.0ms | SENT
+2026-06-18 06:16:46 | INFO    | drone_edge         | Frame 185: 3 detections [mild=1, severe=1, moderate=1] | lat=39.904210 lon=116.407409 | inf=31.5ms | SENT
+2026-06-18 06:16:46 | INFO    | drone_edge         | Frame 186: 3 detections [mild=2, severe=1] | lat=39.904210 lon=116.407410 | inf=32.7ms | SENT
+2026-06-18 06:16:47 | INFO    | drone_edge         | Frame 187: 1 detections [moderate=1] | lat=39.904209 lon=116.407410 | inf=31.7ms | SENT
+2026-06-18 06:16:47 | INFO    | drone_edge         | Frame 188: 2 detections [mild=1, severe=1] | lat=39.904209 lon=116.407410 | inf=34.0ms | SENT
+2026-06-18 06:16:47 | INFO    | drone_edge         | Frame 189: 4 detections [moderate=1, mild=3] | lat=39.904209 lon=116.407410 | inf=31.4ms | SENT
+2026-06-18 06:16:47 | INFO    | drone_edge         | Frame 190: 6 detections [mild=3, severe=2, moderate=1] | lat=39.904209 lon=116.407410 | inf=31.3ms | SENT
+2026-06-18 06:16:47 | INFO    | drone_edge         | Frame 193: 4 detections [severe=3, moderate=1] | lat=39.904210 lon=116.407409 | inf=32.3ms | SENT
+2026-06-18 06:16:47 | INFO    | drone_edge         | Frame 194: 7 detections [mild=4, severe=3] | lat=39.904210 lon=116.407410 | inf=31.7ms | SENT
+2026-06-18 06:16:47 | INFO    | drone_edge         | Frame 195: 5 detections [moderate=2, severe=2, mild=1] | lat=39.904211 lon=116.407409 | inf=35.0ms | SENT
+2026-06-18 06:16:47 | INFO    | drone_edge         | Frame 196: 4 detections [severe=2, mild=2] | lat=39.904209 lon=116.407410 | inf=33.5ms | SENT
+2026-06-18 06:16:48 | INFO    | drone_edge         | Frame 197: 1 detections [mild=1] | lat=39.904211 lon=116.407409 | inf=35.8ms | SENT
+2026-06-18 06:16:48 | INFO    | drone_edge         | Frame 198: 2 detections [moderate=1, severe=1] | lat=39.904209 lon=116.407409 | inf=34.1ms | SENT
+2026-06-18 06:16:48 | INFO    | drone_edge         | ============================================================
+  UPTIME: 00:00:21
+  FRAMES: processed=198 skipped=0
+  FPS:    avg=9.3 instant=9.9
+  DETECT: total=588 avg_per_frame=2.97
+  INFER:  avg_ms=32.7
+  GRPC:   sent=99 acks=99 reconnects=0 connected=True
+============================================================
+2026-06-18 06:16:48 | INFO    | drone_edge         | Frame 199: 2 detections [moderate=2] | lat=39.904211 lon=116.407411 | inf=34.5ms | SENT
+2026-06-18 06:16:48 | INFO    | drone_edge         | Frame 200: 1 detections [severe=1] | lat=39.904210 lon=116.407410 | inf=33.8ms | SENT
+2026-06-18 06:16:48 | INFO    | drone_edge         | Frame 201: 5 detections [mild=1, moderate=2, severe=2] | lat=39.904210 lon=116.407411 | inf=31.5ms | SENT
+2026-06-18 06:16:48 | INFO    | drone_edge         | Frame 202: 3 detections [moderate=1, severe=1, mild=1] | lat=39.904210 lon=116.407410 | inf=32.8ms | SENT
+2026-06-18 06:16:48 | INFO    | drone_edge         | Frame 203: 1 detections [mild=1] | lat=39.904210 lon=116.407410 | inf=32.1ms | SENT
+2026-06-18 06:16:48 | INFO    | drone_edge         | Frame 204: 3 detections [severe=1, mild=2] | lat=39.904209 lon=116.407410 | inf=30.9ms | SENT
+2026-06-18 06:16:48 | INFO    | drone_edge         | Frame 205: 3 detections [mild=2, severe=1] | lat=39.904209 lon=116.407410 | inf=33.1ms | SENT
+2026-06-18 06:16:48 | INFO    | drone_edge         | Frame 206: 1 detections [moderate=1] | lat=39.904209 lon=116.407410 | inf=32.2ms | SENT
+2026-06-18 06:16:49 | INFO    | drone_edge         | Frame 207: 2 detections [moderate=1, mild=1] | lat=39.904210 lon=116.407410 | inf=32.5ms | SENT
+2026-06-18 06:16:49 | INFO    | drone_edge         | Frame 208: 4 detections [mild=3, severe=1] | lat=39.904211 lon=116.407410 | inf=33.4ms | SENT
+2026-06-18 06:16:49 | INFO    | drone_edge         | Frame 209: 1 detections [mild=1] | lat=39.904210 lon=116.407411 | inf=32.6ms | SENT
+2026-06-18 06:16:49 | INFO    | drone_edge         | Frame 210: 4 detections [moderate=2, severe=2] | lat=39.904211 lon=116.407411 | inf=35.7ms | SENT
+2026-06-18 06:16:49 | INFO    | drone_edge         | Frame 211: 5 detections [moderate=3, severe=1, mild=1] | lat=39.904211 lon=116.407411 | inf=34.3ms | SENT
+2026-06-18 06:16:49 | INFO    | drone_edge         | Frame 212: 4 detections [severe=2, moderate=1, mild=1] | lat=39.904211 lon=116.407410 | inf=33.4ms | SENT
+2026-06-18 06:16:49 | INFO    | drone_edge         | Frame 214: 5 detections [severe=2, moderate=1, mild=2] | lat=39.904211 lon=116.407411 | inf=33.3ms | SENT
+2026-06-18 06:16:49 | INFO    | drone_edge         | Frame 215: 5 detections [mild=1, severe=1, moderate=3] | lat=39.904211 lon=116.407410 | inf=32.7ms | SENT
+2026-06-18 06:16:49 | INFO    | drone_edge         | Frame 216: 2 detections [mild=1, severe=1] | lat=39.904210 lon=116.407410 | inf=31.9ms | SENT
+2026-06-18 06:16:50 | INFO    | drone_edge         | Frame 217: 4 detections [severe=3, mild=1] | lat=39.904210 lon=116.407410 | inf=37.9ms | SENT
+2026-06-18 06:16:50 | INFO    | drone_edge         | Frame 218: 4 detections [moderate=3, severe=1] | lat=39.904210 lon=116.407411 | inf=31.6ms | SENT
+2026-06-18 06:16:50 | INFO    | drone_edge         | Frame 219: 2 detections [mild=1, moderate=1] | lat=39.904211 lon=116.407411 | inf=32.0ms | SENT
+2026-06-18 06:16:50 | INFO    | drone_edge         | Frame 221: 3 detections [mild=1, severe=2] | lat=39.904212 lon=116.407410 | inf=31.0ms | SENT
+2026-06-18 06:16:50 | INFO    | drone_edge         | Frame 222: 1 detections [severe=1] | lat=39.904210 lon=116.407410 | inf=31.4ms | SENT
+2026-06-18 06:16:50 | INFO    | drone_edge         | Frame 223: 4 detections [moderate=2, mild=1, severe=1] | lat=39.904212 lon=116.407410 | inf=31.5ms | SENT
+2026-06-18 06:16:50 | INFO    | drone_edge         | Frame 224: 6 detections [moderate=3, mild=2, severe=1] | lat=39.904211 lon=116.407411 | inf=31.6ms | SENT
+2026-06-18 06:16:50 | INFO    | drone_edge         | Frame 225: 7 detections [moderate=1, severe=2, mild=4] | lat=39.904212 lon=116.407412 | inf=31.6ms | SENT
+2026-06-18 06:16:51 | INFO    | drone_edge         | Frame 227: 6 detections [mild=4, moderate=2] | lat=39.904211 lon=116.407411 | inf=32.7ms | SENT
+2026-06-18 06:16:51 | INFO    | drone_edge         | Frame 228: 7 detections [moderate=5, severe=1, mild=1] | lat=39.904210 lon=116.407411 | inf=32.7ms | SENT
+2026-06-18 06:16:51 | INFO    | drone_edge         | Frame 230: 6 detections [moderate=3, mild=2, severe=1] | lat=39.904211 lon=116.407412 | inf=31.1ms | SENT
+2026-06-18 06:16:51 | INFO    | drone_edge         | Frame 231: 1 detections [severe=1] | lat=39.904212 lon=116.407412 | inf=30.1ms | SENT
+2026-06-18 06:16:51 | INFO    | drone_edge         | Frame 232: 1 detections [severe=1] | lat=39.904211 lon=116.407411 | inf=32.1ms | SENT
+2026-06-18 06:16:51 | INFO    | drone_edge         | Frame 233: 1 detections [severe=1] | lat=39.904212 lon=116.407412 | inf=31.3ms | SENT
+2026-06-18 06:16:51 | INFO    | drone_edge         | Frame 234: 2 detections [moderate=2] | lat=39.904212 lon=116.407412 | inf=30.8ms | SENT
+2026-06-18 06:16:51 | INFO    | drone_edge         | Frame 235: 4 detections [severe=2, mild=1, moderate=1] | lat=39.904211 lon=116.407413 | inf=31.1ms | SENT
+2026-06-18 06:16:51 | INFO    | drone_edge         | Frame 236: 2 detections [mild=1, moderate=1] | lat=39.904213 lon=116.407412 | inf=30.9ms | SENT
+2026-06-18 06:16:52 | INFO    | drone_edge         | Frame 237: 4 detections [moderate=1, mild=2, severe=1] | lat=39.904212 lon=116.407412 | inf=31.2ms | SENT
+2026-06-18 06:16:52 | INFO    | drone_edge         | Frame 238: 4 detections [moderate=1, mild=1, severe=2] | lat=39.904213 lon=116.407411 | inf=32.0ms | SENT
+2026-06-18 06:16:52 | INFO    | drone_edge         | Frame 239: 1 detections [severe=1] | lat=39.904211 lon=116.407412 | inf=31.2ms | SENT
+2026-06-18 06:16:52 | INFO    | drone_edge         | Frame 240: 5 detections [moderate=3, mild=2] | lat=39.904211 lon=116.407413 | inf=30.6ms | SENT
+2026-06-18 06:16:52 | INFO    | drone_edge         | Frame 241: 6 detections [mild=3, moderate=1, severe=2] | lat=39.904212 lon=116.407413 | inf=32.5ms | SENT
+2026-06-18 06:16:52 | INFO    | drone_edge         | Frame 242: 6 detections [moderate=2, severe=2, mild=2] | lat=39.904212 lon=116.407412 | inf=32.6ms | SENT
+2026-06-18 06:16:52 | INFO    | drone_edge         | Frame 244: 2 detections [severe=1, mild=1] | lat=39.904212 lon=116.407412 | inf=31.0ms | SENT
+2026-06-18 06:16:52 | INFO    | drone_edge         | Frame 245: 4 detections [moderate=2, severe=1, mild=1] | lat=39.904211 lon=116.407413 | inf=32.1ms | SENT
+2026-06-18 06:16:53 | INFO    | drone_edge         | Frame 246: 1 detections [moderate=1] | lat=39.904212 lon=116.407412 | inf=32.7ms | SENT
+2026-06-18 06:16:53 | INFO    | drone_edge         | Frame 247: 2 detections [moderate=1, mild=1] | lat=39.904212 lon=116.407412 | inf=31.4ms | SENT
+2026-06-18 06:16:53 | INFO    | drone_edge         | Frame 248: 4 detections [mild=2, severe=1, moderate=1] | lat=39.904213 lon=116.407412 | inf=32.6ms | SENT
+2026-06-18 06:16:53 | INFO    | drone_edge         | Frame 249: 4 detections [moderate=2, severe=2] | lat=39.904213 lon=116.407412 | inf=34.0ms | SENT
+2026-06-18 06:16:53 | INFO    | drone_edge         | Frame 250: 2 detections [moderate=1, mild=1] | lat=39.904212 lon=116.407412 | inf=32.3ms | SENT
+2026-06-18 06:16:53 | INFO    | drone_edge         | Frame 252: 3 detections [moderate=1, severe=1, mild=1] | lat=39.904212 lon=116.407413 | inf=32.1ms | SENT
+2026-06-18 06:16:53 | INFO    | drone_edge         | Frame 253: 1 detections [mild=1] | lat=39.904213 lon=116.407413 | inf=30.6ms | SENT
+2026-06-18 06:16:53 | INFO    | drone_edge         | Frame 254: 2 detections [severe=1, moderate=1] | lat=39.904213 lon=116.407413 | inf=31.9ms | SENT
+2026-06-18 06:16:54 | INFO    | drone_edge         | Frame 256: 5 detections [moderate=2, severe=2, mild=1] | lat=39.904212 lon=116.407413 | inf=31.2ms | SENT
+2026-06-18 06:16:54 | INFO    | drone_edge         | Frame 257: 6 detections [severe=4, moderate=1, mild=1] | lat=39.904213 lon=116.407412 | inf=30.9ms | SENT
+2026-06-18 06:16:54 | INFO    | drone_edge         | Frame 259: 6 detections [mild=1, moderate=2, severe=3] | lat=39.904214 lon=116.407414 | inf=31.7ms | SENT
+2026-06-18 06:16:54 | INFO    | drone_edge         | Frame 260: 5 detections [mild=3, severe=1, moderate=1] | lat=39.904214 lon=116.407412 | inf=32.9ms | SENT
+2026-06-18 06:16:54 | INFO    | drone_edge         | Frame 261: 1 detections [severe=1] | lat=39.904213 lon=116.407413 | inf=32.2ms | SENT
+2026-06-18 06:16:54 | INFO    | drone_edge         | Frame 262: 7 detections [severe=3, mild=3, moderate=1] | lat=39.904214 lon=116.407414 | inf=32.2ms | SENT
+2026-06-18 06:16:54 | INFO    | drone_edge         | Frame 263: 1 detections [mild=1] | lat=39.904213 lon=116.407413 | inf=38.5ms | SENT
+2026-06-18 06:16:54 | INFO    | drone_edge         | Frame 264: 5 detections [mild=2, moderate=2, severe=1] | lat=39.904213 lon=116.407414 | inf=32.0ms | SENT
+2026-06-18 06:16:54 | INFO    | drone_edge         | Frame 265: 2 detections [mild=1, moderate=1] | lat=39.904213 lon=116.407413 | inf=31.7ms | SENT
+2026-06-18 06:16:55 | INFO    | drone_edge         | Frame 266: 1 detections [moderate=1] | lat=39.904214 lon=116.407413 | inf=33.0ms | SENT
+2026-06-18 06:16:55 | INFO    | drone_edge         | Frame 267: 5 detections [mild=1, moderate=2, severe=2] | lat=39.904213 lon=116.407413 | inf=32.1ms | SENT
+2026-06-18 06:16:55 | INFO    | drone_edge         | Frame 268: 2 detections [severe=2] | lat=39.904213 lon=116.407414 | inf=34.2ms | SENT
+2026-06-18 06:16:55 | INFO    | drone_edge         | Frame 269: 6 detections [mild=3, moderate=2, severe=1] | lat=39.904213 lon=116.407414 | inf=32.8ms | SENT
+2026-06-18 06:16:55 | INFO    | drone_edge         | Frame 270: 4 detections [severe=2, mild=2] | lat=39.904214 lon=116.407414 | inf=35.3ms | SENT
+2026-06-18 06:16:55 | INFO    | drone_edge         | Frame 271: 4 detections [mild=2, severe=1, moderate=1] | lat=39.904214 lon=116.407413 | inf=33.5ms | SENT
+2026-06-18 06:16:55 | INFO    | drone_edge         | Frame 272: 4 detections [severe=3, moderate=1] | lat=39.904214 lon=116.407413 | inf=32.3ms | SENT
+2026-06-18 06:16:55 | INFO    | drone_edge         | Frame 273: 4 detections [severe=2, mild=2] | lat=39.904213 lon=116.407413 | inf=35.7ms | SENT
+2026-06-18 06:16:55 | INFO    | drone_edge         | Frame 274: 3 detections [severe=2, mild=1] | lat=39.904214 lon=116.407414 | inf=34.3ms | SENT
+2026-06-18 06:16:55 | INFO    | drone_edge         | Frame 275: 6 detections [moderate=4, mild=1, severe=1] | lat=39.904215 lon=116.407413 | inf=42.5ms | SENT
+2026-06-18 06:16:56 | INFO    | drone_edge         | Frame 276: 4 detections [mild=4] | lat=39.904213 lon=116.407413 | inf=65.6ms | SENT
+2026-06-18 06:16:56 | INFO    | drone_edge         | Frame 277: 6 detections [mild=2, severe=3, moderate=1] | lat=39.904213 lon=116.407413 | inf=39.5ms | SENT
+2026-06-18 06:16:56 | INFO    | drone_edge         | Frame 278: 3 detections [moderate=2, severe=1] | lat=39.904214 lon=116.407413 | inf=35.4ms | SENT
+2026-06-18 06:16:56 | INFO    | drone_edge         | Frame 279: 4 detections [severe=2, moderate=2] | lat=39.904213 lon=116.407414 | inf=36.7ms | SENT
+2026-06-18 06:16:56 | INFO    | drone_edge         | Frame 280: 3 detections [severe=1, mild=2] | lat=39.904215 lon=116.407415 | inf=42.8ms | SENT
+2026-06-18 06:16:56 | INFO    | drone_edge         | Frame 283: 7 detections [moderate=4, mild=2, severe=1] | lat=39.904213 lon=116.407414 | inf=34.1ms | SENT
+2026-06-18 06:16:56 | INFO    | drone_edge         | Frame 284: 5 detections [moderate=2, severe=2, mild=1] | lat=39.904215 lon=116.407413 | inf=33.8ms | SENT
+2026-06-18 06:16:56 | INFO    | drone_edge         | Frame 285: 4 detections [mild=2, moderate=1, severe=1] | lat=39.904215 lon=116.407415 | inf=32.5ms | SENT
+2026-06-18 06:16:57 | INFO    | drone_edge         | Frame 287: 3 detections [severe=1, mild=1, moderate=1] | lat=39.904215 lon=116.407414 | inf=34.7ms | SENT
+2026-06-18 06:16:57 | INFO    | drone_edge         | Frame 288: 7 detections [moderate=2, severe=4, mild=1] | lat=39.904214 lon=116.407414 | inf=35.5ms | SENT
+2026-06-18 06:16:57 | INFO    | drone_edge         | Frame 289: 4 detections [severe=1, mild=2, moderate=1] | lat=39.904214 lon=116.407415 | inf=33.9ms | SENT
+2026-06-18 06:16:57 | INFO    | drone_edge         | Frame 290: 7 detections [moderate=3, severe=3, mild=1] | lat=39.904215 lon=116.407414 | inf=35.7ms | SENT
+2026-06-18 06:16:57 | INFO    | drone_edge         | Frame 291: 3 detections [severe=1, mild=1, moderate=1] | lat=39.904214 lon=116.407416 | inf=34.7ms | SENT
+2026-06-18 06:16:57 | INFO    | drone_edge         | Frame 292: 7 detections [moderate=2, mild=4, severe=1] | lat=39.904215 lon=116.407414 | inf=34.0ms | SENT
+2026-06-18 06:16:57 | INFO    | drone_edge         | Frame 293: 3 detections [mild=1, moderate=2] | lat=39.904215 lon=116.407415 | inf=34.3ms | SENT
+2026-06-18 06:16:57 | INFO    | drone_edge         | Frame 294: 5 detections [severe=2, moderate=2, mild=1] | lat=39.904215 lon=116.407415 | inf=33.5ms | SENT
+2026-06-18 06:16:57 | INFO    | drone_edge         | Frame 295: 3 detections [moderate=1, mild=1, severe=1] | lat=39.904216 lon=116.407415 | inf=32.7ms | SENT
+2026-06-18 06:16:58 | INFO    | drone_edge         | Frame 298: 1 detections [moderate=1] | lat=39.904216 lon=116.407415 | inf=32.8ms | SENT
+2026-06-18 06:16:58 | INFO    | drone_edge         | ============================================================
+  UPTIME: 00:00:31
+  FRAMES: processed=298 skipped=0
+  FPS:    avg=9.5 instant=10.0
+  DETECT: total=907 avg_per_frame=3.04
+  INFER:  avg_ms=35.0
+  GRPC:   sent=149 acks=149 reconnects=0 connected=True
+============================================================
+2026-06-18 06:16:58 | INFO    | drone_edge         | Received server command: PING params={}
+2026-06-18 06:16:58 | INFO    | drone_edge         | Frame 299: 3 detections [severe=2, moderate=1] | lat=39.904216 lon=116.407414 | inf=32.6ms | SENT
+2026-06-18 06:16:58 | INFO    | drone_edge         | Frame 300: 4 detections [moderate=2, mild=1, severe=1] | lat=39.904215 lon=116.407415 | inf=33.4ms | SENT
+2026-06-18 06:16:58 | INFO    | drone_edge         | Frame 302: 5 detections [mild=2, moderate=3] | lat=39.904215 lon=116.407414 | inf=31.9ms | SENT
+2026-06-18 06:16:58 | INFO    | drone_edge         | Frame 304: 3 detections [mild=1, severe=2] | lat=39.904216 lon=116.407415 | inf=33.1ms | SENT
+2026-06-18 06:16:58 | INFO    | drone_edge         | Frame 305: 6 detections [mild=1, moderate=4, severe=1] | lat=39.904215 lon=116.407415 | inf=36.0ms | SENT
+2026-06-18 06:16:59 | INFO    | drone_edge         | Frame 306: 1 detections [mild=1] | lat=39.904215 lon=116.407415 | inf=35.0ms | SENT
+2026-06-18 06:16:59 | INFO    | drone_edge         | Frame 307: 4 detections [moderate=3, severe=1] | lat=39.904215 lon=116.407415 | inf=33.4ms | SENT
+2026-06-18 06:16:59 | INFO    | drone_edge         | Frame 308: 3 detections [mild=1, moderate=1, severe=1] | lat=39.904215 lon=116.407416 | inf=34.3ms | SENT
+2026-06-18 06:16:59 | INFO    | drone_edge         | Frame 309: 2 detections [moderate=2] | lat=39.904215 lon=116.407415 | inf=33.7ms | SENT
+2026-06-18 06:16:59 | INFO    | drone_edge         | Frame 310: 5 detections [mild=3, moderate=2] | lat=39.904215 lon=116.407415 | inf=35.4ms | SENT
+2026-06-18 06:16:59 | INFO    | drone_edge         | Frame 311: 4 detections [moderate=2, severe=2] | lat=39.904216 lon=116.407415 | inf=47.3ms | SENT
+2026-06-18 06:16:59 | INFO    | drone_edge         | Frame 312: 1 detections [severe=1] | lat=39.904216 lon=116.407415 | inf=35.5ms | SENT
+2026-06-18 06:16:59 | INFO    | drone_edge         | Frame 313: 2 detections [moderate=2] | lat=39.904215 lon=116.407416 | inf=52.4ms | SENT
+2026-06-18 06:16:59 | INFO    | drone_edge         | Frame 314: 4 detections [mild=2, moderate=1, severe=1] | lat=39.904215 lon=116.407416 | inf=33.4ms | SENT

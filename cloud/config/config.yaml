@@ -1,0 +1,46 @@
+server:
+  host: "0.0.0.0"
+  port: 50051
+  max_workers: 32
+  max_concurrent_streams: 100
+  use_tls: false
+  tls_cert_path: ""
+  tls_key_path: ""
+
+influxdb:
+  url: "http://localhost:8086"
+  token: "your-influxdb-token"
+  org: "agriculture"
+  bucket: "drone_detections"
+  batch_size: 100
+  flush_interval_ms: 1000
+  enable_gzip: true
+  timeout_seconds: 30
+
+detection:
+  class_mapping:
+    0:
+      name: "wheat_rust_early"
+      severity_level: "mild"
+    1:
+      name: "wheat_rust_moderate"
+      severity_level: "moderate"
+    2:
+      name: "wheat_rust_severe"
+      severity_level: "severe"
+  min_confidence: 0.5
+  deduplication_enabled: true
+  deduplication_distance_threshold: 2.0
+
+monitoring:
+  enabled: true
+  metrics_port: 9090
+  health_check_port: 8080
+  log_level: "INFO"
+  log_file: "./logs/cloud_server.log"
+  prometheus_enabled: true
+
+data_retention:
+  raw_detection_days: 90
+  aggregated_data_days: 365
+  enable_compression: true

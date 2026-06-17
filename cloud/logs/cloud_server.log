@@ -1,0 +1,145 @@
+2026-06-18 06:16:06 | INFO    | cloud_server       | ============================================================
+2026-06-18 06:16:06 | INFO    | cloud_server       |   Cloud Server Starting
+2026-06-18 06:16:06 | INFO    | cloud_server       |   gRPC: 0.0.0.0:50051
+2026-06-18 06:16:06 | INFO    | cloud_server       |   Timestamp: 2026-06-18T06:16:06.413011
+2026-06-18 06:16:06 | INFO    | cloud_server       | ============================================================
+2026-06-18 06:16:06 | INFO    | cloud_server       | Insecure gRPC server on 0.0.0.0:50051
+2026-06-18 06:16:06 | INFO    | cloud_server       | Server monitor loop started
+2026-06-18 06:16:06 | INFO    | cloud_server       | Cloud server started successfully
+2026-06-18 06:16:06 | INFO    | cloud_server       | Admin CLI started. Commands: [drones|stats|send <drone> <cmd> [args]|quit]
+2026-06-18 06:16:28 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 1: 4 detections [severe=2, mild=2] @ (39.90420, 116.40740) inf=48.7ms
+2026-06-18 06:16:28 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 3: 1 detections [severe=1] @ (39.90420, 116.40740) inf=31.6ms
+2026-06-18 06:16:28 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 5: 3 detections [moderate=2, mild=1] @ (39.90420, 116.40740) inf=33.4ms
+2026-06-18 06:16:28 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 7: 2 detections [severe=1, moderate=1] @ (39.90420, 116.40740) inf=33.7ms
+2026-06-18 06:16:29 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 9: 1 detections [severe=1] @ (39.90420, 116.40740) inf=33.2ms
+2026-06-18 06:16:29 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 13: 4 detections [moderate=1, severe=3] @ (39.90420, 116.40740) inf=34.2ms
+2026-06-18 06:16:29 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 15: 2 detections [severe=2] @ (39.90420, 116.40740) inf=41.1ms
+2026-06-18 06:16:29 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 17: 3 detections [mild=1, moderate=2] @ (39.90420, 116.40740) inf=32.9ms
+2026-06-18 06:16:30 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 21: 3 detections [severe=2, mild=1] @ (39.90420, 116.40740) inf=39.0ms
+2026-06-18 06:16:30 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 23: 3 detections [moderate=1, mild=2] @ (39.90420, 116.40740) inf=33.2ms
+2026-06-18 06:16:30 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 25: 2 detections [mild=1, severe=1] @ (39.90420, 116.40740) inf=32.9ms
+2026-06-18 06:16:30 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 27: 2 detections [mild=1, severe=1] @ (39.90420, 116.40740) inf=33.6ms
+2026-06-18 06:16:31 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 29: 3 detections [moderate=2, mild=1] @ (39.90420, 116.40740) inf=34.2ms
+2026-06-18 06:16:31 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 31: 1 detections [mild=1] @ (39.90420, 116.40740) inf=33.1ms
+2026-06-18 06:16:31 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 33: 3 detections [severe=2, mild=1] @ (39.90420, 116.40740) inf=32.3ms
+2026-06-18 06:16:31 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 35: 2 detections [moderate=1, severe=1] @ (39.90420, 116.40740) inf=34.9ms
+2026-06-18 06:16:31 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 37: 3 detections [moderate=2, mild=1] @ (39.90420, 116.40740) inf=33.2ms
+2026-06-18 06:16:32 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 39: 2 detections [mild=1, moderate=1] @ (39.90420, 116.40740) inf=32.2ms
+2026-06-18 06:16:32 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 43: 1 detections [mild=1] @ (39.90420, 116.40740) inf=29.8ms
+2026-06-18 06:16:32 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 45: 5 detections [severe=2, mild=3] @ (39.90420, 116.40740) inf=32.6ms
+2026-06-18 06:16:33 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 47: 2 detections [severe=1, mild=1] @ (39.90420, 116.40740) inf=37.2ms
+2026-06-18 06:16:33 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 51: 2 detections [moderate=1, severe=1] @ (39.90420, 116.40740) inf=31.0ms
+2026-06-18 06:16:33 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 53: 3 detections [mild=1, severe=1, moderate=1] @ (39.90420, 116.40740) inf=30.4ms
+2026-06-18 06:16:33 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 55: 1 detections [moderate=1] @ (39.90420, 116.40740) inf=30.6ms
+2026-06-18 06:16:34 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 57: 3 detections [severe=3] @ (39.90420, 116.40740) inf=32.9ms
+2026-06-18 06:16:34 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 59: 2 detections [severe=2] @ (39.90420, 116.40740) inf=31.8ms
+2026-06-18 06:16:34 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 65: 4 detections [mild=1, moderate=3] @ (39.90420, 116.40740) inf=30.3ms
+2026-06-18 06:16:35 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 67: 5 detections [mild=1, moderate=3, severe=1] @ (39.90420, 116.40740) inf=31.6ms
+2026-06-18 06:16:35 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 71: 5 detections [mild=3, moderate=1, severe=1] @ (39.90420, 116.40740) inf=31.7ms
+2026-06-18 06:16:35 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 73: 2 detections [severe=2] @ (39.90420, 116.40740) inf=31.3ms
+2026-06-18 06:16:35 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 75: 2 detections [severe=1, moderate=1] @ (39.90420, 116.40740) inf=31.6ms
+2026-06-18 06:16:36 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 77: 2 detections [moderate=1, severe=1] @ (39.90420, 116.40740) inf=31.4ms
+2026-06-18 06:16:36 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 81: 4 detections [mild=2, severe=1, moderate=1] @ (39.90420, 116.40740) inf=32.0ms
+2026-06-18 06:16:36 | INFO    | cloud_server       | 
+============================================================
+  SERVER STATUS
+------------------------------------------------------------
+  Active Drones:   1 ['DRONE-TEST-001']
+  Total Frames:    41
+  Total Detections:87
+  Process Rate:    1.4 frames/s
+  Data Received:   0.01 MB
+  Severity Breakdown: {'mild': 27, 'moderate': 26, 'severe': 34, 'unknown': 0}
+  InfluxDB:        connected=False written=167 errors=0
+============================================================
+2026-06-18 06:16:36 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 83: 1 detections [mild=1] @ (39.90420, 116.40740) inf=31.4ms
+2026-06-18 06:16:36 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 85: 4 detections [mild=2, severe=1, moderate=1] @ (39.90420, 116.40740) inf=32.8ms
+2026-06-18 06:16:37 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 87: 3 detections [mild=1, moderate=2] @ (39.90420, 116.40740) inf=32.4ms
+2026-06-18 06:16:37 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 89: 1 detections [severe=1] @ (39.90420, 116.40741) inf=32.4ms
+2026-06-18 06:16:37 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 93: 1 detections [severe=1] @ (39.90420, 116.40740) inf=32.1ms
+2026-06-18 06:16:37 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 95: 3 detections [severe=1, moderate=1, mild=1] @ (39.90420, 116.40740) inf=32.0ms
+2026-06-18 06:16:38 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 97: 2 detections [severe=1, mild=1] @ (39.90420, 116.40741) inf=31.9ms
+2026-06-18 06:16:38 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 99: 3 detections [severe=1, mild=2] @ (39.90420, 116.40740) inf=32.0ms
+2026-06-18 06:16:38 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 101: 1 detections [severe=1] @ (39.90421, 116.40740) inf=32.3ms
+2026-06-18 06:16:38 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 105: 3 detections [severe=3] @ (39.90421, 116.40741) inf=30.2ms
+2026-06-18 06:16:39 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 107: 6 detections [mild=1, severe=3, moderate=2] @ (39.90421, 116.40741) inf=31.3ms
+2026-06-18 06:16:39 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 109: 2 detections [moderate=2] @ (39.90421, 116.40741) inf=30.0ms
+2026-06-18 06:16:39 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 115: 6 detections [moderate=3, severe=1, mild=2] @ (39.90421, 116.40741) inf=41.1ms
+2026-06-18 06:16:40 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 117: 2 detections [mild=2] @ (39.90421, 116.40741) inf=31.9ms
+2026-06-18 06:16:40 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 119: 3 detections [mild=2, moderate=1] @ (39.90421, 116.40741) inf=31.3ms
+2026-06-18 06:16:40 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 121: 6 detections [moderate=3, mild=2, severe=1] @ (39.90421, 116.40741) inf=29.2ms
+2026-06-18 06:16:41 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 127: 2 detections [moderate=1, mild=1] @ (39.90421, 116.40741) inf=32.4ms
+2026-06-18 06:16:41 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 129: 1 detections [mild=1] @ (39.90421, 116.40741) inf=30.5ms
+2026-06-18 06:16:41 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 131: 2 detections [moderate=1, mild=1] @ (39.90421, 116.40741) inf=35.3ms
+2026-06-18 06:16:41 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 133: 5 detections [mild=1, severe=2, moderate=2] @ (39.90421, 116.40741) inf=31.5ms
+2026-06-18 06:16:41 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 135: 2 detections [moderate=1, severe=1] @ (39.90421, 116.40741) inf=31.7ms
+2026-06-18 06:16:42 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 137: 3 detections [moderate=2, severe=1] @ (39.90421, 116.40741) inf=31.4ms
+2026-06-18 06:16:42 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 141: 1 detections [mild=1] @ (39.90421, 116.40741) inf=31.0ms
+2026-06-18 06:16:42 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 143: 5 detections [moderate=3, mild=1, severe=1] @ (39.90421, 116.40741) inf=31.9ms
+2026-06-18 06:16:42 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 145: 5 detections [moderate=2, mild=2, severe=1] @ (39.90421, 116.40741) inf=30.5ms
+2026-06-18 06:16:43 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 149: 1 detections [moderate=1] @ (39.90421, 116.40741) inf=31.5ms
+2026-06-18 06:16:43 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 151: 1 detections [mild=1] @ (39.90421, 116.40741) inf=30.3ms
+2026-06-18 06:16:43 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 153: 2 detections [moderate=1, severe=1] @ (39.90421, 116.40741) inf=32.1ms
+2026-06-18 06:16:44 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 157: 1 detections [moderate=1] @ (39.90421, 116.40741) inf=31.5ms
+2026-06-18 06:16:44 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 161: 3 detections [moderate=3] @ (39.90421, 116.40741) inf=36.0ms
+2026-06-18 06:16:44 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 163: 3 detections [severe=1, moderate=2] @ (39.90421, 116.40741) inf=31.9ms
+2026-06-18 06:16:44 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 165: 1 detections [moderate=1] @ (39.90421, 116.40741) inf=31.3ms
+2026-06-18 06:16:45 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 167: 1 detections [moderate=1] @ (39.90421, 116.40741) inf=30.2ms
+2026-06-18 06:16:45 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 169: 1 detections [severe=1] @ (39.90421, 116.40741) inf=32.2ms
+2026-06-18 06:16:45 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 173: 3 detections [moderate=2, mild=1] @ (39.90421, 116.40741) inf=32.6ms
+2026-06-18 06:16:45 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 175: 2 detections [mild=1, severe=1] @ (39.90421, 116.40741) inf=33.8ms
+2026-06-18 06:16:46 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 177: 4 detections [severe=1, mild=3] @ (39.90421, 116.40741) inf=31.7ms
+2026-06-18 06:16:46 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 179: 3 detections [mild=3] @ (39.90421, 116.40741) inf=30.5ms
+2026-06-18 06:16:46 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 181: 3 detections [moderate=2, mild=1] @ (39.90421, 116.40741) inf=31.0ms
+2026-06-18 06:16:46 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 183: 1 detections [mild=1] @ (39.90421, 116.40741) inf=30.7ms
+2026-06-18 06:16:46 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 185: 3 detections [mild=1, severe=1, moderate=1] @ (39.90421, 116.40741) inf=31.5ms
+2026-06-18 06:16:47 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 187: 1 detections [moderate=1] @ (39.90421, 116.40741) inf=31.7ms
+2026-06-18 06:16:47 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 189: 2 detections [moderate=1, mild=1] @ (39.90421, 116.40741) inf=31.4ms
+2026-06-18 06:16:47 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 193: 3 detections [severe=2, moderate=1] @ (39.90421, 116.40741) inf=32.3ms
+2026-06-18 06:16:47 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 195: 4 detections [moderate=2, severe=1, mild=1] @ (39.90421, 116.40741) inf=35.0ms
+2026-06-18 06:16:48 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 197: 1 detections [mild=1] @ (39.90421, 116.40741) inf=35.8ms
+2026-06-18 06:16:48 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 199: 1 detections [moderate=1] @ (39.90421, 116.40741) inf=34.5ms
+2026-06-18 06:16:48 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 201: 2 detections [mild=1, moderate=1] @ (39.90421, 116.40741) inf=31.5ms
+2026-06-18 06:16:48 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 205: 2 detections [mild=2] @ (39.90421, 116.40741) inf=33.1ms
+2026-06-18 06:16:49 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 209: 1 detections [mild=1] @ (39.90421, 116.40741) inf=32.6ms
+2026-06-18 06:16:49 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 211: 5 detections [moderate=3, severe=1, mild=1] @ (39.90421, 116.40741) inf=34.3ms
+2026-06-18 06:16:49 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 215: 4 detections [mild=1, severe=1, moderate=2] @ (39.90421, 116.40741) inf=32.7ms
+2026-06-18 06:16:50 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 217: 1 detections [severe=1] @ (39.90421, 116.40741) inf=37.9ms
+2026-06-18 06:16:50 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 219: 1 detections [mild=1] @ (39.90421, 116.40741) inf=32.0ms
+2026-06-18 06:16:50 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 221: 2 detections [mild=1, severe=1] @ (39.90421, 116.40741) inf=31.0ms
+2026-06-18 06:16:50 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 223: 3 detections [moderate=2, mild=1] @ (39.90421, 116.40741) inf=31.5ms
+2026-06-18 06:16:50 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 225: 3 detections [moderate=1, severe=2] @ (39.90421, 116.40741) inf=31.6ms
+2026-06-18 06:16:51 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 227: 4 detections [mild=3, moderate=1] @ (39.90421, 116.40741) inf=32.7ms
+2026-06-18 06:16:51 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 233: 1 detections [severe=1] @ (39.90421, 116.40741) inf=31.3ms
+2026-06-18 06:16:51 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 235: 4 detections [severe=2, mild=1, moderate=1] @ (39.90421, 116.40741) inf=31.1ms
+2026-06-18 06:16:52 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 237: 3 detections [moderate=1, mild=1, severe=1] @ (39.90421, 116.40741) inf=31.2ms
+2026-06-18 06:16:52 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 239: 1 detections [severe=1] @ (39.90421, 116.40741) inf=31.2ms
+2026-06-18 06:16:52 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 241: 4 detections [mild=2, moderate=1, severe=1] @ (39.90421, 116.40741) inf=32.5ms
+2026-06-18 06:16:52 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 245: 2 detections [moderate=1, severe=1] @ (39.90421, 116.40741) inf=32.1ms
+2026-06-18 06:16:53 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 247: 1 detections [moderate=1] @ (39.90421, 116.40741) inf=31.4ms
+2026-06-18 06:16:53 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 249: 4 detections [moderate=2, severe=2] @ (39.90421, 116.40741) inf=34.0ms
+2026-06-18 06:16:53 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 253: 1 detections [mild=1] @ (39.90421, 116.40741) inf=30.6ms
+2026-06-18 06:16:54 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 257: 4 detections [severe=2, moderate=1, mild=1] @ (39.90421, 116.40741) inf=30.9ms
+2026-06-18 06:16:54 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 259: 4 detections [mild=1, moderate=1, severe=2] @ (39.90421, 116.40741) inf=31.7ms
+2026-06-18 06:16:54 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 263: 1 detections [mild=1] @ (39.90421, 116.40741) inf=38.5ms
+2026-06-18 06:16:54 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 265: 2 detections [mild=1, moderate=1] @ (39.90421, 116.40741) inf=31.7ms
+2026-06-18 06:16:55 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 267: 3 detections [mild=1, moderate=2] @ (39.90421, 116.40741) inf=32.1ms
+2026-06-18 06:16:55 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 269: 6 detections [mild=3, moderate=2, severe=1] @ (39.90421, 116.40741) inf=32.8ms
+2026-06-18 06:16:55 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 271: 2 detections [mild=2] @ (39.90421, 116.40741) inf=33.5ms
+2026-06-18 06:16:55 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 273: 2 detections [severe=2] @ (39.90421, 116.40741) inf=35.7ms
+2026-06-18 06:16:55 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 275: 2 detections [moderate=2] @ (39.90421, 116.40741) inf=42.5ms
+2026-06-18 06:16:56 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 277: 4 detections [mild=2, severe=2] @ (39.90421, 116.40741) inf=39.5ms
+2026-06-18 06:16:56 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 279: 2 detections [severe=1, moderate=1] @ (39.90421, 116.40741) inf=36.7ms
+2026-06-18 06:16:56 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 283: 3 detections [moderate=2, mild=1] @ (39.90421, 116.40741) inf=34.1ms
+2026-06-18 06:16:56 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 285: 3 detections [mild=1, moderate=1, severe=1] @ (39.90421, 116.40741) inf=32.5ms
+2026-06-18 06:16:57 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 287: 2 detections [severe=1, mild=1] @ (39.90421, 116.40741) inf=34.7ms
+2026-06-18 06:16:57 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 289: 3 detections [severe=1, mild=2] @ (39.90421, 116.40741) inf=33.9ms
+2026-06-18 06:16:57 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 291: 1 detections [severe=1] @ (39.90421, 116.40742) inf=34.7ms
+2026-06-18 06:16:57 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 293: 2 detections [mild=1, moderate=1] @ (39.90422, 116.40742) inf=34.3ms
+2026-06-18 06:16:57 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 295: 2 detections [moderate=1, mild=1] @ (39.90422, 116.40741) inf=32.7ms
+2026-06-18 06:16:58 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 299: 2 detections [severe=1, moderate=1] @ (39.90422, 116.40741) inf=32.6ms
+2026-06-18 06:16:58 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 305: 4 detections [mild=1, moderate=2, severe=1] @ (39.90422, 116.40741) inf=36.0ms
+2026-06-18 06:16:59 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 307: 4 detections [moderate=3, severe=1] @ (39.90422, 116.40741) inf=33.4ms
+2026-06-18 06:16:59 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 309: 1 detections [moderate=1] @ (39.90421, 116.40742) inf=33.7ms
+2026-06-18 06:16:59 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 311: 3 detections [moderate=2, severe=1] @ (39.90422, 116.40742) inf=47.3ms
+2026-06-18 06:16:59 | INFO    | cloud_server       | [DRONE-TEST-001] Frame 313: 2 detections [moderate=2] @ (39.90422, 116.40742) inf=52.4ms

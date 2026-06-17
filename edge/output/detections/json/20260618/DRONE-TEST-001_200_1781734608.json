@@ -1,0 +1,36 @@
+{
+  "drone_id": "DRONE-TEST-001",
+  "frame_id": 200,
+  "timestamp": 1781734608379285248,
+  "gps": {
+    "latitude": 39.90420988,
+    "longitude": 116.40740967,
+    "altitude": 50.38,
+    "speed": 8.09,
+    "heading": 92.01,
+    "satellites": 8,
+    "hdop": 0.51
+  },
+  "frame_size": {
+    "width": 1280,
+    "height": 720
+  },
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 33.76650810241699,
+  "detections": [
+    {
+      "bbox": {
+        "x1": 286,
+        "y1": 0,
+        "x2": 504,
+        "y2": 20
+      },
+      "confidence": 0.5481805801391602,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.864454174041748,
+      "severity_level": "severe"
+    }
+  ],
+  "detection_count": 1
+}
