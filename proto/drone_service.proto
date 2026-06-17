@@ -49,9 +49,55 @@ message DroneStatus {
     string status = 2;
     int64 timestamp = 3;
     float battery_level = 4;
-    GPSCoordinate current_position = 5;
-    int32 total_frames_processed = 6;
-    int32 total_detections = 7;
+    float chemical_level = 5;
+    GPSCoordinate current_position = 6;
+    GPSCoordinate home_position = 7;
+    int32 total_frames_processed = 8;
+    int32 total_detections = 9;
+    float cruise_speed = 10;
+    float spray_rate = 11;
+    string current_mission_id = 12;
+}
+
+message Waypoint {
+    int32 waypoint_id = 1;
+    double latitude = 2;
+    double longitude = 3;
+    float altitude = 4;
+    float speed = 5;
+    string action = 6;
+    float spray_density = 7;
+    int64 estimated_arrival = 8;
+}
+
+message MissionPlan {
+    string mission_id = 1;
+    string mission_type = 2;
+    string description = 3;
+    int64 created_at = 4;
+    repeated Waypoint waypoints = 5;
+    float estimated_distance_m = 6;
+    float estimated_duration_s = 7;
+    float estimated_battery_used_pct = 8;
+    float estimated_chemical_used_pct = 9;
+    string priority = 10;
+}
+
+message HeatmapCell {
+    double latitude = 1;
+    double longitude = 2;
+    float density = 3;
+    float severity_score = 4;
+}
+
+message HeatmapData {
+    string field_id = 1;
+    int64 generated_at = 2;
+    int32 grid_size = 3;
+    repeated HeatmapCell cells = 4;
+    float min_density = 5;
+    float max_density = 6;
+    float avg_severity = 7;
 }
 
 message ServerCommand {
@@ -59,6 +105,8 @@ message ServerCommand {
     string command_type = 2;
     string parameters = 3;
     int64 timestamp = 4;
+    MissionPlan mission_plan = 5;
+    HeatmapData heatmap = 6;
 }
 
 service DroneDetectionService {

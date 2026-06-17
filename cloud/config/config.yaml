@@ -36,6 +36,41 @@ detection:
     window_size_per_drone: 5000
     max_drones: 100
 
+heatmap:
+  bandwidth_meters: 50.0
+  grid_size: 50
+  min_density_threshold: 0.05
+  severity_weight_enabled: true
+  use_cache: true
+  cache_ttl_s: 300
+
+path_planning:
+  population_size: 100
+  max_generations: 200
+  mutation_rate: 0.15
+  crossover_rate: 0.85
+  tournament_size: 5
+  elitism_count: 3
+  battery_safety_margin_pct: 15.0
+  chemical_safety_margin_pct: 10.0
+  battery_consumption_per_km_pct: 8.0
+  chemical_consumption_per_km_pct: 12.0
+  waypoint_spacing_m: 20.0
+  coverage_weight: 100.0
+  distance_weight: 0.01
+  constraint_penalty: 1000.0
+  min_targets_for_ga: 4
+
+mission_scheduler:
+  field_id: "FIELD-WHEAT-001"
+  schedule_interval_s: 300
+  min_new_frames_for_replan: 50
+  max_waypoints_per_mission: 100
+  high_risk_threshold: 0.6
+  max_high_risk_zones: 20
+  auto_schedule_enabled: true
+  spray_width_m: 5.0
+
 monitoring:
   enabled: true
   metrics_port: 9090

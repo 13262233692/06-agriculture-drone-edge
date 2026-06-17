@@ -35,6 +35,7 @@ class DroneGRPCClient:
       - 收到 ServerAck → ReliableTransport 命中 inflight → 标记 ACKED
       - 超时未 ACK → 指数退避重传（500ms → 60s 封顶，最多 50 次）
       - 断网→恢复→自动从 SQLite 补传全部 PENDING
+      - 任务调度：接收云端下发的补喷任务，更新航点路径
     """
 
     def __init__(
@@ -42,6 +43,7 @@ class DroneGRPCClient:
         config: Dict[str, Any],
         drone_id: str,
         on_command: Optional[Callable[[Dict[str, Any]], None]] = None,
+        on_mission_update: Optional[Callable[[Dict[str, Any]], None]] = None,
     ):
         self._server_addr = config.get("server_address", "localhost:50051")
         self._use_tls = config.get("use_tls", False)
@@ -71,6 +73,23 @@ class DroneGRPCClient:
         self._config = config
         self._drone_id = drone_id
         self._on_command = on_command
+        self._on_mission_update = on_mission_update
+
+        self._current_mission: Optional[Dict[str, Any]] = None
+        self._mission_lock = threading.Lock()
+        self._current_waypoint_index: int = 0
+        self._mission_execution_status: str = "IDLE"
+
+        self._battery_level_pct: float = 100.0
+        self._chemical_level_pct: float = 100.0
+        self._home_latitude: float = 0.0
+        self._home_longitude: float = 0.0
+        self._cruise_speed_m_s: float = 8.0
+        self._spray_rate_l_per_s: float = 0.5
+
+        self._current_latitude: float = 0.0
+        self._current_longitude: float = 0.0
+        self._current_altitude: float = 50.0
 
         self._channel: Optional[grpc.Channel] = None
         self._stub: Optional[pb2_grpc.DroneDetectionServiceStub] = None
@@ -450,11 +469,22 @@ class DroneGRPCClient:
                             except json.JSONDecodeError:
                                 params = {"raw": cmd.parameters}
 
+                        mission_plan = None
+                        if cmd.HasField("mission_plan") and cmd.mission_plan and cmd.mission_plan.mission_id:
+                            mission_plan = self._parse_mission_plan(cmd.mission_plan)
+                            self._handle_mission_update(mission_plan)
+
+                        heatmap = None
+                        if cmd.HasField("heatmap") and cmd.heatmap and cmd.heatmap.field_id:
+                            heatmap = self._parse_heatmap_data(cmd.heatmap)
+
                         self._on_command({
                             "command_id": cmd.command_id,
                             "command_type": cmd.command_type,
                             "parameters": params,
                             "timestamp": cmd.timestamp,
+                            "mission_plan": mission_plan,
+                            "heatmap": heatmap,
                         })
                     except Exception as e:
                         logger.error(f"Command handler error: {e}")
@@ -464,6 +494,115 @@ class DroneGRPCClient:
                 logger.error(f"Command dispatch error: {e}")
 
         logger.info("Command dispatch loop exited")
+
+    def _parse_mission_plan(self, mp_proto) -> Dict[str, Any]:
+        """解析 protobuf MissionPlan 为字典"""
+        waypoints = []
+        for wp in mp_proto.waypoints:
+            waypoints.append({
+                "waypoint_id": wp.waypoint_id,
+                "latitude": wp.latitude,
+                "longitude": wp.longitude,
+                "altitude": wp.altitude,
+                "speed": wp.speed,
+                "action": wp.action,
+                "spray_density": wp.spray_density,
+                "estimated_arrival": wp.estimated_arrival,
+            })
+
+        return {
+            "mission_id": mp_proto.mission_id,
+            "mission_type": mp_proto.mission_type,
+            "description": mp_proto.description,
+            "created_at": mp_proto.created_at,
+            "waypoints": waypoints,
+            "estimated_distance_m": mp_proto.estimated_distance_m,
+            "estimated_duration_s": mp_proto.estimated_duration_s,
+            "estimated_battery_used_pct": mp_proto.estimated_battery_used_pct,
+            "estimated_chemical_used_pct": mp_proto.estimated_chemical_used_pct,
+            "priority": mp_proto.priority,
+        }
+
+    def _parse_heatmap_data(self, hm_proto) -> Dict[str, Any]:
+        """解析 protobuf HeatmapData 为字典"""
+        cells = []
+        for cell in hm_proto.cells:
+            cells.append({
+                "latitude": cell.latitude,
+                "longitude": cell.longitude,
+                "density": cell.density,
+                "severity_score": cell.severity_score,
+            })
+
+        return {
+            "field_id": hm_proto.field_id,
+            "generated_at": hm_proto.generated_at,
+            "grid_size": hm_proto.grid_size,
+            "cells": cells,
+            "min_density": hm_proto.min_density,
+            "max_density": hm_proto.max_density,
+            "avg_severity": hm_proto.avg_severity,
+        }
+
+    def _handle_mission_update(self, mission_plan: Dict[str, Any]) -> None:
+        """处理任务更新，保存当前任务状态"""
+        with self._mission_lock:
+            self._current_mission = mission_plan
+            self._current_waypoint_index = 0
+            self._mission_execution_status = "PENDING"
+
+        mission_id = mission_plan.get("mission_id", "")
+        num_waypoints = len(mission_plan.get("waypoints", []))
+        logger.info(
+            f"Mission updated: {mission_id} "
+            f"({num_waypoints} waypoints, "
+            f"est_battery={mission_plan.get('estimated_battery_used_pct', 0):.1f}%, "
+            f"est_chemical={mission_plan.get('estimated_chemical_used_pct', 0):.1f}%)"
+        )
+
+        if self._on_mission_update:
+            try:
+                self._on_mission_update(mission_plan)
+            except Exception as e:
+                logger.error(f"Mission update callback error: {e}")
+
+    def get_current_mission(self) -> Optional[Dict[str, Any]]:
+        """获取当前任务"""
+        with self._mission_lock:
+            return dict(self._current_mission) if self._current_mission else None
+
+    def get_mission_waypoints(self) -> List[Dict[str, Any]]:
+        """获取当前任务的航点列表"""
+        with self._mission_lock:
+            if self._current_mission:
+                return list(self._current_mission.get("waypoints", []))
+            return []
+
+    def set_drone_state(
+        self,
+        battery_level_pct: Optional[float] = None,
+        chemical_level_pct: Optional[float] = None,
+        latitude: Optional[float] = None,
+        longitude: Optional[float] = None,
+        altitude: Optional[float] = None,
+        home_latitude: Optional[float] = None,
+        home_longitude: Optional[float] = None,
+    ) -> None:
+        """更新无人机状态（供外部模块调用）"""
+        if battery_level_pct is not None:
+            self._battery_level_pct = float(battery_level_pct)
+        if chemical_level_pct is not None:
+            self._chemical_level_pct = float(chemical_level_pct)
+        if latitude is not None:
+            self._current_latitude = float(latitude)
+        if longitude is not None:
+            self._current_longitude = float(longitude)
+        if altitude is not None:
+            self._current_altitude = float(altitude)
+        if home_latitude is not None:
+            self._home_latitude = float(home_latitude)
+        if home_longitude is not None:
+            self._home_longitude = float(home_longitude)
 
     def _status_stream_loop(self) -> None:
         logger.info("Status stream loop started")
@@ -710,21 +849,36 @@ class DroneGRPCClient:
         pending = queue_counts.get("pending", 0) + queue_counts.get("inflight", 0)
         total_det = rtx_stats.get("acked_total", 0) * 3
 
+        with self._mission_lock:
+            mission_id = self._current_mission.get("mission_id", "") if self._current_mission else ""
+
         return pb2.DroneStatus(
             drone_id=self._drone_id,
             status="running" if self._connected else "disconnected",
             timestamp=int(time.time() * 1e9),
-            battery_level=85.0,
+            battery_level=self._battery_level_pct,
+            chemical_level=self._chemical_level_pct,
             current_position=pb2.GPSCoordinate(
-                latitude=39.9042,
-                longitude=116.4074,
-                altitude=50.0,
+                latitude=self._current_latitude,
+                longitude=self._current_longitude,
+                altitude=self._current_altitude,
                 speed=8.5,
                 heading=90.0,
                 timestamp=int(time.time() * 1e9),
             ),
+            home_position=pb2.GPSCoordinate(
+                latitude=self._home_latitude,
+                longitude=self._home_longitude,
+                altitude=0.0,
+                speed=0.0,
+                heading=0.0,
+                timestamp=int(time.time() * 1e9),
+            ),
             total_frames_processed=stats.get("frames_submitted", 0),
             total_detections=total_det,
+            cruise_speed=self._cruise_speed_m_s,
+            spray_rate=self._spray_rate_l_per_s,
+            current_mission_id=mission_id,
         )
 
     def _on_reliable_stats(self, stats: Dict[str, Any]) -> None:

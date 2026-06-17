@@ -20,6 +20,7 @@ from concurrent import futures
 from generated import drone_service_pb2 as pb2
 from generated import drone_service_pb2_grpc as pb2_grpc
 from modules.influx_writer import InfluxDBWriter
+from modules.mission_scheduler import DynamicMissionScheduler
 
 
 logger = logging.getLogger(__name__)
@@ -118,6 +119,7 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
         self,
         influx_writer: InfluxDBWriter,
         detection_config: Dict[str, Any],
+        mission_scheduler: Optional[DynamicMissionScheduler] = None,
         on_frame_received: Optional[Callable[[Dict[str, Any]], None]] = None,
     ):
         self._influx = influx_writer
@@ -125,6 +127,7 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
         self._on_frame_received = on_frame_received
         self._min_confidence = detection_config.get("min_confidence", 0.5)
         self._class_mapping = detection_config.get("class_mapping", {})
+        self._mission_scheduler = mission_scheduler
 
         dedup_cfg = detection_config.get("idempotency", {})
         self._dedup = IdempotencyWindow(
@@ -214,6 +217,16 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
                         except Exception as e:
                             logger.error(f"Frame callback error: {e}")
 
+                    if self._mission_scheduler:
+                        try:
+                            self._mission_scheduler.notify_frame_received(
+                                drone_id=drone_id,
+                                frame_id=frame_id,
+                                detection_count=result.get("detection_count", 0),
+                            )
+                        except Exception as e:
+                            logger.debug(f"Mission scheduler notify failed: {e}")
+
                     self._log_frame_json(result)
 
                     with self._stats_lock:
@@ -261,10 +274,34 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
         logger.info(
             f"Drone status stream opened: {drone_id} "
             f"status={request.status} battery={request.battery_level}% "
+            f"chemical={request.chemical_level}% "
             f"peer={peer}"
         )
 
         self._register_drone(drone_id, peer)
+
+        if self._mission_scheduler:
+            try:
+                self._mission_scheduler.register_drone(drone_id)
+                self._mission_scheduler.update_drone_status({
+                    "drone_id": drone_id,
+                    "battery_level": request.battery_level,
+                    "chemical_level": request.chemical_level,
+                    "current_position": {
+                        "latitude": request.current_position.latitude,
+                        "longitude": request.current_position.longitude,
+                        "altitude": request.current_position.altitude,
+                    },
+                    "home_position": {
+                        "latitude": request.home_position.latitude if request.HasField("home_position") else request.current_position.latitude,
+                        "longitude": request.home_position.longitude if request.HasField("home_position") else request.current_position.longitude,
+                    },
+                    "cruise_speed": request.cruise_speed,
+                    "spray_rate": request.spray_rate,
+                    "current_mission_id": request.current_mission_id,
+                })
+            except Exception as e:
+                logger.error(f"Failed to register drone with scheduler: {e}")
 
         cmd_queue: "queue.Queue[pb2.ServerCommand]" = queue.Queue()
         with self._command_lock:
@@ -299,12 +336,19 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
             with self._command_lock:
                 self._command_queues.pop(drone_id, None)
             self._unregister_drone(drone_id)
+            if self._mission_scheduler:
+                try:
+                    self._mission_scheduler.unregister_drone(drone_id)
+                except Exception as e:
+                    logger.debug(f"Failed to unregister drone from scheduler: {e}")
 
     def send_command(
         self,
         drone_id: str,
         command_type: str,
         parameters: Dict[str, Any] = None,
+        mission_plan: Dict[str, Any] = None,
+        heatmap: Dict[str, Any] = None,
     ) -> bool:
         cmd = pb2.ServerCommand(
             command_id=f"cmd-{uuid.uuid4().hex[:12]}",
@@ -312,6 +356,12 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
             parameters=json.dumps(parameters or {}),
             timestamp=int(time.time() * 1e9),
         )
+
+        if mission_plan:
+            cmd.mission_plan.CopyFrom(self._build_mission_plan_proto(mission_plan))
+
+        if heatmap:
+            cmd.heatmap.CopyFrom(self._build_heatmap_proto(heatmap))
 
         with self._command_lock:
             q = self._command_queues.get(drone_id)
@@ -327,6 +377,57 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
             except queue.Full:
                 logger.warning(f"Command queue full for drone {drone_id}")
                 return False
+
+    def _build_mission_plan_proto(self, mission_plan: Dict[str, Any]) -> pb2.MissionPlan:
+        """将 mission plan 字典转换为 protobuf 消息"""
+        waypoint_protos = []
+        for wp in mission_plan.get("waypoints", []):
+            wp_proto = pb2.Waypoint(
+                waypoint_id=int(wp.get("waypoint_id", 0)),
+                latitude=float(wp.get("latitude", 0.0)),
+                longitude=float(wp.get("longitude", 0.0)),
+                altitude=float(wp.get("altitude", 50.0)),
+                speed=float(wp.get("speed", 8.0)),
+                action=str(wp.get("action", "SPRAY")),
+                spray_density=float(wp.get("spray_density", 1.0)),
+                estimated_arrival=int(wp.get("estimated_arrival", 0)),
+            )
+            waypoint_protos.append(wp_proto)
+
+        return pb2.MissionPlan(
+            mission_id=str(mission_plan.get("mission_id", "")),
+            mission_type=str(mission_plan.get("mission_type", "")),
+            description=str(mission_plan.get("description", "")),
+            created_at=int(mission_plan.get("created_at", 0)),
+            waypoints=waypoint_protos,
+            estimated_distance_m=float(mission_plan.get("estimated_distance_m", 0.0)),
+            estimated_duration_s=float(mission_plan.get("estimated_duration_s", 0.0)),
+            estimated_battery_used_pct=float(mission_plan.get("estimated_battery_used_pct", 0.0)),
+            estimated_chemical_used_pct=float(mission_plan.get("estimated_chemical_used_pct", 0.0)),
+            priority=str(mission_plan.get("priority", "normal")),
+        )
+
+    def _build_heatmap_proto(self, heatmap: Dict[str, Any]) -> pb2.HeatmapData:
+        """将 heatmap 字典转换为 protobuf 消息"""
+        cell_protos = []
+        for cell in heatmap.get("cells", [])[:200]:
+            cell_proto = pb2.HeatmapCell(
+                latitude=float(cell.get("latitude", 0.0)),
+                longitude=float(cell.get("longitude", 0.0)),
+                density=float(cell.get("density", 0.0)),
+                severity_score=float(cell.get("severity_score", 0.0)),
+            )
+            cell_protos.append(cell_proto)
+
+        return pb2.HeatmapData(
+            field_id=str(heatmap.get("field_id", "")),
+            generated_at=int(heatmap.get("generated_at", 0)),
+            grid_size=int(heatmap.get("grid_size", 0)),
+            cells=cell_protos,
+            min_density=float(heatmap.get("min_density", 0.0)),
+            max_density=float(heatmap.get("max_density", 0.0)),
+            avg_severity=float(heatmap.get("avg_severity", 0.0)),
+        )
 
     def _process_frame(self, frame: pb2.FrameDetection) -> Dict[str, Any]:
         gps = frame.gps
@@ -515,6 +616,7 @@ class CloudServer:
         self._max_streams = server_cfg.get("max_concurrent_streams", 100)
 
         self._influx = InfluxDBWriter(config.get("influxdb", {}))
+        self._mission_scheduler: Optional[DynamicMissionScheduler] = None
         self._servicer: Optional[DroneDetectionServicer] = None
         self._grpc_server: Optional[grpc.Server] = None
 
@@ -531,9 +633,17 @@ class CloudServer:
         try:
             self._influx.start()
 
+            self._mission_scheduler = DynamicMissionScheduler(
+                config=self._config,
+                send_command_fn=self.send_command,
+            )
+            self._mission_scheduler.start()
+            logger.info("Mission scheduler initialized")
+
             self._servicer = DroneDetectionServicer(
                 influx_writer=self._influx,
                 detection_config=self._config.get("detection", {}),
+                mission_scheduler=self._mission_scheduler,
                 on_frame_received=self._on_frame_callback,
             )
 
@@ -605,6 +715,12 @@ class CloudServer:
             self._grpc_server = None
 
         self._influx.stop()
+
+        if self._mission_scheduler:
+            try:
+                self._mission_scheduler.stop()
+            except Exception:
+                pass
 
         if self._monitor_thread and self._monitor_thread.is_alive():
             self._monitor_thread.join(timeout=5.0)
@@ -704,6 +820,9 @@ class CloudServer:
             },
             "servicer": self._servicer.get_stats() if self._servicer else {},
             "influxdb": self._influx.get_stats(),
+            "mission_scheduler": (
+                self._mission_scheduler.get_stats() if self._mission_scheduler else {}
+            ),
         }
 
     @property
