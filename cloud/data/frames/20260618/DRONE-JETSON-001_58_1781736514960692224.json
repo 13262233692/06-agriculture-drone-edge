@@ -1,0 +1,89 @@
+{
+  "drone_id": "DRONE-JETSON-001",
+  "frame_id": 58,
+  "timestamp": 1781736514960692224,
+  "datetime": "2026-06-17T22:48:34.960692+00:00",
+  "gps": {
+    "latitude": 39.90478,
+    "longitude": 116.40827,
+    "altitude": 51.54940256770058,
+    "speed": 8.5,
+    "heading": 90.0,
+    "timestamp": 1781736514960692224,
+    "satellites": 0,
+    "hdop": 0.0
+  },
+  "frame_width": 1280,
+  "frame_height": 720,
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 5.382602214813232,
+  "detections": [
+    {
+      "bbox": {
+        "x1": 538,
+        "y1": 167,
+        "x2": 658,
+        "y2": 300
+      },
+      "confidence": 0.8571251630783081,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.9238976836204529,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 521,
+        "y1": 486,
+        "x2": 645,
+        "y2": 560
+      },
+      "confidence": 0.9021292924880981,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.7146719694137573,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 262,
+        "y1": 133,
+        "x2": 392,
+        "y2": 240
+      },
+      "confidence": 0.6645828485488892,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.846703052520752,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 840,
+        "y1": 265,
+        "x2": 901,
+        "y2": 375
+      },
+      "confidence": 0.725719153881073,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.11110826581716537,
+      "severity_level": "severe"
+    },
+    {
+      "bbox": {
+        "x1": 770,
+        "y1": 79,
+        "x2": 865,
+        "y2": 118
+      },
+      "confidence": 0.9038708209991455,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.4374610483646393,
+      "severity_level": "mild"
+    }
+  ],
+  "detection_count": 5,
+  "received_at": 1781736531697939456
+}

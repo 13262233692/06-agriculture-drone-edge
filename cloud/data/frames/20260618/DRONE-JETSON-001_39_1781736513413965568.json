@@ -1,0 +1,89 @@
+{
+  "drone_id": "DRONE-JETSON-001",
+  "frame_id": 39,
+  "timestamp": 1781736513413965568,
+  "datetime": "2026-06-17T22:48:33.413965+00:00",
+  "gps": {
+    "latitude": 39.904590000000006,
+    "longitude": 116.407985,
+    "altitude": 51.542364855521214,
+    "speed": 8.5,
+    "heading": 90.0,
+    "timestamp": 1781736513413965568,
+    "satellites": 0,
+    "hdop": 0.0
+  },
+  "frame_width": 1280,
+  "frame_height": 720,
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 22.87413215637207,
+  "detections": [
+    {
+      "bbox": {
+        "x1": 739,
+        "y1": 425,
+        "x2": 812,
+        "y2": 473
+      },
+      "confidence": 0.925169825553894,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.18225400149822235,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 492,
+        "y1": 34,
+        "x2": 557,
+        "y2": 172
+      },
+      "confidence": 0.6329286098480225,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.17358700931072235,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 599,
+        "y1": 323,
+        "x2": 728,
+        "y2": 440
+      },
+      "confidence": 0.69625324010849,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.1818951815366745,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 978,
+        "y1": 505,
+        "x2": 1032,
+        "y2": 543
+      },
+      "confidence": 0.6741887927055359,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.7069912552833557,
+      "severity_level": "severe"
+    },
+    {
+      "bbox": {
+        "x1": 722,
+        "y1": 102,
+        "x2": 863,
+        "y2": 186
+      },
+      "confidence": 0.9411270022392273,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.8615798354148865,
+      "severity_level": "moderate"
+    }
+  ],
+  "detection_count": 5,
+  "received_at": 1781736531683289088
+}

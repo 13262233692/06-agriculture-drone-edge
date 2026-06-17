@@ -1,0 +1,89 @@
+{
+  "drone_id": "DRONE-JETSON-001",
+  "frame_id": 143,
+  "timestamp": 1781736521845540096,
+  "datetime": "2026-06-17T22:48:41.845540+00:00",
+  "gps": {
+    "latitude": 39.90563,
+    "longitude": 116.409545,
+    "altitude": 48.635292785506905,
+    "speed": 8.5,
+    "heading": 90.0,
+    "timestamp": 1781736521845540096,
+    "satellites": 0,
+    "hdop": 0.0
+  },
+  "frame_width": 1280,
+  "frame_height": 720,
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 19.02605628967285,
+  "detections": [
+    {
+      "bbox": {
+        "x1": 793,
+        "y1": 138,
+        "x2": 841,
+        "y2": 276
+      },
+      "confidence": 0.8416547775268555,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.796623170375824,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 257,
+        "y1": 477,
+        "x2": 377,
+        "y2": 589
+      },
+      "confidence": 0.7457208633422852,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.6544138193130493,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 282,
+        "y1": 68,
+        "x2": 360,
+        "y2": 180
+      },
+      "confidence": 0.6801918745040894,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.583389163017273,
+      "severity_level": "severe"
+    },
+    {
+      "bbox": {
+        "x1": 39,
+        "y1": 445,
+        "x2": 163,
+        "y2": 518
+      },
+      "confidence": 0.8484436869621277,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.2506901025772095,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 583,
+        "y1": 393,
+        "x2": 694,
+        "y2": 514
+      },
+      "confidence": 0.8004988431930542,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.5801423192024231,
+      "severity_level": "severe"
+    }
+  ],
+  "detection_count": 5,
+  "received_at": 1781736531777986304
+}

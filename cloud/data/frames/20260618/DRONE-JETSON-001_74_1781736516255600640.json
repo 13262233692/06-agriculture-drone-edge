@@ -1,0 +1,89 @@
+{
+  "drone_id": "DRONE-JETSON-001",
+  "frame_id": 74,
+  "timestamp": 1781736516255600640,
+  "datetime": "2026-06-17T22:48:36.255601+00:00",
+  "gps": {
+    "latitude": 39.90494,
+    "longitude": 116.40850999999999,
+    "altitude": 50.47912916693291,
+    "speed": 8.5,
+    "heading": 90.0,
+    "timestamp": 1781736516255600640,
+    "satellites": 0,
+    "hdop": 0.0
+  },
+  "frame_width": 1280,
+  "frame_height": 720,
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 19.73517417907715,
+  "detections": [
+    {
+      "bbox": {
+        "x1": 524,
+        "y1": 236,
+        "x2": 604,
+        "y2": 324
+      },
+      "confidence": 0.5726159811019897,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.4081094563007355,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 133,
+        "y1": 517,
+        "x2": 270,
+        "y2": 643
+      },
+      "confidence": 0.9303208589553833,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.35186347365379333,
+      "severity_level": "severe"
+    },
+    {
+      "bbox": {
+        "x1": 29,
+        "y1": 554,
+        "x2": 59,
+        "y2": 673
+      },
+      "confidence": 0.5914881825447083,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.1809205859899521,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 791,
+        "y1": 402,
+        "x2": 853,
+        "y2": 483
+      },
+      "confidence": 0.6056777238845825,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.8768709897994995,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 464,
+        "y1": 362,
+        "x2": 577,
+        "y2": 395
+      },
+      "confidence": 0.5713292956352234,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.3987659513950348,
+      "severity_level": "mild"
+    }
+  ],
+  "detection_count": 5,
+  "received_at": 1781736531711150080
+}

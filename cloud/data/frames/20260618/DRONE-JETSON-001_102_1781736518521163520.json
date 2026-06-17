@@ -1,0 +1,89 @@
+{
+  "drone_id": "DRONE-JETSON-001",
+  "frame_id": 102,
+  "timestamp": 1781736518521163520,
+  "datetime": "2026-06-17T22:48:38.521163+00:00",
+  "gps": {
+    "latitude": 39.90522,
+    "longitude": 116.40893,
+    "altitude": 50.469936599600416,
+    "speed": 8.5,
+    "heading": 90.0,
+    "timestamp": 1781736518521163520,
+    "satellites": 0,
+    "hdop": 0.0
+  },
+  "frame_width": 1280,
+  "frame_height": 720,
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 24.546005249023438,
+  "detections": [
+    {
+      "bbox": {
+        "x1": 907,
+        "y1": 265,
+        "x2": 1043,
+        "y2": 343
+      },
+      "confidence": 0.5657007694244385,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.43726322054862976,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 77,
+        "y1": 438,
+        "x2": 174,
+        "y2": 501
+      },
+      "confidence": 0.7147390246391296,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.15303735435009003,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 88,
+        "y1": 516,
+        "x2": 138,
+        "y2": 610
+      },
+      "confidence": 0.7142957448959351,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.4146885871887207,
+      "severity_level": "severe"
+    },
+    {
+      "bbox": {
+        "x1": 364,
+        "y1": 121,
+        "x2": 466,
+        "y2": 240
+      },
+      "confidence": 0.7935308814048767,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.6174388527870178,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 207,
+        "y1": 284,
+        "x2": 278,
+        "y2": 325
+      },
+      "confidence": 0.7542471289634705,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.7325352430343628,
+      "severity_level": "severe"
+    }
+  ],
+  "detection_count": 5,
+  "received_at": 1781736531742533888
+}

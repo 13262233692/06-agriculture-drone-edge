@@ -1,0 +1,23 @@
+{
+  "test_timestamp": "2026-06-18T06:51:25.002166",
+  "total_expected_frames": 150,
+  "normal_online": 30,
+  "offline_generated": 120,
+  "sqlite_final": {
+    "pending": -1,
+    "inflight": -1,
+    "acked_in_db": -1
+  },
+  "cloud_frames_received": 150,
+  "cloud_unique_frames": 150,
+  "frame_ids_contiguous": true,
+  "missing_frame_ids_count": 0,
+  "missing_frame_ids_sample": [],
+  "edge_reliable_stats": {
+    "acked_total": 150,
+    "retries_total": 407,
+    "retry_exhausted": 0
+  },
+  "influx_mock_points_written": 0,
+  "PASS": true
+}

@@ -17,12 +17,26 @@ from generated import drone_service_pb2 as pb2
 from generated import drone_service_pb2_grpc as pb2_grpc
 from modules.gps import GPSData
 from modules.detector import Detection
+from modules.persistence_queue import SQLitePersistenceQueue
+from modules.reliable_transport import (
+    ReliableGRPCTransport,
+    ReliableTransportConfig,
+)
 
 
 logger = logging.getLogger(__name__)
 
 
 class DroneGRPCClient:
+    """
+    gRPC 客户端（增强版）：
+      - 调用 send_detection → 同步写入 SQLite 持久化队列（保证不丢）
+      - ReliableTransport 从队列拉取 → 发 gRPC 双向流
+      - 收到 ServerAck → ReliableTransport 命中 inflight → 标记 ACKED
+      - 超时未 ACK → 指数退避重传（500ms → 60s 封顶，最多 50 次）
+      - 断网→恢复→自动从 SQLite 补传全部 PENDING
+    """
+
     def __init__(
         self,
         config: Dict[str, Any],
@@ -34,23 +48,42 @@ class DroneGRPCClient:
         self._tls_cert_path = config.get("tls_cert_path", "")
         self._reconnect_interval = config.get("reconnect_interval", 5)
         self._max_reconnect = config.get("max_reconnect_attempts", 20)
-        self._ack_timeout = config.get("ack_timeout", 2.0)
         self._send_queue_size = config.get("send_queue_size", 1000)
 
+        reliability_cfg = config.get("reliability", {})
+        self._persistence_enabled = reliability_cfg.get(
+            "persistence_enabled", True
+        )
+        self._db_path = reliability_cfg.get(
+            "db_path",
+            os.path.join(
+                os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                "data",
+                "msg_queue.sqlite3",
+            ),
+        )
+        self._max_db_size_mb = reliability_cfg.get("max_db_size_mb", 512)
+        self._max_retention_days = reliability_cfg.get("max_retention_days", 7)
+        self._graceful_shutdown_wait_s = reliability_cfg.get(
+            "graceful_shutdown_wait_s", 30
+        )
+
+        self._config = config
         self._drone_id = drone_id
         self._on_command = on_command
 
         self._channel: Optional[grpc.Channel] = None
         self._stub: Optional[pb2_grpc.DroneDetectionServiceStub] = None
         self._stream_call = None
+        self._stream_lock = threading.RLock()
 
-        self._send_queue: "queue.Queue[pb2.FrameDetection]" = queue.Queue(
-            maxsize=self._send_queue_size
-        )
-        self._ack_queue: "queue.Queue[pb2.ServerAck]" = queue.Queue(
+        self._wire_send_queue: "queue.Queue[bytes]" = queue.Queue(
             maxsize=self._send_queue_size
         )
         self._command_queue: "queue.Queue[pb2.ServerCommand]" = queue.Queue()
+
+        self._persistence_queue: Optional[SQLitePersistenceQueue] = None
+        self._reliable_tx: Optional[ReliableGRPCTransport] = None
 
         self._running = False
         self._connected = False
@@ -60,14 +93,16 @@ class DroneGRPCClient:
         self._recv_thread: Optional[threading.Thread] = None
         self._cmd_thread: Optional[threading.Thread] = None
         self._status_thread: Optional[threading.Thread] = None
+        self._monitor_thread: Optional[threading.Thread] = None
 
         self._stats_lock = threading.Lock()
         self._stats = {
-            "frames_sent": 0,
-            "bytes_sent": 0,
-            "acks_received": 0,
+            "frames_submitted": 0,
+            "frames_sent_wire": 0,
+            "bytes_sent_wire": 0,
+            "acks_received_wire": 0,
             "reconnects": 0,
-            "errors": 0,
+            "stream_errors": 0,
         }
 
     def start(self) -> bool:
@@ -77,14 +112,46 @@ class DroneGRPCClient:
         self._running = True
         self._stop_event.clear()
 
+        try:
+            if self._persistence_enabled:
+                self._persistence_queue = SQLitePersistenceQueue(
+                    db_path=self._db_path,
+                    drone_id=self._drone_id,
+                    max_size_mb=self._max_db_size_mb,
+                    max_age_days=self._max_retention_days,
+                )
+                reliability_config = ReliableTransportConfig(
+                    self._config.get("reliability", {})
+                )
+                self._reliable_tx = ReliableGRPCTransport(
+                    persistence_queue=self._persistence_queue,
+                    config=reliability_config,
+                    drone_id=self._drone_id,
+                    proto_frame_class=pb2.FrameDetection,
+                    proto_ack_class=pb2.ServerAck,
+                    send_fn=self._send_proto_bytes_to_stream,
+                    stats_callback=self._on_reliable_stats,
+                )
+                self._reliable_tx.start()
+                logger.info(
+                    f"Persistence queue enabled at {self._db_path}"
+                )
+            else:
+                logger.warning(
+                    "Persistence queue DISABLED - data loss possible on network failures"
+                )
+        except Exception as e:
+            logger.error(f"Failed to init reliable transport: {e}")
+            traceback.print_exc()
+
         if not self._connect():
-            logger.warning("Initial connection failed, will retry in background")
+            logger.warning("Initial gRPC connection failed, will retry in background")
 
         self._send_thread = threading.Thread(
-            target=self._send_loop, daemon=True, name="GRPCSendThread"
+            target=self._send_loop, daemon=True, name="GRPCWireSendThread"
         )
         self._recv_thread = threading.Thread(
-            target=self._recv_loop, daemon=True, name="GRPCRecvThread"
+            target=self._recv_loop, daemon=True, name="GRPCWireRecvThread"
         )
         self._cmd_thread = threading.Thread(
             target=self._command_dispatch_loop, daemon=True, name="GRPCCmdThread"
@@ -92,18 +159,46 @@ class DroneGRPCClient:
         self._status_thread = threading.Thread(
             target=self._status_stream_loop, daemon=True, name="GRPCStatusThread"
         )
+        self._monitor_thread = threading.Thread(
+            target=self._monitor_loop, daemon=True, name="GRPCMonitorThread"
+        )
 
-        self._send_thread.start()
-        self._recv_thread.start()
-        self._cmd_thread.start()
-        self._status_thread.start()
+        for t in [
+            self._send_thread,
+            self._recv_thread,
+            self._cmd_thread,
+            self._status_thread,
+            self._monitor_thread,
+        ]:
+            t.start()
 
-        logger.info(f"gRPC client started for drone {self._drone_id}")
+        logger.info(
+            f"gRPC client (reliable) started for drone {self._drone_id} "
+            f"→ {self._server_addr}"
+        )
         return True
 
     def stop(self) -> None:
+        if not self._running:
+            return
+
+        logger.info(
+            f"Stopping gRPC client (graceful_wait={self._graceful_shutdown_wait_s}s)..."
+        )
         self._running = False
         self._stop_event.set()
+
+        if self._reliable_tx:
+            try:
+                drained = self._reliable_tx.wait_until_empty(
+                    timeout_s=self._graceful_shutdown_wait_s
+                )
+                logger.info(
+                    f"Graceful drain {'SUCCESS' if drained else 'TIMEOUT'} "
+                    f"after {self._graceful_shutdown_wait_s}s"
+                )
+            except Exception:
+                pass
 
         if self._stream_call:
             try:
@@ -116,9 +211,22 @@ class DroneGRPCClient:
             self._recv_thread,
             self._cmd_thread,
             self._status_thread,
+            self._monitor_thread,
         ]:
             if t and t.is_alive():
                 t.join(timeout=3.0)
+
+        if self._reliable_tx:
+            try:
+                self._reliable_tx.stop()
+            except Exception:
+                pass
+
+        if self._persistence_queue:
+            try:
+                self._persistence_queue.close()
+            except Exception:
+                pass
 
         if self._channel:
             try:
@@ -128,48 +236,57 @@ class DroneGRPCClient:
             self._channel = None
             self._stub = None
 
-        logger.info("gRPC client stopped")
+        logger.info("gRPC client (reliable) stopped")
+
+    # =================================================================
+    # gRPC 连接管理
+    # =================================================================
 
     def _connect(self) -> bool:
         try:
-            if self._channel:
-                try:
-                    self._channel.close()
-                except Exception:
-                    pass
+            with self._stream_lock:
+                if self._channel:
+                    try:
+                        self._channel.close()
+                    except Exception:
+                        pass
 
-            options = [
-                ("grpc.max_send_message_length", 1024 * 1024 * 16),
-                ("grpc.max_receive_message_length", 1024 * 1024 * 4),
-                ("grpc.keepalive_time_ms", 10000),
-                ("grpc.keepalive_timeout_ms", 5000),
-                ("grpc.keepalive_permit_without_calls", True),
-                ("grpc.http2.max_pings_without_data", 0),
-            ]
+                options = [
+                    ("grpc.max_send_message_length", 1024 * 1024 * 16),
+                    ("grpc.max_receive_message_length", 1024 * 1024 * 4),
+                    ("grpc.keepalive_time_ms", 10000),
+                    ("grpc.keepalive_timeout_ms", 5000),
+                    ("grpc.keepalive_permit_without_calls", True),
+                    ("grpc.http2.max_pings_without_data", 0),
+                ]
 
-            if self._use_tls and os.path.exists(self._tls_cert_path):
-                with open(self._tls_cert_path, "rb") as f:
-                    cert_data = f.read()
-                creds = grpc.ssl_channel_credentials(root_certificates=cert_data)
-                self._channel = grpc.secure_channel(
-                    self._server_addr, creds, options=options
+                if self._use_tls and os.path.exists(self._tls_cert_path):
+                    with open(self._tls_cert_path, "rb") as f:
+                        cert_data = f.read()
+                    creds = grpc.ssl_channel_credentials(
+                        root_certificates=cert_data
+                    )
+                    self._channel = grpc.secure_channel(
+                        self._server_addr, creds, options=options
+                    )
+                else:
+                    self._channel = grpc.insecure_channel(
+                        self._server_addr, options=options
+                    )
+
+                self._stub = pb2_grpc.DroneDetectionServiceStub(self._channel)
+                self._stream_call = self._stub.StreamDetections(
+                    self._request_generator()
                 )
-            else:
-                self._channel = grpc.insecure_channel(
-                    self._server_addr, options=options
-                )
-
-            self._stub = pb2_grpc.DroneDetectionServiceStub(self._channel)
-            self._stream_call = self._stub.StreamDetections(
-                self._request_generator()
-            )
 
             self._connected = True
-            logger.info(f"Connected to gRPC server at {self._server_addr}")
+            logger.info(
+                f"Connected to gRPC server {self._server_addr}, stream established"
+            )
             return True
 
         except Exception as e:
-            logger.error(f"Failed to connect: {e}")
+            logger.error(f"gRPC connect failed: {e}")
             self._connected = False
             self._channel = None
             self._stub = None
@@ -183,67 +300,97 @@ class DroneGRPCClient:
             with self._stats_lock:
                 self._stats["reconnects"] += 1
 
+            backoff = min(self._reconnect_interval * (2 ** min(attempts - 1, 5)), 60)
             logger.info(
-                f"Reconnect attempt {attempts}/{self._max_reconnect}"
+                f"gRPC reconnect attempt {attempts}/{self._max_reconnect} "
+                f"(backoff {backoff:.0f}s)"
             )
 
             if self._connect():
                 return
 
-            self._stop_event.wait(self._reconnect_interval)
+            self._stop_event.wait(backoff)
 
-        logger.error("Max reconnect attempts reached")
-        self._running = False
+        logger.error("Max gRPC reconnect attempts reached - will keep trying")
+        while self._running:
+            self._stop_event.wait(self._reconnect_interval * 4)
+            if self._connect():
+                return
+
+    # =================================================================
+    # ReliableTransport ↔ gRPC 双向流 桥接
+    # =================================================================
+
+    def _send_proto_bytes_to_stream(self, proto_bytes: bytes) -> bool:
+        """ReliableTransport 调用此函数将字节推到 wire 队列"""
+        if proto_bytes is None:
+            return True
+        if len(proto_bytes) == 0:
+            return True
+        try:
+            self._wire_send_queue.put_nowait(proto_bytes)
+            return True
+        except queue.Full:
+            try:
+                self._wire_send_queue.get_nowait()
+            except Exception:
+                pass
+            try:
+                self._wire_send_queue.put_nowait(proto_bytes)
+                return True
+            except queue.Full:
+                return False
 
     def _request_generator(self) -> Iterator[pb2.FrameDetection]:
         while self._running and not self._stop_event.is_set():
             try:
-                item = self._send_queue.get(timeout=0.5)
-                yield item
+                raw_bytes = self._wire_send_queue.get(timeout=0.5)
             except queue.Empty:
                 continue
+
+            try:
+                msg = pb2.FrameDetection()
+                msg.ParseFromString(raw_bytes)
+                yield msg
+                with self._stats_lock:
+                    self._stats["frames_sent_wire"] += 1
+                    self._stats["bytes_sent_wire"] += len(raw_bytes)
             except Exception as e:
-                logger.error(f"Request generator error: {e}")
-                break
+                logger.warning(f"Failed to deserialize proto bytes: {e}")
+                continue
+
+        logger.debug("request_generator exited")
+
+    # =================================================================
+    # Wire 层收发循环
+    # =================================================================
 
     def _send_loop(self) -> None:
-        logger.info("gRPC send loop started")
+        """
+        注意：实际 wire 发送是在 request_generator 中（作为 gRPC stream 输入迭代器）完成。
+        这个线程的职责是：监控连接状态，断线时触发重连。
+        """
+        logger.info("gRPC wire monitor loop started")
         while self._running:
             try:
                 if not self._connected:
                     self._reconnect_loop()
-                    if not self._connected:
+                    if not self._running:
                         break
                     continue
 
-                item = self._send_queue.get(timeout=1.0)
-                size = item.ByteSize()
+                self._stop_event.wait(0.5)
 
-                with self._stats_lock:
-                    self._stats["frames_sent"] += 1
-                    self._stats["bytes_sent"] += size
-
-            except queue.Empty:
-                continue
-            except grpc.RpcError as e:
-                code = e.code() if hasattr(e, "code") else "UNKNOWN"
-                logger.warning(f"gRPC send error [{code}]: {e}")
-                with self._stats_lock:
-                    self._stats["errors"] += 1
-                self._connected = False
-                self._stop_event.wait(self._reconnect_interval)
             except Exception as e:
-                logger.error(f"Send loop error: {e}")
+                logger.error(f"Wire monitor loop error: {e}")
                 traceback.print_exc()
-                with self._stats_lock:
-                    self._stats["errors"] += 1
                 self._connected = False
-                self._stop_event.wait(self._reconnect_interval)
+                self._stop_event.wait(1.0)
 
-        logger.info("gRPC send loop exited")
+        logger.info("gRPC wire monitor loop exited")
 
     def _recv_loop(self) -> None:
-        logger.info("gRPC recv loop started")
+        logger.info("gRPC wire recv loop started")
         while self._running:
             try:
                 if not self._connected or self._stream_call is None:
@@ -252,29 +399,42 @@ class DroneGRPCClient:
 
                 try:
                     ack = next(self._stream_call)
-                    self._ack_queue.put_nowait(ack)
                     with self._stats_lock:
-                        self._stats["acks_received"] += 1
+                        self._stats["acks_received_wire"] += 1
+
+                    if self._reliable_tx:
+                        self._reliable_tx.on_ack_received(ack)
+
                 except StopIteration:
-                    logger.warning("Stream ended by server")
+                    logger.warning("gRPC stream closed by server")
+                    with self._stats_lock:
+                        self._stats["stream_errors"] += 1
                     self._connected = False
-                    time.sleep(self._reconnect_interval)
+                    self._stop_event.wait(self._reconnect_interval)
                     continue
                 except grpc.RpcError as e:
                     code = e.code() if hasattr(e, "code") else "UNKNOWN"
                     if code != grpc.StatusCode.CANCELLED:
-                        logger.warning(f"gRPC recv error [{code}]: {e}")
+                        logger.warning(
+                            f"gRPC stream recv error [{code}]: {e}"
+                        )
+                    with self._stats_lock:
+                        self._stats["stream_errors"] += 1
                     self._connected = False
-                    time.sleep(self._reconnect_interval)
+                    self._stop_event.wait(self._reconnect_interval)
                     continue
 
             except Exception as e:
-                logger.error(f"Recv loop error: {e}")
+                logger.error(f"Wire recv loop error: {e}")
                 traceback.print_exc()
                 self._connected = False
-                time.sleep(self._reconnect_interval)
+                time.sleep(1.0)
 
-        logger.info("gRPC recv loop exited")
+        logger.info("gRPC wire recv loop exited")
+
+    # =================================================================
+    # 命令 & 状态流（独立的 unary-stream RPC）
+    # =================================================================
 
     def _command_dispatch_loop(self) -> None:
         logger.info("Command dispatch loop started")
@@ -325,13 +485,67 @@ class DroneGRPCClient:
                 except Exception as e:
                     logger.debug(f"Status stream exception: {e}")
 
-                time.sleep(5.0)
+                self._stop_event.wait(5.0)
 
             except Exception as e:
                 logger.error(f"Status stream loop error: {e}")
                 time.sleep(5.0)
 
         logger.info("Status stream loop exited")
+
+    def _monitor_loop(self) -> None:
+        logger.info("Reliability monitor loop started")
+        last_report = time.time()
+        while self._running and not self._stop_event.is_set():
+            self._stop_event.wait(15.0)
+            if not self._running:
+                break
+
+            try:
+                rtx_stats = (
+                    self._reliable_tx.get_stats() if self._reliable_tx else {}
+                )
+                queue_counts = rtx_stats.get("queue_counts", {})
+
+                pending = queue_counts.get("pending", 0)
+                inflight_queue = queue_counts.get("inflight", 0)
+                inflight_rtx = rtx_stats.get("inflight_count", 0)
+                oldest_s = rtx_stats.get("oldest_pending_age_s", 0)
+                acked = rtx_stats.get("acked_total", 0)
+                retries = rtx_stats.get("retries_total", 0)
+                retry_exhausted = rtx_stats.get("retry_exhausted", 0)
+
+                if (
+                    pending > 0
+                    or inflight_queue > 0
+                    or inflight_rtx > 0
+                    or retries > 0
+                    or (time.time() - last_report > 60)
+                ):
+                    logger.info(
+                        "[RELIABILITY] "
+                        f"pending={pending} inflight(q)={inflight_queue} "
+                        f"inflight(tx)={inflight_rtx} acked={acked} "
+                        f"retries={retries} exhausted={retry_exhausted} "
+                        f"oldest_age={oldest_s}s "
+                        f"grpc_connected={self._connected}"
+                    )
+                    last_report = time.time()
+
+                if oldest_s > 0 and oldest_s > 60 and self._connected:
+                    logger.warning(
+                        f"OLDEST pending message is {oldest_s}s old! "
+                        f"Network may be congested or server slow"
+                    )
+
+            except Exception as e:
+                logger.error(f"Reliability monitor error: {e}")
+
+        logger.info("Reliability monitor loop exited")
+
+    # =================================================================
+    # 对外主接口
+    # =================================================================
 
     def send_detection(
         self,
@@ -344,6 +558,10 @@ class DroneGRPCClient:
         multispectral_band: str,
         inference_latency_ms: float,
     ) -> bool:
+        """
+        【关键】此调用同步持久化到 SQLite，成功返回后消息已保证不丢失（除非磁盘故障）。
+        后续的 gRPC 发送、ACK、重试全部由 ReliableTransport 异步处理。
+        """
         if not self._running:
             return False
 
@@ -359,24 +577,30 @@ class DroneGRPCClient:
                 inference_latency_ms=inference_latency_ms,
             )
 
-            try:
-                self._send_queue.put_nowait(frame_msg)
-                return True
-            except queue.Full:
+            if self._reliable_tx:
+                ok, _msg_id = self._reliable_tx.submit_frame(frame_msg)
+                if ok:
+                    with self._stats_lock:
+                        self._stats["frames_submitted"] += 1
+                return ok
+            else:
                 try:
-                    self._send_queue.get_nowait()
-                except queue.Empty:
-                    pass
-                try:
-                    self._send_queue.put_nowait(frame_msg)
+                    raw = frame_msg.SerializeToString()
+                    self._send_proto_bytes_to_stream(raw)
+                    with self._stats_lock:
+                        self._stats["frames_submitted"] += 1
                     return True
-                except queue.Full:
-                    logger.warning("Send queue is full, dropping frame")
+                except Exception:
                     return False
 
         except Exception as e:
-            logger.error(f"Failed to send detection: {e}")
+            logger.error(f"Failed to submit detection: {e}")
+            traceback.print_exc()
             return False
+
+    # =================================================================
+    # 辅助函数
+    # =================================================================
 
     def detection_to_json_dict(
         self,
@@ -449,13 +673,13 @@ class DroneGRPCClient:
 
         det_msgs = [
             pb2.DetectionBox(
-                x1=d.x1,
-                y1=d.y1,
-                x2=d.x2,
-                y2=d.y2,
+                x1=int(round(d.x1)),
+                y1=int(round(d.y1)),
+                x2=int(round(d.x2)),
+                y2=int(round(d.y2)),
                 confidence=d.confidence,
                 class_name=d.class_name,
-                class_id=d.class_id,
+                class_id=int(d.class_id),
                 severity_score=d.severity_score,
                 severity_level=d.severity_level,
             )
@@ -478,6 +702,14 @@ class DroneGRPCClient:
         with self._stats_lock:
             stats = dict(self._stats)
 
+        rtx_stats = (
+            self._reliable_tx.get_stats() if self._reliable_tx else {}
+        )
+        queue_counts = rtx_stats.get("queue_counts", {})
+
+        pending = queue_counts.get("pending", 0) + queue_counts.get("inflight", 0)
+        total_det = rtx_stats.get("acked_total", 0) * 3
+
         return pb2.DroneStatus(
             drone_id=self._drone_id,
             status="running" if self._connected else "disconnected",
@@ -491,13 +723,27 @@ class DroneGRPCClient:
                 heading=90.0,
                 timestamp=int(time.time() * 1e9),
             ),
-            total_frames_processed=stats["frames_sent"],
-            total_detections=stats["frames_sent"] * 2,
+            total_frames_processed=stats.get("frames_submitted", 0),
+            total_detections=total_det,
         )
+
+    def _on_reliable_stats(self, stats: Dict[str, Any]) -> None:
+        pass
 
     def get_stats(self) -> Dict[str, Any]:
         with self._stats_lock:
-            return dict(self._stats)
+            wire = dict(self._stats)
+
+        result = {
+            "wire": wire,
+            "grpc_connected": self._connected,
+        }
+        if self._reliable_tx:
+            result["reliable"] = self._reliable_tx.get_stats()
+        if self._persistence_queue:
+            result["persistence"] = self._persistence_queue.get_stats()
+
+        return result
 
     def is_connected(self) -> bool:
         return self._connected

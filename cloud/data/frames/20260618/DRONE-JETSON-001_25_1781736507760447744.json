@@ -1,0 +1,89 @@
+{
+  "drone_id": "DRONE-JETSON-001",
+  "frame_id": 25,
+  "timestamp": 1781736507760447744,
+  "datetime": "2026-06-17T22:48:27.760448+00:00",
+  "gps": {
+    "latitude": 39.904450000000004,
+    "longitude": 116.407775,
+    "altitude": 51.70577353332129,
+    "speed": 8.5,
+    "heading": 90.0,
+    "timestamp": 1781736507760447744,
+    "satellites": 0,
+    "hdop": 0.0
+  },
+  "frame_width": 1280,
+  "frame_height": 720,
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 8.222503662109375,
+  "detections": [
+    {
+      "bbox": {
+        "x1": 579,
+        "y1": 137,
+        "x2": 696,
+        "y2": 279
+      },
+      "confidence": 0.869469940662384,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.4776630103588104,
+      "severity_level": "severe"
+    },
+    {
+      "bbox": {
+        "x1": 50,
+        "y1": 230,
+        "x2": 147,
+        "y2": 272
+      },
+      "confidence": 0.8697794675827026,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.4002675712108612,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 503,
+        "y1": 539,
+        "x2": 594,
+        "y2": 644
+      },
+      "confidence": 0.8891772627830505,
+      "class_id": 2,
+      "class_name": "wheat_rust_severe",
+      "severity_score": 0.5680577754974365,
+      "severity_level": "severe"
+    },
+    {
+      "bbox": {
+        "x1": 164,
+        "y1": 269,
+        "x2": 257,
+        "y2": 340
+      },
+      "confidence": 0.6376501321792603,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.5364283919334412,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 78,
+        "y1": 562,
+        "x2": 208,
+        "y2": 613
+      },
+      "confidence": 0.8705524802207947,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.7292913198471069,
+      "severity_level": "moderate"
+    }
+  ],
+  "detection_count": 5,
+  "received_at": 1781736507788536320
+}

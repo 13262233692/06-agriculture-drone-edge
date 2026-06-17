@@ -7,7 +7,8 @@ import queue
 import threading
 import logging
 import traceback
-from typing import Iterator, Dict, Any, List, Optional, Callable
+from collections import OrderedDict
+from typing import Iterator, Dict, Any, List, Optional, Callable, Tuple
 from datetime import datetime, timezone
 
 
@@ -24,6 +25,94 @@ from modules.influx_writer import InfluxDBWriter
 logger = logging.getLogger(__name__)
 
 
+class IdempotencyWindow:
+    """
+    基于 drone_id → 有序字典(frame_id → ack_nonce) 的幂等性去重。
+    滑动窗口：每个无人机最多保留最近 WINDOW_SIZE 个已处理 frame_id。
+    对窗口内命中的重复 frame，直接返回缓存的 ACK，不重复写入。
+    """
+
+    def __init__(self, window_size_per_drone: int = 5000, max_drones: int = 100):
+        self._window_size = window_size_per_drone
+        self._max_drones = max_drones
+        self._windows: "OrderedDict[str, OrderedDict[int, Tuple[bool, str]]]" = OrderedDict()
+        self._lock = threading.RLock()
+
+        self._stats_lock = threading.Lock()
+        self._duplicates_filtered = 0
+        self._new_entries = 0
+        self._evictions = 0
+
+    def check_and_mark(
+        self, drone_id: str, frame_id: int
+    ) -> Tuple[bool, Optional[str]]:
+        """
+        返回：(是否重复命中, 上次成功时的 ack_nonce/None)
+        True = 重复，调用方应跳过写入，直接返回 ACK
+        False = 新帧，调用方应继续写入 InfluxDB
+        """
+        with self._lock:
+            win = self._windows.get(drone_id)
+            if win is None:
+                if len(self._windows) >= self._max_drones:
+                    self._windows.popitem(last=False)
+                    with self._stats_lock:
+                        self._evictions += 1
+                win = OrderedDict()
+                self._windows[drone_id] = win
+
+            if frame_id in win:
+                win.move_to_end(frame_id)
+                with self._stats_lock:
+                    self._duplicates_filtered += 1
+                processed, nonce = win[frame_id]
+                return (processed, nonce)
+
+            if len(win) >= self._window_size:
+                win.popitem(last=False)
+                with self._stats_lock:
+                    self._evictions += 1
+
+            win[frame_id] = (False, "")
+            self._windows.move_to_end(drone_id)
+            with self._stats_lock:
+                self._new_entries += 1
+            return (False, None)
+
+    def mark_processed(
+        self, drone_id: str, frame_id: int, ack_nonce: str
+    ) -> None:
+        """InfluxDB 写入成功后，把窗口条目标记为已处理，缓存 ack_nonce"""
+        with self._lock:
+            win = self._windows.get(drone_id)
+            if win and frame_id in win:
+                win[frame_id] = (True, ack_nonce)
+                win.move_to_end(frame_id)
+
+    def get_stats(self) -> Dict[str, int]:
+        total_windows = 0
+        total_entries = 0
+        with self._lock:
+            total_windows = len(self._windows)
+            total_entries = sum(len(w) for w in self._windows.values())
+
+        with self._stats_lock:
+            return {
+                "active_drones_tracked": total_windows,
+                "total_entries": total_entries,
+                "duplicates_filtered": self._duplicates_filtered,
+                "new_entries": self._new_entries,
+                "window_evictions": self._evictions,
+            }
+
+    def clear(self, drone_id: Optional[str] = None) -> None:
+        with self._lock:
+            if drone_id:
+                self._windows.pop(drone_id, None)
+            else:
+                self._windows.clear()
+
+
 class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
     def __init__(
         self,
@@ -36,6 +125,12 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
         self._on_frame_received = on_frame_received
         self._min_confidence = detection_config.get("min_confidence", 0.5)
         self._class_mapping = detection_config.get("class_mapping", {})
+
+        dedup_cfg = detection_config.get("idempotency", {})
+        self._dedup = IdempotencyWindow(
+            window_size_per_drone=dedup_cfg.get("window_size_per_drone", 5000),
+            max_drones=dedup_cfg.get("max_drones", 100),
+        )
 
         self._drone_sessions: Dict[str, Dict[str, Any]] = {}
         self._sessions_lock = threading.Lock()
@@ -52,6 +147,8 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
             "frames_per_drone": {},
             "detections_per_drone": {},
             "by_severity": {"mild": 0, "moderate": 0, "severe": 0, "unknown": 0},
+            "duplicates_skipped": 0,
+            "unique_writes": 0,
         }
 
         self._frame_log_dir = os.path.join(
@@ -73,9 +170,43 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
             for frame in request_iterator:
                 try:
                     drone_id = frame.drone_id or "UNKNOWN"
+                    frame_id = int(frame.frame_id)
+
                     self._register_drone(drone_id, peer)
 
+                    if frame_id == -1:
+                        ack = pb2.ServerAck(
+                            received_frame_id=-1,
+                            server_timestamp=int(time.time() * 1e9),
+                            success=True,
+                            message="HEARTBEAT_OK",
+                        )
+                        yield ack
+                        continue
+
+                    is_dup, cached_nonce = self._dedup.check_and_mark(
+                        drone_id, frame_id
+                    )
+
+                    if is_dup:
+                        with self._stats_lock:
+                            self._global_stats["duplicates_skipped"] += 1
+                        logger.debug(
+                            f"[DEDUP] {drone_id} frame={frame_id} "
+                            f"already processed → returning cached ACK"
+                        )
+                        yield pb2.ServerAck(
+                            received_frame_id=frame_id,
+                            server_timestamp=int(time.time() * 1e9),
+                            success=True,
+                            message=f"DEDUP_OK cached={cached_nonce}",
+                        )
+                        continue
+
                     result = self._process_frame(frame)
+
+                    ack_nonce = uuid.uuid4().hex[:12]
+                    self._dedup.mark_processed(drone_id, frame_id, ack_nonce)
 
                     if self._on_frame_received:
                         try:
@@ -85,11 +216,17 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
 
                     self._log_frame_json(result)
 
+                    with self._stats_lock:
+                        self._global_stats["unique_writes"] += 1
+
                     yield pb2.ServerAck(
-                        received_frame_id=frame.frame_id,
+                        received_frame_id=frame_id,
                         server_timestamp=int(time.time() * 1e9),
                         success=True,
-                        message=f"OK: {len(frame.detections)} detections stored",
+                        message=(
+                            f"OK: {result.get('detection_count', 0)} detections "
+                            f"stored nonce={ack_nonce}"
+                        ),
                     )
 
                 except Exception as e:
@@ -329,7 +466,7 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
 
     def get_stats(self) -> Dict[str, Any]:
         with self._stats_lock:
-            return {
+            base = {
                 "total_frames": self._global_stats["total_frames"],
                 "total_detections": self._global_stats["total_detections"],
                 "total_bytes_mb": round(
@@ -344,7 +481,23 @@ class DroneDetectionServicer(pb2_grpc.DroneDetectionServiceServicer):
                     sorted(self._global_stats["detections_per_drone"].items())
                 ),
                 "by_severity": dict(self._global_stats["by_severity"]),
+                "duplicates_skipped": self._global_stats["duplicates_skipped"],
+                "unique_writes": self._global_stats["unique_writes"],
+                "dedup_effectiveness": (
+                    round(
+                        100
+                        * self._global_stats["duplicates_skipped"]
+                        / max(
+                            1,
+                            self._global_stats["duplicates_skipped"]
+                            + self._global_stats["unique_writes"],
+                        ),
+                        2,
+                    )
+                ),
             }
+        base["dedup"] = self._dedup.get_stats()
+        return base
 
 
 class CloudServer:
@@ -370,7 +523,7 @@ class CloudServer:
 
     def start(self) -> bool:
         self._logger.info("=" * 60)
-        self._logger.info("  Cloud Server Starting")
+        self._logger.info("  Cloud Server Starting (Reliable Mode + Dedup)")
         self._logger.info(f"  gRPC: {self._host}:{self._port}")
         self._logger.info(f"  Timestamp: {datetime.now().isoformat()}")
         self._logger.info("=" * 60)
@@ -428,7 +581,7 @@ class CloudServer:
             )
             self._monitor_thread.start()
 
-            self._logger.info("Cloud server started successfully")
+            self._logger.info("Cloud server (reliable) started successfully")
             return True
 
         except Exception as e:
@@ -503,20 +656,30 @@ class CloudServer:
                 total_frames = serv_stats.get("total_frames", 0)
                 total_det = serv_stats.get("total_detections", 0)
                 by_sev = serv_stats.get("by_severity", {})
+                dup = serv_stats.get("duplicates_skipped", 0)
+                unique = serv_stats.get("unique_writes", 0)
+                dedup_stats = serv_stats.get("dedup", {})
 
                 fps = total_frames / interval if interval > 0 else 0
 
                 self._logger.info(
                     "\n" + "=" * 60 + "\n"
-                    f"  SERVER STATUS\n"
+                    f"  SERVER STATUS (Reliable Mode)\n"
                     + "-" * 60 + "\n"
-                    f"  Active Drones:   {len(active)} {active}\n"
-                    f"  Total Frames:    {total_frames}\n"
-                    f"  Total Detections:{total_det}\n"
-                    f"  Process Rate:    {fps:.1f} frames/s\n"
-                    f"  Data Received:   {serv_stats.get('total_bytes_mb', 0)} MB\n"
+                    f"  Active Drones:      {len(active)} {active}\n"
+                    f"  Total Frames:       {total_frames}\n"
+                    f"  Total Detections:   {total_det}\n"
+                    f"  Process Rate:       {fps:.1f} frames/s\n"
+                    f"  Data Received:      {serv_stats.get('total_bytes_mb', 0)} MB\n"
                     f"  Severity Breakdown: {by_sev}\n"
-                    f"  InfluxDB:        connected={influx_stats.get('connected', False)} "
+                    + "-" * 60 + "\n"
+                    f"  [RELIABILITY]\n"
+                    f"  Unique Writes:      {unique}\n"
+                    f"  Duplicates Skipped: {dup}\n"
+                    f"  Dedup Effectiveness:{serv_stats.get('dedup_effectiveness', 0)}%\n"
+                    f"  Dedup Window Size:  {dedup_stats.get('total_entries', 0)} "
+                    f"({dedup_stats.get('active_drones_tracked', 0)} drones tracked)\n"
+                    f"  InfluxDB:           connected={influx_stats.get('connected', False)} "
                     f"written={influx_stats.get('points_written', 0)} "
                     f"errors={influx_stats.get('write_errors', 0)}\n"
                     + "=" * 60

@@ -1,0 +1,770 @@
+06:32:00 | INFO    | ======================================================================
+06:32:00 | INFO    |   弱网可靠性自动化测试  |  断网 → 离线积累 → 恢复补传 → 无损验证
+06:32:00 | INFO    | ======================================================================
+06:32:00 | INFO    | [CLEAN] 清理上次测试遗留数据...
+06:32:00 | INFO    | 
+======================================================================
+06:32:00 | INFO    |   阶段 1：正常通信（云端在线，发送少量帧）
+06:32:00 | INFO    | ======================================================================
+06:32:00 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:32:05 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:32:06 | INFO    | [EDGE] 初始化边缘端模块 (Mock 模式)...
+06:32:07 | INFO    | [EDGE] gRPC 客户端已启动（Reliable Mode + SQLite）
+06:32:08 | INFO    | [PHASE 1] 发送 30 帧（正常在线场景）...
+06:32:08 | WARNING | [EDGE] frame 1 提交失败！
+06:32:08 | WARNING | [EDGE] frame 2 提交失败！
+06:32:08 | WARNING | [EDGE] frame 3 提交失败！
+06:32:08 | WARNING | [EDGE] frame 4 提交失败！
+06:32:09 | WARNING | [EDGE] frame 5 提交失败！
+06:32:09 | WARNING | [EDGE] frame 6 提交失败！
+06:32:09 | WARNING | [EDGE] frame 7 提交失败！
+06:32:09 | WARNING | [EDGE] frame 8 提交失败！
+06:32:09 | WARNING | [EDGE] frame 9 提交失败！
+06:32:09 | WARNING | [EDGE] frame 10 提交失败！
+06:32:09 | WARNING | [EDGE] frame 11 提交失败！
+06:32:09 | WARNING | [EDGE] frame 12 提交失败！
+06:32:09 | WARNING | [EDGE] frame 13 提交失败！
+06:32:09 | WARNING | [EDGE] frame 14 提交失败！
+06:32:09 | WARNING | [EDGE] frame 15 提交失败！
+06:32:09 | WARNING | [EDGE] frame 16 提交失败！
+06:32:09 | WARNING | [EDGE] frame 17 提交失败！
+06:32:10 | WARNING | [EDGE] frame 18 提交失败！
+06:32:10 | WARNING | [EDGE] frame 19 提交失败！
+06:32:10 | WARNING | [EDGE] frame 20 提交失败！
+06:32:10 | WARNING | [EDGE] frame 21 提交失败！
+06:32:10 | WARNING | [EDGE] frame 22 提交失败！
+06:32:10 | WARNING | [EDGE] frame 23 提交失败！
+06:32:10 | WARNING | [EDGE] frame 24 提交失败！
+06:32:10 | WARNING | [EDGE] frame 25 提交失败！
+06:32:10 | WARNING | [EDGE] frame 26 提交失败！
+06:32:10 | WARNING | [EDGE] frame 27 提交失败！
+06:32:10 | WARNING | [EDGE] frame 28 提交失败！
+06:32:10 | WARNING | [EDGE] frame 29 提交失败！
+06:32:11 | WARNING | [EDGE] frame 30 提交失败！
+06:32:11 | INFO    | [EDGE] 本阶段提交 0/30 帧（累计 0）
+06:32:14 | INFO    | [PHASE 1] 完成后 SQLite 状态: PENDING=-1 INFLIGHT=-1 ACKED=-1
+06:32:14 | INFO    | [PHASE 1] 云端 frames/ 目录 JSON 数 = 0
+06:32:14 | INFO    | 
+======================================================================
+06:32:14 | INFO    |   阶段 2：强制断网 → 离线产生 120 帧
+06:32:14 | INFO    | ======================================================================
+06:32:14 | WARNING | [CLOUD] ========= 强制终止云端（模拟断网）=========
+06:32:15 | INFO    | [CLOUD] 已终止，50051 端口应已释放
+06:32:15 | INFO    | [PHASE 2] 开始离线写入 120 帧 (仅写 SQLite，无法上送)
+06:32:15 | WARNING | [EDGE] frame 1 提交失败！
+06:32:15 | WARNING | [EDGE] frame 2 提交失败！
+06:32:15 | WARNING | [EDGE] frame 3 提交失败！
+06:32:15 | WARNING | [EDGE] frame 4 提交失败！
+06:32:15 | WARNING | [EDGE] frame 5 提交失败！
+06:32:16 | WARNING | [EDGE] frame 6 提交失败！
+06:32:16 | WARNING | [EDGE] frame 7 提交失败！
+06:32:16 | WARNING | [EDGE] frame 8 提交失败！
+06:32:16 | WARNING | [EDGE] frame 9 提交失败！
+06:32:16 | WARNING | [EDGE] frame 10 提交失败！
+06:32:16 | WARNING | [EDGE] frame 11 提交失败！
+06:32:16 | WARNING | [EDGE] frame 12 提交失败！
+06:32:16 | WARNING | [EDGE] frame 13 提交失败！
+06:32:16 | WARNING | [EDGE] frame 14 提交失败！
+06:32:16 | WARNING | [EDGE] frame 15 提交失败！
+06:32:16 | WARNING | [EDGE] frame 16 提交失败！
+06:32:16 | WARNING | [EDGE] frame 17 提交失败！
+06:32:17 | WARNING | [EDGE] frame 18 提交失败！
+06:32:17 | WARNING | [EDGE] frame 19 提交失败！
+06:32:17 | INFO    |   → SQLite: PENDING=-1 INFLIGHT=-1 ACKED=-1 (上送应该都失败，PENDING 持续增长)
+06:32:17 | WARNING | [EDGE] frame 20 提交失败！
+06:32:17 | WARNING | [EDGE] frame 21 提交失败！
+06:32:17 | WARNING | [EDGE] frame 22 提交失败！
+06:32:17 | WARNING | [EDGE] frame 23 提交失败！
+06:32:17 | WARNING | [EDGE] frame 24 提交失败！
+06:32:17 | WARNING | [EDGE] frame 25 提交失败！
+06:32:17 | WARNING | [EDGE] frame 26 提交失败！
+06:32:17 | WARNING | [EDGE] frame 27 提交失败！
+06:32:17 | WARNING | [EDGE] frame 28 提交失败！
+06:32:17 | WARNING | [EDGE] frame 29 提交失败！
+06:32:18 | WARNING | [EDGE] frame 30 提交失败！
+06:32:18 | WARNING | [EDGE] frame 31 提交失败！
+06:32:18 | WARNING | [EDGE] frame 32 提交失败！
+06:32:18 | WARNING | [EDGE] frame 33 提交失败！
+06:32:18 | WARNING | [EDGE] frame 34 提交失败！
+06:32:18 | WARNING | [EDGE] frame 35 提交失败！
+06:32:18 | WARNING | [EDGE] frame 36 提交失败！
+06:32:18 | WARNING | [EDGE] frame 37 提交失败！
+06:32:18 | WARNING | [EDGE] frame 38 提交失败！
+06:32:18 | WARNING | [EDGE] frame 39 提交失败！
+06:32:18 | WARNING | [EDGE] frame 40 提交失败！
+06:32:18 | WARNING | [EDGE] frame 41 提交失败！
+06:32:18 | WARNING | [EDGE] frame 42 提交失败！
+06:32:19 | WARNING | [EDGE] frame 43 提交失败！
+06:32:19 | WARNING | [EDGE] frame 44 提交失败！
+06:32:19 | WARNING | [EDGE] frame 45 提交失败！
+06:32:19 | WARNING | [EDGE] frame 46 提交失败！
+06:32:19 | WARNING | [EDGE] frame 47 提交失败！
+06:32:19 | WARNING | [EDGE] frame 48 提交失败！
+06:32:19 | WARNING | [EDGE] frame 49 提交失败！
+06:32:19 | WARNING | [EDGE] frame 50 提交失败！
+06:32:19 | WARNING | [EDGE] frame 51 提交失败！
+06:32:19 | WARNING | [EDGE] frame 52 提交失败！
+06:32:19 | WARNING | [EDGE] frame 53 提交失败！
+06:32:19 | WARNING | [EDGE] frame 54 提交失败！
+06:32:20 | WARNING | [EDGE] frame 55 提交失败！
+06:32:20 | WARNING | [EDGE] frame 56 提交失败！
+06:32:20 | WARNING | [EDGE] frame 57 提交失败！
+06:32:20 | WARNING | [EDGE] frame 58 提交失败！
+06:32:20 | WARNING | [EDGE] frame 59 提交失败！
+06:32:20 | WARNING | [EDGE] frame 60 提交失败！
+06:32:20 | WARNING | [EDGE] frame 61 提交失败！
+06:32:20 | WARNING | [EDGE] frame 62 提交失败！
+06:32:20 | WARNING | [EDGE] frame 63 提交失败！
+06:32:20 | WARNING | [EDGE] frame 64 提交失败！
+06:32:20 | WARNING | [EDGE] frame 65 提交失败！
+06:32:20 | WARNING | [EDGE] frame 66 提交失败！
+06:32:21 | WARNING | [EDGE] frame 67 提交失败！
+06:32:21 | WARNING | [EDGE] frame 68 提交失败！
+06:32:21 | WARNING | [EDGE] frame 69 提交失败！
+06:32:21 | WARNING | [EDGE] frame 70 提交失败！
+06:32:21 | WARNING | [EDGE] frame 71 提交失败！
+06:32:21 | WARNING | [EDGE] frame 72 提交失败！
+06:32:21 | WARNING | [EDGE] frame 73 提交失败！
+06:32:21 | WARNING | [EDGE] frame 74 提交失败！
+06:32:21 | WARNING | [EDGE] frame 75 提交失败！
+06:32:21 | WARNING | [EDGE] frame 76 提交失败！
+06:32:21 | WARNING | [EDGE] frame 77 提交失败！
+06:32:21 | WARNING | [EDGE] frame 78 提交失败！
+06:32:21 | WARNING | [EDGE] frame 79 提交失败！
+06:32:22 | WARNING | [EDGE] frame 80 提交失败！
+06:32:22 | WARNING | [EDGE] frame 81 提交失败！
+06:32:22 | WARNING | [EDGE] frame 82 提交失败！
+06:32:22 | WARNING | [EDGE] frame 83 提交失败！
+06:32:22 | WARNING | [EDGE] frame 84 提交失败！
+06:32:22 | WARNING | [EDGE] frame 85 提交失败！
+06:32:22 | WARNING | [EDGE] frame 86 提交失败！
+06:32:22 | WARNING | [EDGE] frame 87 提交失败！
+06:32:22 | WARNING | [EDGE] frame 88 提交失败！
+06:32:22 | WARNING | [EDGE] frame 89 提交失败！
+06:32:22 | WARNING | [EDGE] frame 90 提交失败！
+06:32:22 | WARNING | [EDGE] frame 91 提交失败！
+06:32:23 | WARNING | [EDGE] frame 92 提交失败！
+06:32:23 | WARNING | [EDGE] frame 93 提交失败！
+06:32:23 | WARNING | [EDGE] frame 94 提交失败！
+06:32:23 | WARNING | [EDGE] frame 95 提交失败！
+06:32:23 | WARNING | [EDGE] frame 96 提交失败！
+06:32:23 | WARNING | [EDGE] frame 97 提交失败！
+06:32:23 | WARNING | [EDGE] frame 98 提交失败！
+06:32:23 | WARNING | [EDGE] frame 99 提交失败！
+06:32:23 | WARNING | [EDGE] frame 100 提交失败！
+06:32:23 | WARNING | [EDGE] frame 101 提交失败！
+06:32:23 | WARNING | [EDGE] frame 102 提交失败！
+06:32:23 | WARNING | [EDGE] frame 103 提交失败！
+06:32:24 | WARNING | [EDGE] frame 104 提交失败！
+06:32:24 | WARNING | [EDGE] frame 105 提交失败！
+06:32:24 | WARNING | [EDGE] frame 106 提交失败！
+06:32:24 | WARNING | [EDGE] frame 107 提交失败！
+06:32:24 | WARNING | [EDGE] frame 108 提交失败！
+06:32:24 | WARNING | [EDGE] frame 109 提交失败！
+06:32:24 | WARNING | [EDGE] frame 110 提交失败！
+06:32:24 | WARNING | [EDGE] frame 111 提交失败！
+06:32:24 | WARNING | [EDGE] frame 112 提交失败！
+06:32:24 | WARNING | [EDGE] frame 113 提交失败！
+06:32:24 | WARNING | [EDGE] frame 114 提交失败！
+06:32:24 | WARNING | [EDGE] frame 115 提交失败！
+06:32:24 | WARNING | [EDGE] frame 116 提交失败！
+06:32:25 | WARNING | [EDGE] frame 117 提交失败！
+06:32:25 | WARNING | [EDGE] frame 118 提交失败！
+06:32:25 | WARNING | [EDGE] frame 119 提交失败！
+06:32:25 | WARNING | [EDGE] frame 120 提交失败！
+06:32:25 | INFO    | [EDGE] 本阶段提交 0/120 帧（累计 0）
+06:32:27 | INFO    | [PHASE 2] 离线写入完成: PENDING=-1 INFLIGHT=-1 ACKED=-1 (期望 PENDING ≈ 120+ 未 ACK 的在线帧)
+06:32:27 | INFO    | [PHASE 2] 断网期间云端接收应为 0 → 当前=0 (与阶段1末一致则正确)
+06:32:27 | INFO    | 
+======================================================================
+06:32:27 | INFO    |   阶段 3：网络恢复 → 重新启动云端 → 自动补传
+06:32:27 | INFO    | ======================================================================
+06:32:27 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:33:11 | INFO    | ======================================================================
+06:33:11 | INFO    |   弱网可靠性自动化测试  |  断网 → 离线积累 → 恢复补传 → 无损验证
+06:33:11 | INFO    | ======================================================================
+06:33:11 | INFO    | [CLEAN] 清理上次测试遗留数据...
+06:33:11 | INFO    | 
+======================================================================
+06:33:11 | INFO    |   阶段 1：正常通信（云端在线，发送少量帧）
+06:33:11 | INFO    | ======================================================================
+06:33:11 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:33:16 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:33:17 | INFO    | [EDGE] 初始化边缘端模块 (Mock 模式)...
+06:33:17 | INFO    | [EDGE] gRPC 客户端已启动（Reliable Mode + SQLite）
+06:33:18 | INFO    | [PHASE 1] 发送 30 帧（正常在线场景）...
+06:33:21 | INFO    | [EDGE] 本阶段提交 30/30 帧（累计 30）
+06:33:24 | INFO    | [PHASE 1] 完成后 SQLite 状态: PENDING=-1 INFLIGHT=-1 ACKED=-1
+06:33:24 | INFO    | [PHASE 1] 云端 frames/ 目录 JSON 数 = 30
+06:33:24 | INFO    | 
+======================================================================
+06:33:24 | INFO    |   阶段 2：强制断网 → 离线产生 120 帧
+06:33:24 | INFO    | ======================================================================
+06:33:24 | WARNING | [CLOUD] ========= 强制终止云端（模拟断网）=========
+06:33:25 | INFO    | [CLOUD] 已终止，50051 端口应已释放
+06:33:25 | INFO    | [PHASE 2] 开始离线写入 120 帧 (仅写 SQLite，无法上送)
+06:33:27 | INFO    |   → SQLite: PENDING=-1 INFLIGHT=-1 ACKED=-1 (上送应该都失败，PENDING 持续增长)
+06:33:35 | INFO    | [EDGE] 本阶段提交 120/120 帧（累计 150）
+06:33:37 | INFO    | [PHASE 2] 离线写入完成: PENDING=-1 INFLIGHT=-1 ACKED=-1 (期望 PENDING ≈ 120+ 未 ACK 的在线帧)
+06:33:37 | INFO    | [PHASE 2] 断网期间云端接收应为 0 → 当前=30 (与阶段1末一致则正确)
+06:33:37 | INFO    | 
+======================================================================
+06:33:37 | INFO    |   阶段 3：网络恢复 → 重新启动云端 → 自动补传
+06:33:37 | INFO    | ======================================================================
+06:33:37 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:33:42 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:33:43 | INFO    | [PHASE 3] 等待边缘端自动检测连接恢复并补传...
+06:33:43 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 30/150 (20.0%)
+06:33:45 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:33:47 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:33:49 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:33:51 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:33:53 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:33:55 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:33:57 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:33:59 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:01 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:03 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:05 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:07 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:09 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:11 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:13 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:15 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:17 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:19 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:21 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:23 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:25 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:27 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:29 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:31 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:33 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:35 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:37 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:39 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:41 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:43 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:45 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:47 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:49 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:51 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:53 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:55 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:57 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:34:59 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:35:01 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:35:03 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:35:05 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:35:07 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:35:09 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:35:11 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:35:17 | INFO    | 
+======================================================================
+06:35:17 | INFO    |   阶段 4：完整性与幂等性验证
+06:35:17 | INFO    | ======================================================================
+06:35:17 | INFO    | [VERIFY] 云端接收 frame_id 数=145, 缺失=5, 多余=0, 唯一无人机={'DRONE-JETSON-001'}
+06:35:17 | WARNING | [VERIFY] 缺失的 frame_id 前 20 个: [31, 32, 33, 34, 35]
+06:35:17 | INFO    | 
+======================================================================
+06:35:17 | INFO    |   测试结果汇总
+06:35:17 | INFO    | ======================================================================
+06:35:17 | INFO    |   总期望帧数:          150
+06:35:17 | INFO    |   其中 - 在线阶段:     30
+06:35:17 | INFO    |        - 离线阶段:     120
+06:35:17 | INFO    | ----------------------------------------------------------------------
+06:35:17 | INFO    |   SQLite 最终状态:     PENDING=-1 INFLIGHT=-1 DB_ACKED=-1
+06:35:17 | INFO    |   云端 frames/ 接收:   145 (JSON 文件数)
+06:35:17 | INFO    |   云端唯一 frame_id:   145
+06:35:17 | INFO    |   frame_id 连续无缺:   ❌ 否 (缺失 5)
+06:35:17 | INFO    |   InfluxDB Mock 点数:  0
+06:35:17 | INFO    |   边缘端重试次数:      0 (指数退避生效)
+06:35:17 | INFO    |   耗尽重试（丢帧）:    0 ✅ 0
+06:35:17 | INFO    | ----------------------------------------------------------------------
+06:35:17 | INFO    |   综合结论:            ❌ 测试失败 - 存在数据缺失或异常
+06:35:17 | INFO    |   详细摘要见:          D:\SOLO-0616-2\06-agriculture-drone-edge\test_data\summary.json
+06:35:17 | INFO    | ======================================================================
+06:35:17 | INFO    | [EDGE] 停止客户端（优雅排空 30s）...
+06:37:03 | INFO    | ======================================================================
+06:37:03 | INFO    |   弱网可靠性自动化测试  |  断网 → 离线积累 → 恢复补传 → 无损验证
+06:37:03 | INFO    | ======================================================================
+06:37:03 | INFO    | [CLEAN] 清理上次测试遗留数据...
+06:37:03 | INFO    | 
+======================================================================
+06:37:03 | INFO    |   阶段 1：正常通信（云端在线，发送少量帧）
+06:37:03 | INFO    | ======================================================================
+06:37:03 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:37:08 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:37:09 | INFO    | [EDGE] 初始化边缘端模块 (Mock 模式)...
+06:37:10 | INFO    | [EDGE] gRPC 客户端已启动（Reliable Mode + SQLite）
+06:37:11 | INFO    | [PHASE 1] 发送 30 帧（正常在线场景）...
+06:37:14 | INFO    | [EDGE] 本阶段提交 30/30 帧（累计 30）
+06:37:17 | INFO    | [PHASE 1] 完成后 SQLite 状态: PENDING=-1 INFLIGHT=-1 ACKED=-1
+06:37:17 | INFO    | [PHASE 1] 云端 frames/ 目录 JSON 数 = 30
+06:37:17 | INFO    | 
+======================================================================
+06:37:17 | INFO    |   阶段 2：强制断网 → 离线产生 120 帧
+06:37:17 | INFO    | ======================================================================
+06:37:17 | WARNING | [CLOUD] ========= 强制终止云端（模拟断网）=========
+06:37:18 | INFO    | [CLOUD] 已终止，50051 端口应已释放
+06:37:18 | INFO    | [PHASE 2] 开始离线写入 120 帧 (仅写 SQLite，无法上送)
+06:37:20 | INFO    |   → SQLite: PENDING=-1 INFLIGHT=-1 ACKED=-1 (上送应该都失败，PENDING 持续增长)
+06:37:28 | INFO    | [EDGE] 本阶段提交 120/120 帧（累计 150）
+06:37:30 | INFO    | [PHASE 2] 离线写入完成: PENDING=-1 INFLIGHT=-1 ACKED=-1 (期望 PENDING ≈ 120+ 未 ACK 的在线帧)
+06:37:30 | INFO    | [PHASE 2] 断网期间云端接收应为 0 → 当前=30 (与阶段1末一致则正确)
+06:37:30 | INFO    | 
+======================================================================
+06:37:30 | INFO    |   阶段 3：网络恢复 → 重新启动云端 → 自动补传
+06:37:30 | INFO    | ======================================================================
+06:37:30 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:37:34 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:37:35 | INFO    | [PHASE 3] 等待边缘端自动检测连接恢复并补传...
+06:37:35 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 30/150 (20.0%)
+06:37:37 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:39 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:41 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:43 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:45 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:47 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:49 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:51 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:53 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:55 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:57 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:37:59 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:01 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:03 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:05 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:07 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:09 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:11 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:13 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:15 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:17 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:19 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:21 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:23 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:25 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:27 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:29 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:31 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:33 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:35 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:37 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:39 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:41 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:43 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:45 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:47 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:49 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:51 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:53 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:55 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:57 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:38:59 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:39:01 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:39:03 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 145/150 (96.7%)
+06:39:09 | INFO    | 
+======================================================================
+06:39:09 | INFO    |   阶段 4：完整性与幂等性验证
+06:39:09 | INFO    | ======================================================================
+06:39:10 | INFO    | [VERIFY] 云端接收 frame_id 数=145, 缺失=5, 多余=0, 唯一无人机={'DRONE-JETSON-001'}
+06:39:10 | WARNING | [VERIFY] 缺失的 frame_id 前 20 个: [31, 32, 33, 34, 35]
+06:39:10 | INFO    | 
+======================================================================
+06:39:10 | INFO    |   测试结果汇总
+06:39:10 | INFO    | ======================================================================
+06:39:10 | INFO    |   总期望帧数:          150
+06:39:10 | INFO    |   其中 - 在线阶段:     30
+06:39:10 | INFO    |        - 离线阶段:     120
+06:39:10 | INFO    | ----------------------------------------------------------------------
+06:39:10 | INFO    |   SQLite 最终状态:     PENDING=-1 INFLIGHT=-1 DB_ACKED=-1
+06:39:10 | INFO    |   云端 frames/ 接收:   145 (JSON 文件数)
+06:39:10 | INFO    |   云端唯一 frame_id:   145
+06:39:10 | INFO    |   frame_id 连续无缺:   ❌ 否 (缺失 5)
+06:39:10 | INFO    |   InfluxDB Mock 点数:  0
+06:39:10 | INFO    |   边缘端重试次数:      0 (指数退避生效)
+06:39:10 | INFO    |   耗尽重试（丢帧）:    0 ✅ 0
+06:39:10 | INFO    | ----------------------------------------------------------------------
+06:39:10 | INFO    |   综合结论:            ❌ 测试失败 - 存在数据缺失或异常
+06:39:10 | INFO    |   详细摘要见:          D:\SOLO-0616-2\06-agriculture-drone-edge\test_data\summary.json
+06:39:10 | INFO    | ======================================================================
+06:39:10 | INFO    | [EDGE] 停止客户端（优雅排空 30s）...
+06:40:48 | INFO    | ======================================================================
+06:40:48 | INFO    |   弱网可靠性自动化测试  |  断网 → 离线积累 → 恢复补传 → 无损验证
+06:40:48 | INFO    | ======================================================================
+06:40:48 | INFO    | [CLEAN] 清理上次测试遗留数据...
+06:40:48 | INFO    | 
+======================================================================
+06:40:48 | INFO    |   阶段 1：正常通信（云端在线，发送少量帧）
+06:40:48 | INFO    | ======================================================================
+06:40:48 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:40:53 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:40:54 | INFO    | [EDGE] 初始化边缘端模块 (Mock 模式)...
+06:40:55 | INFO    | [EDGE] gRPC 客户端已启动（Reliable Mode + SQLite）
+06:40:56 | INFO    | [PHASE 1] 发送 30 帧（正常在线场景）...
+06:40:59 | INFO    | [EDGE] 本阶段提交 30/30 帧（累计 30）
+06:41:02 | INFO    | [PHASE 1] 完成后 SQLite 状态: PENDING=-1 INFLIGHT=-1 ACKED=-1
+06:41:02 | INFO    | [PHASE 1] 云端 frames/ 目录 JSON 数 = 30
+06:41:02 | INFO    | 
+======================================================================
+06:41:02 | INFO    |   阶段 2：强制断网 → 离线产生 120 帧
+06:41:02 | INFO    | ======================================================================
+06:41:02 | WARNING | [CLOUD] ========= 强制终止云端（模拟断网）=========
+06:41:03 | INFO    | [CLOUD] 已终止，50051 端口应已释放
+06:41:03 | INFO    | [PHASE 2] 开始离线写入 120 帧 (仅写 SQLite，无法上送)
+06:41:05 | INFO    |   → SQLite: PENDING=-1 INFLIGHT=-1 ACKED=-1 (上送应该都失败，PENDING 持续增长)
+06:41:13 | INFO    | [EDGE] 本阶段提交 120/120 帧（累计 150）
+06:41:15 | INFO    | [PHASE 2] 离线写入完成: PENDING=-1 INFLIGHT=-1 ACKED=-1 (期望 PENDING ≈ 120+ 未 ACK 的在线帧)
+06:41:15 | INFO    | [PHASE 2] 断网期间云端接收应为 0 → 当前=30 (与阶段1末一致则正确)
+06:41:15 | INFO    | 
+======================================================================
+06:41:15 | INFO    |   阶段 3：网络恢复 → 重新启动云端 → 自动补传
+06:41:15 | INFO    | ======================================================================
+06:41:15 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:41:19 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:41:20 | INFO    | [PHASE 3] 等待边缘端自动检测连接恢复并补传...
+06:41:20 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:22 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:24 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:26 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:28 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:30 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:32 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:34 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:36 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:38 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:40 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:42 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:44 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:46 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:48 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:50 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:52 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:54 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:56 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:41:58 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:00 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:02 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:04 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:06 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:08 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:10 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:12 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:14 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:16 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:18 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:20 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:22 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:25 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:27 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:29 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:31 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:33 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:35 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:37 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:39 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:41 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:43 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:45 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:47 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:49 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:51 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:53 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:55 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:57 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:42:59 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:01 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:03 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:05 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:07 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:09 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:11 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:13 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:15 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:17 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:19 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:21 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:23 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:25 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:27 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:29 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:31 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:33 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:35 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:37 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 146/150 (97.3%)
+06:43:59 | INFO    | ======================================================================
+06:43:59 | INFO    |   弱网可靠性自动化测试  |  断网 → 离线积累 → 恢复补传 → 无损验证
+06:43:59 | INFO    | ======================================================================
+06:43:59 | INFO    | [CLEAN] 清理上次测试遗留数据...
+06:43:59 | INFO    | 
+======================================================================
+06:43:59 | INFO    |   阶段 1：正常通信（云端在线，发送少量帧）
+06:43:59 | INFO    | ======================================================================
+06:43:59 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:44:04 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:44:05 | INFO    | [EDGE] 初始化边缘端模块 (Mock 模式)...
+06:44:05 | INFO    | [EDGE] gRPC 客户端已启动（Reliable Mode + SQLite）
+06:44:07 | INFO    | [PHASE 1] 发送 30 帧（正常在线场景）...
+06:44:09 | INFO    | [EDGE] 本阶段提交 30/30 帧（累计 30）
+06:44:12 | INFO    | [PHASE 1] 完成后 SQLite 状态: PENDING=-1 INFLIGHT=-1 ACKED=-1
+06:44:12 | INFO    | [PHASE 1] 云端 frames/ 目录 JSON 数 = 30
+06:44:12 | INFO    | 
+======================================================================
+06:44:12 | INFO    |   阶段 2：强制断网 → 离线产生 120 帧
+06:44:12 | INFO    | ======================================================================
+06:44:12 | WARNING | [CLOUD] ========= 强制终止云端（模拟断网）=========
+06:44:13 | INFO    | [CLOUD] 已终止，50051 端口应已释放
+06:44:14 | INFO    | [PHASE 2] 开始离线写入 120 帧 (仅写 SQLite，无法上送)
+06:44:15 | INFO    |   → SQLite: PENDING=-1 INFLIGHT=-1 ACKED=-1 (上送应该都失败，PENDING 持续增长)
+06:44:24 | INFO    | [EDGE] 本阶段提交 120/120 帧（累计 150）
+06:44:26 | INFO    | [PHASE 2] 离线写入完成: PENDING=-1 INFLIGHT=-1 ACKED=-1 (期望 PENDING ≈ 120+ 未 ACK 的在线帧)
+06:44:26 | INFO    | [PHASE 2] 断网期间云端接收应为 0 → 当前=30 (与阶段1末一致则正确)
+06:44:26 | INFO    | 
+======================================================================
+06:44:26 | INFO    |   阶段 3：网络恢复 → 重新启动云端 → 自动补传
+06:44:26 | INFO    | ======================================================================
+06:44:26 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:44:30 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:44:31 | INFO    | [PHASE 3] 等待边缘端自动检测连接恢复并补传...
+06:44:31 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 30/150 (20.0%)
+06:44:33 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:35 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:37 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:39 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:41 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:43 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:45 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:47 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:49 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:51 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:53 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:55 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:57 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:44:59 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:01 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:03 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:05 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:07 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:09 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:11 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:13 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:15 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:17 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:19 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:21 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:23 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:25 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:27 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:29 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:31 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:33 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:35 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:37 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:40 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:42 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:44 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:46 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:48 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:50 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:52 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:54 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:56 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:45:58 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:00 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:02 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:04 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:06 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:08 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:10 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:12 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:14 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:16 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:18 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:20 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:22 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:24 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:26 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:28 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:30 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:32 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:34 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:36 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:38 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:40 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:42 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:44 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:46 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:48 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:50 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:52 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:54 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:56 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:46:58 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:47:00 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:47:06 | INFO    | 
+======================================================================
+06:47:06 | INFO    |   阶段 4：完整性与幂等性验证
+06:47:06 | INFO    | ======================================================================
+06:47:06 | INFO    | [VERIFY] 云端接收 frame_id 数=150, 缺失=0, 多余=0, 唯一无人机={'DRONE-JETSON-001'}
+06:47:06 | INFO    | 
+======================================================================
+06:47:06 | INFO    |   测试结果汇总
+06:47:06 | INFO    | ======================================================================
+06:47:06 | INFO    |   总期望帧数:          150
+06:47:06 | INFO    |   其中 - 在线阶段:     30
+06:47:06 | INFO    |        - 离线阶段:     120
+06:47:06 | INFO    | ----------------------------------------------------------------------
+06:47:06 | INFO    |   SQLite 最终状态:     PENDING=-1 INFLIGHT=-1 DB_ACKED=-1
+06:47:06 | INFO    |   云端 frames/ 接收:   150 (JSON 文件数)
+06:47:06 | INFO    |   云端唯一 frame_id:   150
+06:47:06 | INFO    |   frame_id 连续无缺:   ✅ 是
+06:47:06 | INFO    |   InfluxDB Mock 点数:  0
+06:47:06 | INFO    |   边缘端重试次数:      395 (指数退避生效)
+06:47:06 | INFO    |   耗尽重试（丢帧）:    0 ✅ 0
+06:47:06 | INFO    | ----------------------------------------------------------------------
+06:47:06 | INFO    |   综合结论:            ❌ 测试失败 - 存在数据缺失或异常
+06:47:06 | INFO    |   详细摘要见:          D:\SOLO-0616-2\06-agriculture-drone-edge\test_data\summary.json
+06:47:06 | INFO    | ======================================================================
+06:47:06 | INFO    | [EDGE] 停止客户端（优雅排空 30s）...
+06:48:17 | INFO    | ======================================================================
+06:48:17 | INFO    |   弱网可靠性自动化测试  |  断网 → 离线积累 → 恢复补传 → 无损验证
+06:48:17 | INFO    | ======================================================================
+06:48:17 | INFO    | [CLEAN] 清理上次测试遗留数据...
+06:48:17 | INFO    | 
+======================================================================
+06:48:17 | INFO    |   阶段 1：正常通信（云端在线，发送少量帧）
+06:48:17 | INFO    | ======================================================================
+06:48:17 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:48:23 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:48:24 | INFO    | [EDGE] 初始化边缘端模块 (Mock 模式)...
+06:48:24 | INFO    | [EDGE] gRPC 客户端已启动（Reliable Mode + SQLite）
+06:48:25 | INFO    | [PHASE 1] 发送 30 帧（正常在线场景）...
+06:48:28 | INFO    | [EDGE] 本阶段提交 30/30 帧（累计 30）
+06:48:31 | INFO    | [PHASE 1] 完成后 SQLite 状态: PENDING=-1 INFLIGHT=-1 ACKED=-1
+06:48:31 | INFO    | [PHASE 1] 云端 frames/ 目录 JSON 数 = 30
+06:48:31 | INFO    | 
+======================================================================
+06:48:31 | INFO    |   阶段 2：强制断网 → 离线产生 120 帧
+06:48:31 | INFO    | ======================================================================
+06:48:31 | WARNING | [CLOUD] ========= 强制终止云端（模拟断网）=========
+06:48:32 | INFO    | [CLOUD] 已终止，50051 端口应已释放
+06:48:32 | INFO    | [PHASE 2] 开始离线写入 120 帧 (仅写 SQLite，无法上送)
+06:48:34 | INFO    |   → SQLite: PENDING=-1 INFLIGHT=-1 ACKED=-1 (上送应该都失败，PENDING 持续增长)
+06:48:42 | INFO    | [EDGE] 本阶段提交 120/120 帧（累计 150）
+06:48:44 | INFO    | [PHASE 2] 离线写入完成: PENDING=-1 INFLIGHT=-1 ACKED=-1 (期望 PENDING ≈ 120+ 未 ACK 的在线帧)
+06:48:44 | INFO    | [PHASE 2] 断网期间云端接收应为 0 → 当前=30 (与阶段1末一致则正确)
+06:48:44 | INFO    | 
+======================================================================
+06:48:44 | INFO    |   阶段 3：网络恢复 → 重新启动云端 → 自动补传
+06:48:44 | INFO    | ======================================================================
+06:48:44 | INFO    | [CLOUD] 启动云端 gRPC 服务...
+06:48:49 | INFO    | [CLOUD] 服务启动成功，监听 50051
+06:48:50 | INFO    | [PHASE 3] 等待边缘端自动检测连接恢复并补传...
+06:48:50 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 30/150 (20.0%)
+06:48:52 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:48:54 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:48:56 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:48:58 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:00 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:02 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:04 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:06 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:08 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:10 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:12 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:14 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:16 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:18 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:20 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:22 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:24 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:26 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:28 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:30 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:32 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:34 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:36 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:38 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:40 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:42 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:44 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:46 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:48 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:50 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:52 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:54 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:56 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:49:58 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:00 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:02 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:04 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:06 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:08 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:10 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:12 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:14 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:16 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:18 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:20 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:22 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:24 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:26 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:28 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:30 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:32 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:34 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:36 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:38 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:40 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:42 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:44 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:46 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:48 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:50 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:52 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:54 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:56 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:50:58 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:00 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:02 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:04 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:06 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:08 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:10 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:12 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:14 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:16 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:18 | INFO    |   ⏳ SQLite: PEND=  -1 INFL= -1 ACK=  -1  |  云端已收: 150/150 (100.0%)
+06:51:24 | INFO    | 
+======================================================================
+06:51:24 | INFO    |   阶段 4：完整性与幂等性验证
+06:51:24 | INFO    | ======================================================================
+06:51:25 | INFO    | [VERIFY] 云端接收 frame_id 数=150, 缺失=0, 多余=0, 唯一无人机={'DRONE-JETSON-001'}
+06:51:25 | INFO    | 
+======================================================================
+06:51:25 | INFO    |   测试结果汇总
+06:51:25 | INFO    | ======================================================================
+06:51:25 | INFO    |   总期望帧数:          150
+06:51:25 | INFO    |   其中 - 在线阶段:     30
+06:51:25 | INFO    |        - 离线阶段:     120
+06:51:25 | INFO    | ----------------------------------------------------------------------
+06:51:25 | INFO    |   SQLite 最终状态:     PENDING=-1 INFLIGHT=-1 DB_ACKED=-1
+06:51:25 | INFO    |   云端 frames/ 接收:   150 (JSON 文件数)
+06:51:25 | INFO    |   云端唯一 frame_id:   150
+06:51:25 | INFO    |   frame_id 连续无缺:   ✅ 是
+06:51:25 | INFO    |   InfluxDB Mock 点数:  0
+06:51:25 | INFO    |   边缘端重试次数:      407 (指数退避生效)
+06:51:25 | INFO    |   耗尽重试（丢帧）:    0 ✅ 0
+06:51:25 | INFO    | ----------------------------------------------------------------------
+06:51:25 | INFO    | ----------------------------------------------------------------------
+06:51:25 | INFO    |   综合结论:            ✅ 测试通过 - Exactly-Once 语义验证成功
+06:51:25 | INFO    |   关键指标验证:
+06:51:25 | INFO    |     - 云端完整接收 150/150:  ✅
+06:51:25 | INFO    |     - frame_id 1-150 连续无缺: ✅
+06:51:25 | INFO    |     - 边缘端 ACK 150 帧:     ✅ (150)
+06:51:25 | INFO    |     - 重试耗尽丢帧数:       ✅ 0
+06:51:25 | INFO    |     - 指数退避重传次数:     ✅ 407 次 (机制激活)
+06:51:25 | INFO    |   详细摘要见:          D:\SOLO-0616-2\06-agriculture-drone-edge\test_data\summary.json
+06:51:25 | INFO    | ======================================================================
+06:51:25 | INFO    | [EDGE] 停止客户端（优雅排空 30s）...

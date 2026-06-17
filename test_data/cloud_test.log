@@ -1,0 +1,261 @@
+C:\Users\ZhuanZ\AppData\Local\Programs\Python\Python312\Lib\site-packages\google\protobuf\runtime_version.py:112: UserWarning: Protobuf gencode version 5.27.2 is older than the runtime version 5.28.1 at drone_service.proto. Please avoid checked-in Protobuf gencode that can be obsolete.
+  warnings.warn(
+2026-06-18 06:48:49 | INFO    | cloud_server       | ============================================================
+2026-06-18 06:48:49 | INFO    | cloud_server       |   Cloud Server Starting (Reliable Mode + Dedup)
+2026-06-18 06:48:49 | INFO    | cloud_server       |   gRPC: 0.0.0.0:50051
+2026-06-18 06:48:49 | INFO    | cloud_server       |   Timestamp: 2026-06-18T06:48:49.356988
+2026-06-18 06:48:49 | INFO    | cloud_server       | ============================================================
+2026-06-18 06:48:49 | INFO    | cloud_server       | Insecure gRPC server on 0.0.0.0:50051
+2026-06-18 06:48:49 | INFO    | cloud_server       | Server monitor loop started
+2026-06-18 06:48:49 | INFO    | cloud_server       | Cloud server (reliable) started successfully
+2026-06-18 06:48:49 | INFO    | cloud_server       | Admin CLI started. Commands: [drones|stats|send <drone> <cmd> [args]|quit]
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 36: 6 detections [moderate=1, severe=2, mild=3] @ (39.90456, 116.40794) inf=17.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 37: 6 detections [moderate=1, severe=5] @ (39.90457, 116.40796) inf=11.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 38: 4 detections [severe=2, mild=1, moderate=1] @ (39.90458, 116.40797) inf=22.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 39: 5 detections [mild=3, severe=1, moderate=1] @ (39.90459, 116.40798) inf=22.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 40: 5 detections [severe=2, moderate=3] @ (39.90460, 116.40800) inf=23.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 41: 3 detections [moderate=1, mild=1, severe=1] @ (39.90461, 116.40801) inf=16.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 42: 3 detections [severe=1, mild=1, moderate=1] @ (39.90462, 116.40803) inf=8.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 43: 6 detections [severe=2, mild=3, moderate=1] @ (39.90463, 116.40805) inf=10.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 44: 5 detections [mild=2, moderate=3] @ (39.90464, 116.40806) inf=24.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 45: 4 detections [mild=3, severe=1] @ (39.90465, 116.40807) inf=16.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 46: 5 detections [mild=3, moderate=2] @ (39.90466, 116.40809) inf=20.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 47: 2 detections [moderate=1, mild=1] @ (39.90467, 116.40810) inf=5.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 48: 3 detections [mild=1, severe=1, moderate=1] @ (39.90468, 116.40812) inf=9.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 49: 2 detections [mild=1, moderate=1] @ (39.90469, 116.40814) inf=5.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 50: 5 detections [mild=4, severe=1] @ (39.90470, 116.40815) inf=19.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 51: 3 detections [mild=3] @ (39.90471, 116.40816) inf=5.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 52: 3 detections [moderate=2, severe=1] @ (39.90472, 116.40818) inf=10.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 53: 6 detections [severe=2, mild=3, moderate=1] @ (39.90473, 116.40819) inf=9.3ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 54: 6 detections [severe=1, mild=3, moderate=2] @ (39.90474, 116.40821) inf=24.3ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 55: 6 detections [mild=3, severe=2, moderate=1] @ (39.90475, 116.40823) inf=10.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 56: 3 detections [moderate=2, mild=1] @ (39.90476, 116.40824) inf=9.5ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 57: 6 detections [moderate=3, mild=2, severe=1] @ (39.90477, 116.40825) inf=17.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 58: 5 detections [moderate=2, mild=2, severe=1] @ (39.90478, 116.40827) inf=5.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 59: 2 detections [moderate=2] @ (39.90479, 116.40828) inf=5.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 60: 2 detections [mild=1, moderate=1] @ (39.90480, 116.40830) inf=14.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 61: 3 detections [moderate=1, mild=1, severe=1] @ (39.90481, 116.40832) inf=18.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 62: 6 detections [severe=4, mild=1, moderate=1] @ (39.90482, 116.40833) inf=5.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 63: 5 detections [severe=2, mild=2, moderate=1] @ (39.90483, 116.40834) inf=16.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 64: 6 detections [severe=2, moderate=4] @ (39.90484, 116.40836) inf=24.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 65: 4 detections [moderate=2, mild=2] @ (39.90485, 116.40837) inf=13.0ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 66: 5 detections [mild=1, moderate=1, severe=3] @ (39.90486, 116.40839) inf=16.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 67: 4 detections [severe=3, mild=1] @ (39.90487, 116.40841) inf=10.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 68: 3 detections [mild=1, severe=2] @ (39.90488, 116.40842) inf=17.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 69: 4 detections [moderate=3, mild=1] @ (39.90489, 116.40843) inf=11.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 70: 2 detections [mild=1, severe=1] @ (39.90490, 116.40845) inf=6.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 71: 6 detections [moderate=2, mild=2, severe=2] @ (39.90491, 116.40846) inf=17.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 72: 3 detections [severe=2, moderate=1] @ (39.90492, 116.40848) inf=15.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 73: 3 detections [moderate=3] @ (39.90493, 116.40850) inf=20.3ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 74: 5 detections [mild=3, severe=1, moderate=1] @ (39.90494, 116.40851) inf=19.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 75: 6 detections [severe=2, mild=3, moderate=1] @ (39.90495, 116.40852) inf=23.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 76: 5 detections [moderate=1, severe=2, mild=2] @ (39.90496, 116.40854) inf=23.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 77: 3 detections [moderate=2, mild=1] @ (39.90497, 116.40855) inf=10.3ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 31: 4 detections [mild=2, moderate=1, severe=1] @ (39.90451, 116.40787) inf=16.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 32: 6 detections [severe=2, mild=3, moderate=1] @ (39.90452, 116.40788) inf=11.5ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 33: 2 detections [moderate=1, severe=1] @ (39.90453, 116.40789) inf=8.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 78: 2 detections [mild=1, severe=1] @ (39.90498, 116.40857) inf=18.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 79: 4 detections [severe=2, mild=2] @ (39.90499, 116.40859) inf=15.0ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 80: 6 detections [severe=2, mild=4] @ (39.90500, 116.40860) inf=23.5ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 81: 5 detections [mild=2, moderate=1, severe=2] @ (39.90501, 116.40861) inf=5.5ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 82: 6 detections [mild=4, moderate=2] @ (39.90502, 116.40863) inf=10.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 83: 5 detections [moderate=3, mild=2] @ (39.90503, 116.40864) inf=19.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 34: 2 detections [moderate=2] @ (39.90454, 116.40791) inf=17.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 35: 6 detections [severe=2, mild=2, moderate=2] @ (39.90455, 116.40792) inf=22.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 84: 4 detections [severe=2, moderate=1, mild=1] @ (39.90504, 116.40866) inf=6.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 85: 3 detections [severe=2, mild=1] @ (39.90505, 116.40868) inf=12.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 86: 4 detections [severe=1, moderate=2, mild=1] @ (39.90506, 116.40869) inf=15.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 87: 4 detections [moderate=2, mild=2] @ (39.90507, 116.40870) inf=8.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 88: 4 detections [severe=1, mild=1, moderate=2] @ (39.90508, 116.40872) inf=14.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 89: 4 detections [severe=2, moderate=1, mild=1] @ (39.90509, 116.40873) inf=10.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 90: 6 detections [mild=2, severe=4] @ (39.90510, 116.40875) inf=10.0ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 91: 4 detections [mild=2, severe=2] @ (39.90511, 116.40877) inf=24.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 92: 4 detections [severe=3, mild=1] @ (39.90512, 116.40878) inf=21.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 93: 2 detections [severe=2] @ (39.90513, 116.40879) inf=7.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 94: 6 detections [severe=4, mild=1, moderate=1] @ (39.90514, 116.40881) inf=19.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 95: 5 detections [severe=3, mild=1, moderate=1] @ (39.90515, 116.40882) inf=13.3ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 96: 6 detections [moderate=3, mild=3] @ (39.90516, 116.40884) inf=6.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 97: 2 detections [mild=1, severe=1] @ (39.90517, 116.40886) inf=19.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 98: 2 detections [moderate=1, severe=1] @ (39.90518, 116.40887) inf=9.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 99: 2 detections [severe=2] @ (39.90519, 116.40888) inf=17.3ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 100: 3 detections [mild=2, severe=1] @ (39.90520, 116.40890) inf=19.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 101: 5 detections [severe=4, mild=1] @ (39.90521, 116.40891) inf=11.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 102: 5 detections [moderate=2, severe=2, mild=1] @ (39.90522, 116.40893) inf=24.5ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 103: 5 detections [mild=2, severe=2, moderate=1] @ (39.90523, 116.40894) inf=12.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 104: 2 detections [severe=1, moderate=1] @ (39.90524, 116.40896) inf=17.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 105: 5 detections [severe=2, moderate=2, mild=1] @ (39.90525, 116.40897) inf=20.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 106: 6 detections [severe=2, mild=2, moderate=2] @ (39.90526, 116.40899) inf=22.3ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 107: 6 detections [severe=2, moderate=3, mild=1] @ (39.90527, 116.40900) inf=20.0ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 108: 6 detections [moderate=2, mild=2, severe=2] @ (39.90528, 116.40902) inf=14.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 109: 5 detections [mild=2, severe=2, moderate=1] @ (39.90529, 116.40903) inf=7.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 110: 6 detections [mild=3, moderate=2, severe=1] @ (39.90530, 116.40905) inf=11.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 111: 6 detections [severe=3, moderate=3] @ (39.90531, 116.40906) inf=12.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 112: 5 detections [moderate=2, mild=2, severe=1] @ (39.90532, 116.40908) inf=12.3ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 113: 3 detections [severe=2, mild=1] @ (39.90533, 116.40909) inf=9.8ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 114: 6 detections [moderate=2, severe=3, mild=1] @ (39.90534, 116.40911) inf=21.3ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 115: 2 detections [mild=1, moderate=1] @ (39.90535, 116.40912) inf=7.0ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 116: 6 detections [severe=3, mild=2, moderate=1] @ (39.90536, 116.40914) inf=5.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 117: 2 detections [mild=1, severe=1] @ (39.90537, 116.40915) inf=18.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 118: 5 detections [severe=1, moderate=3, mild=1] @ (39.90538, 116.40917) inf=14.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 119: 3 detections [moderate=2, severe=1] @ (39.90539, 116.40918) inf=19.5ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 120: 4 detections [moderate=3, mild=1] @ (39.90540, 116.40920) inf=10.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 121: 3 detections [moderate=1, mild=2] @ (39.90541, 116.40921) inf=12.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 122: 3 detections [mild=2, severe=1] @ (39.90542, 116.40923) inf=8.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 123: 3 detections [severe=1, moderate=2] @ (39.90543, 116.40924) inf=21.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 124: 6 detections [mild=3, severe=3] @ (39.90544, 116.40926) inf=5.5ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 125: 3 detections [mild=1, moderate=1, severe=1] @ (39.90545, 116.40927) inf=11.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 126: 6 detections [moderate=2, mild=3, severe=1] @ (39.90546, 116.40929) inf=11.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 127: 5 detections [moderate=2, mild=1, severe=2] @ (39.90547, 116.40930) inf=22.2ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 128: 4 detections [severe=3, mild=1] @ (39.90548, 116.40932) inf=12.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 129: 6 detections [mild=3, moderate=1, severe=2] @ (39.90549, 116.40933) inf=13.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 130: 3 detections [severe=3] @ (39.90550, 116.40935) inf=12.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 131: 4 detections [severe=1, mild=2, moderate=1] @ (39.90551, 116.40936) inf=19.4ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 132: 6 detections [moderate=2, severe=3, mild=1] @ (39.90552, 116.40938) inf=24.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 133: 4 detections [severe=2, mild=1, moderate=1] @ (39.90553, 116.40939) inf=21.7ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 134: 5 detections [moderate=2, mild=1, severe=2] @ (39.90554, 116.40941) inf=21.0ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 135: 3 detections [mild=1, moderate=2] @ (39.90555, 116.40942) inf=6.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 136: 5 detections [severe=3, mild=2] @ (39.90556, 116.40944) inf=25.0ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 137: 2 detections [mild=1, moderate=1] @ (39.90557, 116.40945) inf=6.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 138: 2 detections [moderate=2] @ (39.90558, 116.40947) inf=22.3ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 139: 6 detections [moderate=3, severe=2, mild=1] @ (39.90559, 116.40948) inf=19.0ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 140: 4 detections [moderate=1, severe=2, mild=1] @ (39.90560, 116.40950) inf=22.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 141: 4 detections [severe=1, moderate=1, mild=2] @ (39.90561, 116.40951) inf=21.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 142: 3 detections [severe=2, moderate=1] @ (39.90562, 116.40953) inf=21.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 143: 5 detections [mild=2, moderate=1, severe=2] @ (39.90563, 116.40954) inf=19.0ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 144: 5 detections [moderate=2, severe=3] @ (39.90564, 116.40956) inf=13.0ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 145: 5 detections [mild=2, moderate=1, severe=2] @ (39.90565, 116.40957) inf=5.5ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 146: 4 detections [moderate=2, severe=1, mild=1] @ (39.90566, 116.40959) inf=23.1ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 147: 6 detections [moderate=2, mild=3, severe=1] @ (39.90567, 116.40960) inf=14.6ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 148: 3 detections [mild=1, severe=1, moderate=1] @ (39.90568, 116.40962) inf=12.9ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 149: 5 detections [mild=3, moderate=2] @ (39.90569, 116.40963) inf=7.5ms
+2026-06-18 06:48:51 | INFO    | cloud_server       | [DRONE-JETSON-001] Frame 150: 4 detections [severe=3, moderate=1] @ (39.90570, 116.40965) inf=14.8ms
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2026-06-18 06:49:19 | INFO    | cloud_server       | 
+============================================================
+  SERVER STATUS (Reliable Mode)
+------------------------------------------------------------
+  Active Drones:      1 ['DRONE-JETSON-001']
+  Total Frames:       120
+  Total Detections:   512
+  Process Rate:       4.0 frames/s
+  Data Received:      0.04 MB
+  Severity Breakdown: {'mild': 175, 'moderate': 156, 'severe': 181, 'unknown': 0}
+------------------------------------------------------------
+  [RELIABILITY]
+  Unique Writes:      120
+  Duplicates Skipped: 402
+  Dedup Effectiveness:77.01%
+  Dedup Window Size:  120 (1 drones tracked)
+  InfluxDB:           connected=True written=0 errors=6
+============================================================
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2026-06-18 06:49:49 | INFO    | cloud_server       | 
+============================================================
+  SERVER STATUS (Reliable Mode)
+------------------------------------------------------------
+  Active Drones:      1 ['DRONE-JETSON-001']
+  Total Frames:       120
+  Total Detections:   512
+  Process Rate:       4.0 frames/s
+  Data Received:      0.04 MB
+  Severity Breakdown: {'mild': 175, 'moderate': 156, 'severe': 181, 'unknown': 0}
+------------------------------------------------------------
+  [RELIABILITY]
+  Unique Writes:      120
+  Duplicates Skipped: 402
+  Dedup Effectiveness:77.01%
+  Dedup Window Size:  120 (1 drones tracked)
+  InfluxDB:           connected=True written=0 errors=14
+============================================================
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2026-06-18 06:50:19 | INFO    | cloud_server       | 
+============================================================
+  SERVER STATUS (Reliable Mode)
+------------------------------------------------------------
+  Active Drones:      1 ['DRONE-JETSON-001']
+  Total Frames:       120
+  Total Detections:   512
+  Process Rate:       4.0 frames/s
+  Data Received:      0.04 MB
+  Severity Breakdown: {'mild': 175, 'moderate': 156, 'severe': 181, 'unknown': 0}
+------------------------------------------------------------
+  [RELIABILITY]
+  Unique Writes:      120
+  Duplicates Skipped: 402
+  Dedup Effectiveness:77.01%
+  Dedup Window Size:  120 (1 drones tracked)
+  InfluxDB:           connected=True written=0 errors=21
+============================================================
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2026-06-18 06:50:49 | INFO    | cloud_server       | 
+============================================================
+  SERVER STATUS (Reliable Mode)
+------------------------------------------------------------
+  Active Drones:      1 ['DRONE-JETSON-001']
+  Total Frames:       120
+  Total Detections:   512
+  Process Rate:       4.0 frames/s
+  Data Received:      0.04 MB
+  Severity Breakdown: {'mild': 175, 'moderate': 156, 'severe': 181, 'unknown': 0}
+------------------------------------------------------------
+  [RELIABILITY]
+  Unique Writes:      120
+  Duplicates Skipped: 402
+  Dedup Effectiveness:77.01%
+  Dedup Window Size:  120 (1 drones tracked)
+  InfluxDB:           connected=True written=0 errors=28
+============================================================
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2026-06-18 06:51:19 | INFO    | cloud_server       | 
+============================================================
+  SERVER STATUS (Reliable Mode)
+------------------------------------------------------------
+  Active Drones:      1 ['DRONE-JETSON-001']
+  Total Frames:       120
+  Total Detections:   512
+  Process Rate:       4.0 frames/s
+  Data Received:      0.04 MB
+  Severity Breakdown: {'mild': 175, 'moderate': 156, 'severe': 181, 'unknown': 0}
+------------------------------------------------------------
+  [RELIABILITY]
+  Unique Writes:      120
+  Duplicates Skipped: 402
+  Dedup Effectiveness:77.01%
+  Dedup Window Size:  120 (1 drones tracked)
+  InfluxDB:           connected=True written=0 errors=36
+============================================================
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Stream ended [UNKNOWN]:  (drone=DRONE-JETSON-001)
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+Failed to flush batch: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。

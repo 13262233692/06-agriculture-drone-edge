@@ -32,6 +32,10 @@ detection:
   deduplication_enabled: true
   deduplication_distance_threshold: 2.0
 
+  idempotency:
+    window_size_per_drone: 5000
+    max_drones: 100
+
 monitoring:
   enabled: true
   metrics_port: 9090

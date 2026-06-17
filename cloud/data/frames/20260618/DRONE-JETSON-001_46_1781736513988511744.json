@@ -1,0 +1,89 @@
+{
+  "drone_id": "DRONE-JETSON-001",
+  "frame_id": 46,
+  "timestamp": 1781736513988511744,
+  "datetime": "2026-06-17T22:48:33.988512+00:00",
+  "gps": {
+    "latitude": 39.90466,
+    "longitude": 116.40809,
+    "altitude": 49.87967849699834,
+    "speed": 8.5,
+    "heading": 90.0,
+    "timestamp": 1781736513988511744,
+    "satellites": 0,
+    "hdop": 0.0
+  },
+  "frame_width": 1280,
+  "frame_height": 720,
+  "multispectral_band": "RGB",
+  "inference_latency_ms": 20.81079864501953,
+  "detections": [
+    {
+      "bbox": {
+        "x1": 489,
+        "y1": 533,
+        "x2": 637,
+        "y2": 675
+      },
+      "confidence": 0.847375214099884,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.3768899738788605,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 207,
+        "y1": 559,
+        "x2": 265,
+        "y2": 671
+      },
+      "confidence": 0.8077512383460999,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.35495638847351074,
+      "severity_level": "moderate"
+    },
+    {
+      "bbox": {
+        "x1": 402,
+        "y1": 168,
+        "x2": 446,
+        "y2": 302
+      },
+      "confidence": 0.9390945434570312,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.11588764935731888,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 783,
+        "y1": 553,
+        "x2": 902,
+        "y2": 661
+      },
+      "confidence": 0.6349787712097168,
+      "class_id": 0,
+      "class_name": "wheat_rust_early",
+      "severity_score": 0.31709638237953186,
+      "severity_level": "mild"
+    },
+    {
+      "bbox": {
+        "x1": 472,
+        "y1": 151,
+        "x2": 581,
+        "y2": 197
+      },
+      "confidence": 0.7563290596008301,
+      "class_id": 1,
+      "class_name": "wheat_rust_moderate",
+      "severity_score": 0.5375190377235413,
+      "severity_level": "moderate"
+    }
+  ],
+  "detection_count": 5,
+  "received_at": 1781736531688316928
+}
